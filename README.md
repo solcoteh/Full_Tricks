@@ -106,7 +106,31 @@ gpg --batch --yes --passphrase 'passphrase' <file.gpg|pgp>
 sudo tshark -i any -f "icmp"
 sudo tcpdump ip proto \\icmp -i tun0
 ```
-# KoTH Tricks ✅
+# Extract 
+```bash
+tar -xf archive.tar
+gzip -d file.gz
+7z x file.zip
+```
+## Git ✅
+```bash
+git init
+git log
+git log -p <file>
+git diff <commit2> <commit1>
+git blame <file>
+git show
+git checkout <commit|branch ID>
+git merge <branch or commit name>
+git branch -a
+```
+# Machine Tricks ✅📚
+## flag_finder ✅
+```bash
+grep -Rine 'thm{' ./ 2>/dev/null
+find / -name '*flag*' -ls 2>/dev/null
+```
+## KoTH Tricks ✅
 ```bash
 set write off
 chattr +ai /root/king.txt
