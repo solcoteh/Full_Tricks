@@ -29,7 +29,7 @@ sudo nmap -p- <ip> -sV -T5 -Pn
 sudo nmap 139,445 <ip> -sV -T5 --script=vuln
 sudo nmap -p 139,445 <ip> -sV -T5 --script=vuln -Pn
 ```
-## hosts are communicating 
+## hosts are communicating ✅
 ```bash
 last
 lsof -i
@@ -87,7 +87,7 @@ getcap -r / 2>/dev/null
 find /  -perm -04000 -ls 2>/dev/null
 find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \;
 ```
-## Privilege-Escalation_enumeration
+## Privilege-Escalation_enumeration ✅
 ```bash
 id
 history
