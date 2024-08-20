@@ -144,13 +144,15 @@ git checkout <commit|branch ID>
 git merge <branch or commit name>
 git branch -a
 ```
-# how to use port 22 in firefox
+# how to use port 22 in firefox ✅
 example = http://hogwartz.com:22
 
 enter "about:config"
 
 search "network.security.ports.banned.override"
+
 Select on "strings"  and [+] 
+
 write "port22"
 # Machine Tricks ✅📚
 ## flag_finder ✅
