@@ -146,7 +146,9 @@ git branch -a
 ```
 # how to use port 22 in firefox
 example = http://hogwartz.com:22
+
 enter "about:config"
+
 search "network.security.ports.banned.override"
 Select on "strings"  and [+] 
 write "port22"
