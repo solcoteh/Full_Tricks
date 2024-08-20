@@ -62,6 +62,15 @@ getcap -r / 2>/dev/null
 find /  -perm -04000 -ls 2>/dev/null
 find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \;
 ```
+## Privilege-Escalation_enumeration
+```bash
+history
+sudo -V
+uname -a (Linux kernel version)
+cat /etc/issue (Linux distribution version) 
+cat /etc/*-release (Linux distribution version) 
+cat /proc/version (Linux kernel version)
+```
 ## Weak File Permissions ✅
 ```bash
 cat /etc/shadow
