@@ -37,7 +37,7 @@ ffuf -u http://example.com/FUZZ -w /usr/share/wordlists/seclists/Discovery/Web-C
 
 wfuzz -c -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt --hc 404,500 http://example.com/FUZZ
 ```
-### *Wpscan ✡️
+### Wpscan ✡️
 ```bash
 wpscan --url http://<adress>/ -e u (enum user)
 wpscan --url http://<adress>/ -e ap (plugin)
@@ -99,7 +99,7 @@ mysql -u root
 mysql -u root -p
 mysql -h <Hostname> -u root
 ```
-### *MySQL commands ✡️
+### MySQL commands ✡️
 ```mysql
 show databases;
 use <database>;
@@ -111,6 +111,21 @@ SELECT VERSION();
 select * from <table>;
 
 SELECT * FROM <table_name> WHERE <column_name> LIKE '%search_string%';
+```
+## SMTP ✅
+```bash
+smtp-user-enum -M <MODE> -u <USER> -t <IP>
+nmap <ip> -p <port> -vv -A --script "smtp-*" -oN <name file>
+After finding the username, we will bruteforce <ssh|smb|ftp|nfs> with hydra
+```
+## NFS ✅
+```bash
+showmount -e <IP> (print NFS shares)
+
+mkdir /tmp/nfs
+sudo mount -o rw -t nfs <IP>:<share> /tmp/nfs/ -nolock
+
+cat /etc/exports (root_squash OR no_root_squash)
 ```
 # Other_useful_tricks ✅
 ## gpg command cheetsheet ✅
@@ -145,15 +160,13 @@ git merge <branch or commit name>
 git branch -a
 ```
 # how to use port 22 in firefox ✅
+```bash
 example = http://hogwartz.com:22
-
 enter "about:config"
-
 search "network.security.ports.banned.override"
-
 Select on "strings"  and [+] 
-
 write "port22"
+```
 # Machine Tricks ✅📚
 ## flag_finder ✅
 ```bash
