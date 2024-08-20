@@ -16,13 +16,13 @@ sudo nmap 139,445 <ip> -sV -T5 --script=vuln
 sudo nmap -p 139,445 <ip> -sV -T5 --script=vuln -Pn
 ```
 ## WEB_Enumeration ✅
-### *subdomains_enumeration ✡️
+### subdomains_enumeration ✡️
 ```bash
 gobuster vhost -u http://example.com -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt —append-domain -t 100 --no-error 
 ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -u http://example.com/ -H "Host:FUZZ.example.com" -fw 6
 wfuzz -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt --hc 400,404,403 -H "Host: FUZZ.example.com" -u http://example.com -t 100
 ```
-### *directory _enumeration ✡️
+### directory _enumeration ✡️
 ```bash
 nikto -h http://example.com
 
@@ -41,20 +41,19 @@ wfuzz -c -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2
 ```bash
 wpscan --url http://<adress>/ -e u (enum user)
 wpscan --url http://<adress>/ -e ap (plugin)
-wpscan --url http://<adress>/ --usernames <user> --passwords /usr/share/wordlists/rockyou.txt
 ```
 
 # Brute Force Attack ✅📚
 ## Hydra Attack Type Cheat Sheet ✅
 ```bash
 hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -vV <ip> ftp
+```
+### Web_Method Brute Force ✅
+```bash
+nikto -h http://10.10.131.147:1234/manager/html -id bob:<password> (get-method)
+wpscan --url http://<adress>/ --usernames <user> --passwords /usr/share/wordlists/rockyou.txt
 hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f <ip> -s 80 http-get /protected/ -I
 hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f <ip> -s 80 http-post-form "/<dir>:username=^USER^&password=^PASS^:<Faild Error>" -vV -I
-```
-### *Get Method Brute Force ✅
-```bash
-nikto -h http://10.10.131.147:1234/manager/html -id bob:<password>
-hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f 10.10.176.108 -s 80 http-get /protected/ -I
 ```
 # Privilege-Escalation ✅📚
 ## SUID_SGID_Capabilities_Files_enumeration ✅
@@ -93,20 +92,22 @@ select * from <table>;
 
 SELECT * FROM <table_name> WHERE <column_name> LIKE '%search_string%';
 ```
-
-
-———————————————
-gpg command cheetsheet ✅
+# Other_useful_tricks ✅
+## gpg command cheetsheet ✅
+```bash
 gpg --import key.gpg
 gpg --import key.asc
 
 gpg --batch --yes -d <file.gpg|pgp> -o secret.txt
 gpg --batch --yes --passphrase 'passphrase' <file.gpg|pgp> 
-ICMP_listener ✅
+```
+## ICMP_listener ✅
+```bash
 sudo tshark -i any -f "icmp"
 sudo tcpdump ip proto \\icmp -i tun0
-———————————————
-KoTH Tricks   ✅
+```
+# KoTH Tricks ✅
+```bash
 set write off
 chattr +ai /root/king.txt
 chattr -ai /root/king.txt
@@ -122,3 +123,4 @@ chmod +x nyancat
 
 PATH=0
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
+```
