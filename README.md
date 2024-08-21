@@ -283,3 +283,9 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/gam
 
 cat /etc/shells (show available shells)
 ```
+### disable_rootkit
+```bash
+echo 1 > /proc/sys/kernel/modules_disabled
+sudo sysctl -w kernel.modules_disabled=1
+sudo sysctl -w module.sig_enforce=1
+```
