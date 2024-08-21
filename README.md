@@ -311,6 +311,7 @@ cat /etc/shells (show available shells)
 [nyancat](https://github.com/klange/nyancat)
 [linpeas.sh](https://github.com/peass-ng/PEASS-ng)
 [LinEnum.sh](https://github.com/rebootuser/LinEnum)
+[reverse_ssh](https://github.com/NHAS/reverse_ssh)
 ### disable_rootkit ✅
 ```bash
 echo 1 > /proc/sys/kernel/modules_disabled
