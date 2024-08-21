@@ -2,7 +2,7 @@
 ## Check list Defense
     01- /etc/sudoers & /etc/sudoers.d/
     02- /etc/crontab
-    03- SUID 
+    03- SUID + LD_PRELOAD
     04- shadow + passwd (should be not writeable)
     05- change password and username (web + linux )
     06- web server config | php file vuln
