@@ -285,6 +285,8 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/gam
 
 cat /etc/shells (show available shells)
 ```
+### Tools_Useful
+[pspy](https://github.com/DominicBreuker/pspy)
 ### disable_rootkit
 ```bash
 echo 1 > /proc/sys/kernel/modules_disabled
