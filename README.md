@@ -256,6 +256,8 @@ sudo mount -o bind /dev/shm/sqashfs/king.txt /root/king.txt
 sudo rm -rf /dev/shm/root_f 
 
 mount -o bind /tmp /proc/your-PID-here (Hide your PTS)
+
+mkdir /dev/shm/.hidden && mount -o bind /dev/shm/.hidden /proc/pid
 ```
 ### Not_Be-king ✅
 ```bash
