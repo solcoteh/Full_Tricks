@@ -179,8 +179,10 @@ SELECT * FROM <table_name> WHERE <column_name> LIKE '%search_string%';
 ```
 ## SMTP ✅
 ```bash
+telnet INSERTIPADDRESS 25
+nc -nvv INSERTIPADDRESS 25
 smtp-user-enum -M <MODE> -u <USER> -t <IP>
-nmap <ip> -p <port> -vv -A --script "smtp-*" -oN <name file>
+nmap <ip> -p <port> -vv -A --script "smtp-*" -oN namp.txt
 After finding the username, we will bruteforce <ssh|smb|ftp|nfs> with hydra
 ```
 ## NFS ✅
