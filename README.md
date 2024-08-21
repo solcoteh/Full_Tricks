@@ -232,9 +232,23 @@ set write off
 chattr +ia /root/king.txt
 chattr +ia /root
 rm -rf /usr/bin/chattr
-echo "USERNAME" >| /root/king.txt
+echo "solcoteh" >| /root/king.txt
+lessecho "solcoteh" > /root/king.txt
 set -o noclobber /root/king.txt
 sudo mount --bind -o ro /root/king.txt /root/king.txt 2>/dev/null
+```
+### mount-trick ✅
+```bash
+sudo lessecho solcoteh > /root/king.txt
+sudo dd if=/dev/zero of=/dev/shm/root_f bs=1000 count=100
+sudo mkfs.ext3 /dev/shm/root_f
+sudo mkdir /dev/shm/sqashfs
+sudo mount -o loop /dev/shm/root_f /dev/shm/sqashfs/
+sudo chmod -R 777 /dev/shm/sqashfs/
+sudo lessecho solcoteh > /dev/shm/sqashfs/king.txt
+sudo mount -o ro,remount /dev/shm/sqashfs
+sudo mount -o bind /dev/shm/sqashfs/king.txt /root/king.txt
+sudo rm -rf /dev/shm/root_f 
 ```
 ### Not_Be-king ✅
 ```bash
