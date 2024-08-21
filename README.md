@@ -215,15 +215,17 @@ mkdir ~/.localpython
 make;make install
 ```
 # Machine Tricks ✅📚
-## flag_finder ✅
+## Flag_finder ✅
 ```bash
-grep -Rine 'thm{' ./ 2>/dev/null
-find / -name '*flag*' -ls 2>/dev/null
-
 -oHostKeyAlgorithms=+ssh-rsa
+
+grep -iR "THM{" / 2>/dev/null          # flag prefix
+grep -R  "VEhN" / 2>/dev/null          # base64
+grep -RE '[0-9a-f]{32}' . 2>/dev/null  # hash
+find / -name "*flag*"  -ls 2>/dev/null
+find / -type f -name "*flag.txt" -o -name ".flag*" -o -name "flag" -o -name "user.txt" -o -name "root.txt"  -ls 2>/dev/null
 ```
 ## KoTH Tricks ✅
-
 ### Be-king ✅
 ```bash
 set write off
@@ -243,14 +245,6 @@ set +o noclobber /root/king.txt
 
 sudo umount -l /root
 sudo umount -l /root/king.txt
-```
-### Flag_finder ✅
-```bash
-grep -iR "THM{" / 2>/dev/null          # flag prefix
-grep -R  "VEhN" / 2>/dev/null          # base64
-grep -RE '[0-9a-f]{32}' . 2>/dev/null  # hash
-find / -name "*flag*" 2>/dev/null
-find / -type f -name "*flag.txt" -o -name ".flag*" -o -name "flag" -o -name "user.txt" -o -name "root.txt" 2>/dev/null
 ```
 ### Command_useful ✅
 ```bash
