@@ -255,7 +255,7 @@ sudo mount -o ro,remount /dev/shm/sqashfs
 sudo mount -o bind /dev/shm/sqashfs/king.txt /root/king.txt
 sudo rm -rf /dev/shm/root_f 
 
-mount -o bind /tmp /proc/your-PID-here (Hide your PTS_
+mount -o bind /tmp /proc/your-PID-here (Hide your PTS)
 ```
 ### Not_Be-king ✅
 ```bash
