@@ -194,6 +194,18 @@ sudo mount -o rw -t nfs <IP>:<share> /tmp/nfs/ -nolock
 
 cat /etc/exports (root_squash OR no_root_squash)
 ```
+## SNMP ✅
+```bash
+snmpwalk -c public -v1 10.0.0.0
+snmpwalk -v X -c public <IP> NET-SNMP-EXTEND-MIB::nsExtendOutputFull
+snmpcheck -t 192.168.1.X 
+snmpcheck -t 192.168.1.X -c public
+onesixtyone -c community.txt -i Found_ips.txt
+nmap -sT -p 161 192.168.X.X -oG snmp_results.txt
+snmpenum -t 192.168.1.X
+nmap -sV -p 161 --script=snmp* 172.20.10.0/24 -T5
+braa <community string>@<IP>:.1.3.6.*
+```
 # Other_useful_tricks ✅
 ## gpg command cheetsheet ✅
 ```bash
