@@ -328,6 +328,8 @@ cat /etc/shells (show available shells)
 [linpeas.sh](https://github.com/peass-ng/PEASS-ng)
 [LinEnum.sh](https://github.com/rebootuser/LinEnum)
 [reverse_ssh](https://github.com/NHAS/reverse_ssh)
+[linux-exploit-suggester](https://github.com/The-Z-Labs/linux-exploit-suggester)
+[linux-exploit-suggester-2](https://github.com/jondonas/linux-exploit-suggester-2)
 ### disable_rootkit ✅
 ```bash
 echo 1 > /proc/sys/kernel/modules_disabled
