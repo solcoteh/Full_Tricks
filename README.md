@@ -279,6 +279,7 @@ tty (If you're looking for your pts id/number)
 pkill -9 -t pts/<number>
 
 cat /dev/urandom > /dev/pts/# ( sending spam for another user )
+cat /dev/urandom > $dir 2>/dev/null
 
 PATH=0
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
