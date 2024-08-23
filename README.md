@@ -268,8 +268,8 @@ find / -type f -name "*flag.txt" -o -name ".flag*" -o -name "flag" -o -name "use
 ### Be-king ✅
 ```bash
 set write off
-chattr +ia /root/king.txt
-chattr +ia /root
+chattr -R +ia /root
+chattr -R +ia /root/king.txt
 rm -rf /usr/bin/chattr
 echo "solcoteh" >| /root/king.txt
 lessecho "solcoteh" > /root/king.txt
@@ -290,8 +290,8 @@ password=Mobin@
 ```
 ### Not_Be-king ✅
 ```bash
-chattr -ia /root
-chattr -ia /root/king.txt
+chattr -R -ia /root
+chattr -R -ia /root/king.txt
 
 set +o noclobber /root/king.txt
 
