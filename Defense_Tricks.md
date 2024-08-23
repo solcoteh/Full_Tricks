@@ -21,3 +21,10 @@
 find / -perm /4000 2>/dev/null
 chmod -s /usr/bin/pkexec
 ```
+
+## ssh_Fix
+```bash
+sed -i 's/Port 22/Port 43522/' /etc/ssh/sshd_config
+service sshd restart
+systemctl restart sshd
+```
