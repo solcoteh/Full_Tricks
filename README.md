@@ -311,9 +311,10 @@ sudo mount -o ro,remount /dev/shm/sqashfs
 sudo mount -o bind /dev/shm/sqashfs/king.txt /root/king.txt
 sudo rm -rf /dev/shm/root_f 
 
-mount -o bind /tmp /proc/your-PID-here (Hide your PTS)
+mkdir /tmp/hidden
+mount -o bind /tmp/hidden /proc/your-PID-here (Hide your PTS)
 
-mkdir /dev/shm/.hidden && mount -o bind /dev/shm/.hidden /proc/pid
+mkdir /dev/shm/.hidden && mount -o bind /dev/shm/.hidden /proc/$pid (Hide your PTS)
 ```
 ### symbolic-link-Tricks ✅
 ```bash
