@@ -76,8 +76,7 @@ wfuzz -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-1
 nikto -h http://example.com
 
 dirb http://example.com
-dirb http://example.com -X .php,.html,.bak,.log,.txt,.zip,.enc
-
+dirb http://example.com -X .php,.html,.bak,.log,.txt,.zip,.enc,.docx
 gobuster dir -u http://example.com -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt
 gobuster dir -u http://example.com -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt -x .php,.html,.bak,.log,.txt,.zip,.enc
 
