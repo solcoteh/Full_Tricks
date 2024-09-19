@@ -236,11 +236,18 @@ openssl rsa -in private-key.pem -text -noout
 openssl dhparam -in dhparams.pem -text -noout
 
  # The values of p, q, N, e, and d are prime1, prime2, modulus, publicExponent, and privateExponent, respectively.
+
+openssl x509 -in cert.pem -text # view certificate:
 ----------------------------------
 openssl pkeyutl -encrypt -in plaintext.txt -out ciphertext -inkey public-key.pem -pubin # encrypt a file with public-key 
 openssl pkeyutl -decrypt -in ciphertext -inkey private-key.pem -out decrypted.txt  # decrypt a file with private-key
 
 # pkeyutl: This stands for "Public Key Utility" and is a command that lets you perform public key operations, like encryption, decryption, signing, and verification.
+---------------------------------
+openssl req -new -nodes -newkey rsa:4096 -keyout key.pem -out cert.csr # generate a certificate
+
+openssl req -x509 -newkey -nodes rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 365 # generate a self-signed certificate.
+
 ```
 
 ## ICMP_listener ✅
