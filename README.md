@@ -213,7 +213,20 @@ gpg --import key.asc
 
 gpg --batch --yes -d <file.gpg|pgp> -o secret.txt
 gpg --batch --yes --passphrase 'passphrase' <file.gpg|pgp> 
+---------------------------------------------------------
+gpg --symmetric --cipher-algo <CIPHER> message.txt
+gpg --armor --symmetric --cipher-algo <CIPHER> message.txt
+gpg --output original_message.txt --decrypt message.gpg
 ```
+## openssl command cheetsheet ✅
+```bash
+openssl aes-256-cbc -e -in message.txt -out encrypted_message # encrypt 
+openssl aes-256-cbc -pbkdf2 -iter 10000 -e -in message.txt -out encrypted_message # encrypt & more secure 
+
+openssl aes-256-cbc -d -in encrypted_message -out original_message.txt # decrypt 
+openssl aes-256-cbc -pbkdf2 -iter 10000 -d -in encrypted_message -out original_message.txt # decrypt & more secure  
+```
+
 ## ICMP_listener ✅
 ```bash
 sudo tshark -i any -f "icmp"
