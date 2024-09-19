@@ -211,8 +211,10 @@ braa <community string>@<IP>:.1.3.6.*
 gpg --import key.gpg
 gpg --import key.asc
 
-gpg --batch --yes -d <file.gpg|pgp> -o secret.txt
-gpg --batch --yes --passphrase 'passphrase' <file.gpg|pgp> 
+gpg -d <file.gpg|pgp>
+gpg --batch --yes -d <file.gpg|pgp>
+gpg --batch --yes -d <file.gpg|pgp> -o secret.txt  # decrypt 
+gpg --batch --yes --passphrase 'passphrase' <file.gpg|pgp> # decrypt 
 ---------------------------------------------------------
 gpg --symmetric --cipher-algo <CIPHER> message.txt # encrypt 
 gpg --armor --symmetric --cipher-algo <CIPHER> message.txt # encrypt 
