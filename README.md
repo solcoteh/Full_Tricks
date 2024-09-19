@@ -214,9 +214,9 @@ gpg --import key.asc
 gpg --batch --yes -d <file.gpg|pgp> -o secret.txt
 gpg --batch --yes --passphrase 'passphrase' <file.gpg|pgp> 
 ---------------------------------------------------------
-gpg --symmetric --cipher-algo <CIPHER> message.txt
-gpg --armor --symmetric --cipher-algo <CIPHER> message.txt
-gpg --output original_message.txt --decrypt message.gpg
+gpg --symmetric --cipher-algo <CIPHER> message.txt # encrypt 
+gpg --armor --symmetric --cipher-algo <CIPHER> message.txt # encrypt 
+gpg --output original_message.txt --decrypt message.gpg # decrypt 
 ```
 ## openssl command cheetsheet ✅
 ```bash
