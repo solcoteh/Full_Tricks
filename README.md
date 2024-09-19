@@ -229,9 +229,13 @@ openssl aes-256-cbc -d -in encrypted_message -out original_message.txt # decrypt
 openssl aes-256-cbc -pbkdf2 -iter 10000 -d -in encrypted_message -out original_message.txt # decrypt & more secure  
 ----------------------------------
 openssl genrsa -out private-key.pem 2048 # generate an RSA private key
+openssl dhparam -out dhparams.pem 2048 # generate an RSA Diffie-Hellman-private-key
 openssl rsa -in private-key.pem -pubout -out public-key.pem  # generate an RSA public key from private key
 ----------------------------------
-openssl rsa -in private-key.pem -text -noout # The values of p, q, N, e, and d are prime1, prime2, modulus, publicExponent, and privateExponent, respectively.
+openssl rsa -in private-key.pem -text -noout
+openssl dhparam -in dhparams.pem -text -noout
+
+ # The values of p, q, N, e, and d are prime1, prime2, modulus, publicExponent, and privateExponent, respectively.
 ----------------------------------
 openssl pkeyutl -encrypt -in plaintext.txt -out ciphertext -inkey public-key.pem -pubin # encrypt a file with public-key 
 openssl pkeyutl -decrypt -in ciphertext -inkey private-key.pem -out decrypted.txt  # decrypt a file with private-key
