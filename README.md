@@ -227,7 +227,7 @@ openssl aes-256-cbc -pbkdf2 -iter 10000 -e -in message.txt -out encrypted_messag
 
 openssl aes-256-cbc -d -in encrypted_message -out original_message.txt # decrypt 
 openssl aes-256-cbc -pbkdf2 -iter 10000 -d -in encrypted_message -out original_message.txt # decrypt & more secure  
------------------------------------
+----------------------------------
 openssl genrsa -out private-key.pem 2048 # generate an RSA private key
 openssl rsa -in private-key.pem -pubout -out public-key.pem  # generate an RSA public key from private key
 ----------------------------------
