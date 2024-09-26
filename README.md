@@ -297,7 +297,6 @@ make;make install
 ```
 # useful identifier Hash Tools
 ```bash
-
 haiti '5460C85BD858A11475115D2DD3A82333' # identity with haiti Tool
 hashid '5460C85BD858A11475115D2DD3A82333' # identity with hashid Tool
 name-that-hash -t '5460C85BD858A11475115D2DD3A82333' # identity with name-that-hash Tool
@@ -305,7 +304,7 @@ hash-identifier '5460C85BD858A11475115D2DD3A82333' # identity with hash-identifi
 ``` 
 # Crack Hash with john
 ```bash
-
+john --single --format=Raw-MD5  hashfile.txt # Single mode brute force attack
 john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
 john --format=sha512crypt --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
 ```
