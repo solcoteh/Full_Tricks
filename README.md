@@ -295,6 +295,20 @@ make;make install
 /usr/sbin/openvpn --config /etc/thm.ovpn # without proxy 
 /usr/sbin/openvpn --config /etc/thm.ovpn --socks-proxy 127.0.0.1 10808 # with proxy
 ```
+# useful identifier Hash Tools
+```bash
+
+haiti '5460C85BD858A11475115D2DD3A82333' # identity with haiti Tool
+hashid '5460C85BD858A11475115D2DD3A82333' # identity with hashid Tool
+name-that-hash -t '5460C85BD858A11475115D2DD3A82333' # identity with name-that-hash Tool
+hash-identifier '5460C85BD858A11475115D2DD3A82333' # identity with hash-identifier Tool
+``` 
+# Crack Hash with john
+```bash
+
+john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
+john --format=sha512crypt --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
+```
 # Machine Tricks ✅📚
 ## Flag_finder ✅
 ```bash
