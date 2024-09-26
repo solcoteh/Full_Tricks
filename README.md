@@ -290,7 +290,7 @@ mkdir ~/.localpython
 ./configure --prefix=/home/$(whoami)/.localpython
 make;make install
 ```
-# Connect Open-VPN
+# Connect OpenVpn
 ```bash
 /usr/sbin/openvpn --config /etc/thm.ovpn # without proxy 
 /usr/sbin/openvpn --socks-proxy 127.0.0.1 10808 --config /etc/thm.ovpn # with proxy
