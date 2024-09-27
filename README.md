@@ -308,10 +308,10 @@ make;make install
 ```
 # useful identifier Hash Tools
 ```bash
-haiti '5460C85BD858A11475115D2DD3A82333' # identity with haiti Tool
-hashid '5460C85BD858A11475115D2DD3A82333' # identity with hashid Tool
-name-that-hash -t '5460C85BD858A11475115D2DD3A82333' # identity with name-that-hash Tool
-hash-identifier '5460C85BD858A11475115D2DD3A82333' # identity with hash-identifier Tool
+haiti '5460C85BD858A11475115D2DD3A82333' # identify with haiti Tool
+hashid '5460C85BD858A11475115D2DD3A82333' # identify with hashid Tool
+name-that-hash -t '5460C85BD858A11475115D2DD3A82333' # identify with name-that-hash Tool
+hash-identifier '5460C85BD858A11475115D2DD3A82333' # identify with hash-identifier Tool
 ``` 
 # Crack Hash with john
 ```bash
