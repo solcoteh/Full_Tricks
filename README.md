@@ -48,11 +48,17 @@ c:\Python27\python.exe -c "import urllib; print urllib.urlopen('http://10.10.10.
 # Enumeration ✅📚
 ## Nmap_Enumeration ✅
 ```bash
-sudo nmap -p- <ip> -sV -T5
-sudo nmap -p- <ip> -sV -T5 -Pn
-sudo nmap 139,445 <ip> -sV -T5 --script=vuln
-sudo nmap -p 139,445 <ip> -sV -T5 --script=vuln -Pn
+IP=10.10.93.52
+
+sudo nmap -p- $IP -sV -T5
+sudo nmap -p- $IP -sV -T5 -Pn
+sudo nmap 139,445 $IP -sV -T5 --script=vuln
+sudo nmap -p 139,445 $IP -sV -T5 --script=vuln -Pn
+
+PORTS=$(sudo nmap -p- $IP -T5 | grep -oE '[0-9]{1,5}/' | tr -d '\n' | tr '/' ',' | sed 's/,$//') | sudo nmap -p $PORTS -sV $IP -T5
 ```
+Automate Tool
+ 
 ## hosts are communicating ✅
 ```bash
 last
