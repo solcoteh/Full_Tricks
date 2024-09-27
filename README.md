@@ -317,6 +317,8 @@ john --format=sha512crypt --wordlist=/usr/share/wordlists/rockyou.txt hashfile.t
 # ZIP
 zip2john secure.zip  > hashfile.txt
 john --format=ZIP  --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
+john --format=PKZIP  --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
+
  # RAR
 rar2john secure.rar  > hashfile.txt
 john --format=rar  --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
