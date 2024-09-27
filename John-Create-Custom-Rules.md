@@ -18,16 +18,16 @@ Hash Type : MD5
 Hash : 44cbd7b32e750b7b3aa1ff6e9a379d65
 Password : 98mobinFd5
 ```
-### my Rule for exploit 
+### My Rule For Exploit 
 ```bash
 [List.Rules:myrule]
 A0"[0-9][0-9]"Az"[A-F][a-f][0-9]"
 ```
-### command Run for exploit
+### Command Run For Exploit
 ```
 john --format=Raw-MD5 --rules=myrule --wordlist=mywordlist hashfile.txt
 ```
-### Mywordlist
+### MyWordlist
 ```bash
 ali
 sosan
