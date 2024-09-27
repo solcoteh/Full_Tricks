@@ -285,6 +285,7 @@ search "network.security.ports.banned.override"
 Select on "strings"  and [+] 
 write "port22"
 ```
+[Other Browser](https://hotspotserver.beabloo.com/unblockPort22.html) 
 # install python without root:
 ```bash
 wget https://www.python.org/ftp/python/3.9.9/Python-3.9.9.tgz
