@@ -27,7 +27,7 @@ A0"[0-9][0-9]"Az"[A-F][a-f][0-9]"
 ```
 john --format=Raw-MD5 --rules=myrule --wordlist=mywordlist hashfile.txt
 ```
-### **Mywordlist**
+**### Mywordlist**
 ```bash
 ali
 sosan
