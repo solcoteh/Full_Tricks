@@ -57,7 +57,7 @@ sudo nmap -p 139,445 $IP -sV -T5 --script=vuln -Pn
 
 PORTS=$(sudo nmap -p- $IP -T5 | grep -oE '[0-9]{1,5}/' | tr -d '\n' | tr '/' ',' | sed 's/,$//') | sudo nmap -p $PORTS -sV $IP -T5
 ```
-Automate Tool
+[Automate Tool](https://github.com/solcoteh/NmapScan_Automate)
  
 ## hosts are communicating ✅
 ```bash
