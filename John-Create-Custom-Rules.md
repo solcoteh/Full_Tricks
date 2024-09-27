@@ -1,10 +1,11 @@
 
 # Create Custom Rules in John
+
 <img src="https://github.com/solcoteh/Full_Tricks/blob/Tricks/John-Rule.PNG" width="1000">
+
 ## Add a Custom Rule to john Tool config file
 ```bash
 sudo nano /etc/john/john.conf
-
 append '[List.Rules:NameRule]' end of the file
 ```
 ## The structure of creating rules
