@@ -163,7 +163,7 @@ useradd ali && (echo -e 'Mobin@\nMobin@' | passwd ali) && (echo "ali ALL=(ALL:AL
 #### Default ports 445,139
 ```bash
 enum4linux -a $ip
-smbclient -L //$ip/ -p <port>
+smbclient -L //$ip/ -p 445|139
 smbget -R smb://$ip/<share>
 smbclient //$ip><share dir> 
 smbclient //$ip/<share dir> -p 445|139
@@ -313,6 +313,7 @@ make;make install
 # Connect with wireguard
 ```bash
 sudo apt install wireguard
+# add vpn-config to /etc/wireguard/vuln.conf
 sudo wg-quick up vuln.conf
 sudo proxychains4 wg-quick up vuln.conf # with Proxy 
 sudo wg # status
@@ -337,7 +338,7 @@ zip2john secure.zip  > hashfile.txt
 john --format=ZIP  --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
 john --format=PKZIP  --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
 
- # RAR
+# RAR
 rar2john secure.rar  > hashfile.txt
 john --format=rar  --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
 ```
