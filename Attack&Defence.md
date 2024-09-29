@@ -118,4 +118,9 @@ echo 1 > /proc/sys/kernel/modules_disabled
 sudo sysctl -w kernel.modules_disabled=1
 sudo sysctl -w module.sig_enforce=1
 ```
-
+### Patched Services
+```bash
+sudo docker-compose down
+sudo docker-compose build
+docker-compose up --force-recreate -d
+```
