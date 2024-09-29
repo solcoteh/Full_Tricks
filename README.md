@@ -52,8 +52,8 @@ ip=10.10.93.52
 
 sudo nmap -p- $ip -sV -T5
 sudo nmap -p- $ip -sV -T5 -Pn
-sudo nmap 139,445 $ip -T5 --script=vuln
-sudo nmap -p 139,445 $ip -T5 --script=vuln -Pn
+sudo nmap 139,445 --script=vuln $ip -T5 
+sudo nmap -p 139,445 --script=vuln $ip -T5 -Pn
 
 sudo nmap -p $PORTS -sV $ip -T5
 PORTS=$(sudo nmap -p- $ip -T5 | grep -oE '[0-9]{1,5}/' | tr -d '\n' | tr '/' ',' | sed 's/,$//')
