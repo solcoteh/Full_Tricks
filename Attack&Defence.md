@@ -8,7 +8,7 @@ find / -name "*flag*"  -ls 2>/dev/null
 find / -type f -name "*flag.txt" -o -name ".flag*" -o -name "flag" -o -name "user.txt" -o -name "root.txt"  -ls 2>/dev/null
 ```
 ## KoTH Tricks ✅
-### Be-king ✅
+### Be-king Linux ✅
 ```bash
 set write off
 chattr -R +ia /root
@@ -27,7 +27,63 @@ echo "/usr/lib/chattr +i /root/king.txt" >> /usr/lib/yo.sh
 chmod +x /usr/lib/yo.sh
 (crontab -l 2>/dev/null; echo "* * * * * bash /usr/lib/yo.sh") | sudo crontab -
 ```
+### Be-king Windows ✅
+```bash
+cd C:\Users\Administrator\king-server\
+icacls king.txt /grant Everyone:(F)
+attrib -a -s -r -i -h king.txt & echo solcoteh > king.txt & attrib +a +s +r +i king.txt
+icacls king.txt /inheritance:d
+icacls king.txt /remove Everyone
+icacls king.txt /remove BUILTIN\Administrators
+icacls king.txt /remove "NT AUTHORITY\SYSTEM"
+icacls king.txt /remove KingOfTheDomain\Administrator
+icacls king.txt /grant Everyone:(R)
+icacls king.txt /deny  Everyone:(WD)
+```
+#### Change and write in king.txt
+```bash
+# change directory to locate king.txt
+cd C:\Users\Administrator\king-server\
+icacls king.txt /inheritance:d # To disable inheritance
+icacls king.txt /inheritance:e # To enable inheritance
+# write username to king.txt and change permissions 
+icacls king.txt /grant Everyone:(F)
+attrib -a -s -r -i -h king.txt & echo solcoteh > king.txt & attrib +a +s +r +i king.txt
+```
+#### Remove Permissions
+```bash
+cd C:\Users\Administrator\king-server\
 
+icacls king.txt # show All permissions
+icacls king.txt /remove Everyone
+icacls king.txt /remove Administrator
+icacls king.txt /remove "NT AUTHORITY\IUSR"
+icacls king.txt /remove "NT AUTHORITY\SYSTEM"
+icacls king.txt /remove BUILTIN\Administrators
+icacls king.txt /remove KingOfTheDomain\Administrator
+```
+#### Allow Permissions
+```bash
+cd C:\Users\Administrator\king-server\
+
+icacls king.txt /grant Everyone:(F)
+icacls king.txt /grant "NT AUTHORITY\IUSR":(R)
+
+icacls king.txt /grant Administrator:(F)
+icacls king.txt /grant "NT AUTHORITY\SYSTEM":(F)
+icacls king.txt /grant BUILTIN\Administrators:(F)
+icacls king.txt /grant KingOfTheDomain\Administrator:(F)
+```
+#### Deny Permissions
+```bash
+cd C:\Users\Administrator\king-server\
+
+icacls king.txt /deny  Everyone:(WD)
+icacls king.txt /deny  Administrator:(WD)
+icacls king.txt /deny  "NT AUTHORITY\SYSTEM":(WD)
+icacls king.txt /deny  BUILTIN\Administrators:(WD)
+icacls king.txt /deny  KingOfTheDomain\Administrator:(WD)
+```
 ### BackDoor ✅
 ```bash
 
