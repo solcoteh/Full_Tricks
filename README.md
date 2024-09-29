@@ -302,10 +302,17 @@ mkdir ~/.localpython
 ./configure --prefix=/home/$(whoami)/.localpython
 make;make install
 ```
-# Connect OpenVpn
+# Connect with OpenVpn
 ```bash
 /usr/sbin/openvpn --config /etc/thm.ovpn # without proxy 
 /usr/sbin/openvpn --config /etc/thm.ovpn --socks-proxy 127.0.0.1 10808 # with proxy
+```
+# Connect with wireguard
+```bash
+sudo apt install wireguard
+sudo wg-quick up vuln.conf
+sudo proxychains4 wg-quick up vuln.conf # with Proxy 
+sudo wg # status
 ```
 # useful identifier Hash Tools
 ```bash
