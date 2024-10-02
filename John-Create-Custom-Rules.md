@@ -10,6 +10,8 @@ append '[List.Rules:NameRule]' end of the file
 ```bash
 Az - append to the end of the words from Wordlist 
 A0 - append to before the word Wordlist
+$X - append character X to the word
+$[0-9] - append character 0-9 to the word
 ```
 **More:** [Full john structure rule](https://www.openwall.com/john/doc/RULES.shtml)
 ## Example
