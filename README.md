@@ -62,7 +62,7 @@ PORTS=$(sudo nmap -p- $ip -T5 | grep -oE '[0-9]{1,5}/' | tr -d '\n' | tr '/' ','
 ```
 [Automate Tool](https://github.com/solcoteh/NmapScan_Automate)
 
-## Network_Scan_Enumeration
+## Network_Scan_Enumeration ✅
 ```bash
 sudo nmap -sn 10.10.10.0/24 -T5
 sudo rustscan -a 10.10.10.0/24
