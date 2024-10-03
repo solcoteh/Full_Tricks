@@ -54,9 +54,9 @@ sudo nmap -p- $ip -sV -T5
 sudo nmap -p- $ip -sV -T5 -Pn
 sudo nmap 139,445 --script=vuln $ip -T5 
 sudo nmap -p 139,445 --script=vuln $ip -T5 -Pn
-sudo rustscan -a $ip -p 139,445 -- --script=vuln
+sudo rustscan -a $ip -p 139,445 -- --script=vuln -T5
 
-sudo rustscan -a $ip -- -sV
+sudo rustscan -a $ip -- -sV -T5
 sudo nmap -p $PORTS -sV $ip -T5
 PORTS=$(sudo nmap -p- $ip -T5 | grep -oE '[0-9]{1,5}/' | tr -d '\n' | tr '/' ',' | sed 's/,$//')
 ```
