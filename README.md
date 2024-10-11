@@ -355,12 +355,6 @@ rar2john secure.rar  > hashfile.txt
 john --format=rar  --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
 ```
 # Remote-Desktop with kali-linux ✅
-### rdesktop ✡️
-```bash
-ip=10.10.10.10
-rdesktop -u Administrator $ip
-rdesktop -u 'Administrator' $ip -p 'password'
-```
 ### xfreerdp ✡️
 ```bash
 xfreerdp /v:$ip:3389 
