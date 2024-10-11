@@ -7,11 +7,16 @@ Get-Help Get-FileHash # like 'man md5sum' in linux
 Get-FileHash -Algorithm MD5 .\file.txt # like 'md5sum file.txt' in linux
 ```
 # Enumeration ✅
-```
+### Local-Users-Enumeration ✡️
+```ps
 Get-LocalUser # like who OR users in linux
 Get-LocalUser | Select Name, SID  # Find Sid users 
 ```
-
+### Active-Directory-Users-Enumeration ✡️
+```ps
+Get-ADUser -Filter * | Select Name, SID
+Get-ADUser -Identity username | Select Name, SID
+```
 # decode Base64 with PowerShell ✅
 ```ps
 $base64String = 
