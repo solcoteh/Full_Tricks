@@ -10,7 +10,9 @@ Get-FileHash -Algorithm MD5 .\file.txt # like 'md5sum file.txt' in linux
 $base64String = 
 "SGVsbG8gd29ybGQh" OR cat .\file.txt OR Get-Content -Path file.txt -Raw
 
-$bytes = [Convert]::FromBase64String($base64String) # Convert Base64 string to byte array
+# Convert Base64 string to byte array
+$bytes = [Convert]::FromBase64String($base64String) OR $bytes = [Convert]::FromBase64String((cat file.txt)) 
+
 $decodedString = [System.Text.Encoding]::UTF8.GetString($bytes) # Convert byte array to a plain text string
 $decodedString # Output the decoded string
 ```
