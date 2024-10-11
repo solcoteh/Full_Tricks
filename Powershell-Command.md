@@ -1,3 +1,4 @@
+# General Command ✅
 ```ps
 Get-Help # like 'man' in linux
 Get-Command # show all command
@@ -5,7 +6,13 @@ Get-Location # like 'pwd' in linux
 Get-Help Get-FileHash # like 'man md5sum' in linux
 Get-FileHash -Algorithm MD5 .\file.txt # like 'md5sum file.txt' in linux
 ```
-#  decode Base64 with PowerShell ✅
+# Enumeration ✅
+```
+Get-LocalUser # like who OR users in linux
+Get-LocalUser | Select Name, SID  # Find Sid users 
+```
+
+# decode Base64 with PowerShell ✅
 ```ps
 $base64String = 
 "SGVsbG8gd29ybGQh" OR cat .\file.txt OR Get-Content -Path file.txt -Raw
