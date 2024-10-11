@@ -308,7 +308,7 @@ Select on "strings"  and [+]
 write "port22"
 ```
 [Other Browser](https://hotspotserver.beabloo.com/unblockPort22.html) 
-# install python without root:
+# install python without root ✅
 ```bash
 wget https://www.python.org/ftp/python/3.9.9/Python-3.9.9.tgz
 tar -zxvf Python-3.9.9.tgz
@@ -317,12 +317,12 @@ mkdir ~/.localpython
 ./configure --prefix=/home/$(whoami)/.localpython
 make;make install
 ```
-# Connect with OpenVpn
+# Connect with OpenVpn ✅
 ```bash
 /usr/sbin/openvpn --config /etc/thm.ovpn # without proxy 
 /usr/sbin/openvpn --config /etc/thm.ovpn --socks-proxy 127.0.0.1 10808 # with proxy
 ```
-# Connect with wireguard
+# Connect with wireguard ✅
 ```bash
 sudo apt install wireguard
 # add vpn-config to /etc/wireguard/vuln.conf
@@ -330,20 +330,20 @@ sudo wg-quick up vuln.conf
 sudo proxychains4 wg-quick up vuln.conf # with Proxy 
 sudo wg # status
 ```
-# useful identifier Hash Tools
+# useful identifier Hash Tools ✅
 ```bash
 haiti '5460C85BD858A11475115D2DD3A82333' # identify with haiti Tool
 hashid '5460C85BD858A11475115D2DD3A82333' # identify with hashid Tool
 name-that-hash -t '5460C85BD858A11475115D2DD3A82333' # identify with name-that-hash Tool
 hash-identifier '5460C85BD858A11475115D2DD3A82333' # identify with hash-identifier Tool
 ``` 
-# Crack Hash with john
+# Crack Hash with john ✅
 ```bash
 john --single --format=Raw-MD5  hashfile.txt # Single mode brute force attack
 john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
 john --format=sha512crypt --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
 ```
-# Crack zip/rar with john
+# Crack zip/rar with john ✅
 ```bash
 # ZIP
 zip2john secure.zip  > hashfile.txt
@@ -354,4 +354,17 @@ john --format=PKZIP  --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
 rar2john secure.rar  > hashfile.txt
 john --format=rar  --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
 ```
-
+# Remote-Desktop with kali-linux ✅
+### rdesktop ✡️
+```bash
+ip=10.10.10.10
+rdesktop -u Administrator $ip
+rdesktop -u 'Administrator' $ip -p 'password'
+```
+### xfreerdp ✡️
+```bash
+xfreerdp /v:$ip:3389 
+xfreerdp /u:Administrator /v:$ip:3389 
+xfreerdp /u:Administrator /p:password /v:$ip:3389 
+xfreerdp /u:Administrator /p:password /v:$ip:3389 /cert:ignore
+```
