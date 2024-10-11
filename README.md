@@ -344,13 +344,14 @@ john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
 john --format=sha512crypt --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
 ```
 # Crack zip/rar with john ✅
+### ZIP ✡️
 ```bash
-# ZIP
 zip2john secure.zip  > hashfile.txt
 john --format=ZIP  --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
 john --format=PKZIP  --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
-
-# RAR
+```
+### RAR ✡️
+```bash
 rar2john secure.rar  > hashfile.txt
 john --format=rar  --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
 ```
