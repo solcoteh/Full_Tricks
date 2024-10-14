@@ -25,6 +25,7 @@ Get-LocalUser | Select Name, SID  # Find Sid users
 ### Find-Local-Users-Not-password-required ⚙️
 ```ps
 Get-LocalUser | Where-Object { $_.PasswordRequired -eq $false }
+Get-LocalUser | Where-Object -Property PasswordRequired -Match false
 ```
 ## Active-Directory-Users-Enumeration ✡️
 ### Find-Active-Directory-Users-Sid ⚙️
@@ -44,6 +45,7 @@ Get-NetIPAddress
 ```ps
 netstat -an | Select-String 'LISTENING'
 Get-NetTCPConnection | Where-Object { $_.State -eq 'Listen' }
+GEt-NetTCPConnection | Where-Object -Property State -Match Listen | measure
 ```
 ## Find-Patch-or-update ✡️
 ```ps
@@ -51,8 +53,14 @@ Get-hotfix
 ```
 ### Find-patch-with-specific-ID ⚙️
 ```ps
+Get-Hotfix -Id KB4023834
 Get-HotFix | Where-Object { $_.HotFixID -eq 'KB4023834' }
 ```
+## Find-file
+```ps
+# like find / -name "*.bak*" 2>/dev/null in linux
+Get-ChildItem -Path C:\ -Include *.bak* -File -Recurse -ErrorAction SilentlyContinue 
+``` 
 # decode Base64 with PowerShell ✅
 ```ps
 certutil.exe -decode "C:\Users\Administrator\Desktop\b64.txt" decode.txt
