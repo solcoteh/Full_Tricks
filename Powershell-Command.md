@@ -5,6 +5,7 @@ Get-Command # show all command
 Get-Location # like 'pwd' in linux
 Get-Help Get-FileHash # like 'man md5sum' in linux
 Get-FileHash -Algorithm MD5 .\file.txt # like 'md5sum file.txt' in linux
+Get-NetIPAddress # get the IP address info
 ```
 # Variable ✅
 ```ps
