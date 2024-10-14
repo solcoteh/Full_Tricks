@@ -5,7 +5,6 @@ Get-Command # show all command
 Get-Location # like 'pwd' in linux
 Get-Help Get-FileHash # like 'man md5sum' in linux
 Get-FileHash -Algorithm MD5 .\file.txt # like 'md5sum file.txt' in linux
-Get-NetIPAddress # get the IP address info
 ```
 # Variable ✅
 ```ps
@@ -23,7 +22,6 @@ Get-LocalUser | Select Name, SID  # Find Sid users
 ```ps
 Get-LocalUser | Where-Object { $_.PasswordRequired -eq $false }
 ```
-
 ## Active-Directory-Users-Enumeration ✡️
 ### Find-Active-Directory-Users-Sid
 ```ps
@@ -34,7 +32,15 @@ Get-ADUser -Identity username | Select Name, SID
 ```ps
 Get-ADUser -Filter {PasswordNotRequired -eq $true}
 ```
-
+## get-IP-address-info
+```ps
+Get-NetIPAddress
+```
+## Find-Port-listening
+```ps
+netstat -an | Select-String 'LISTENING'
+Get-NetTCPConnection | Where-Object { $_.State -eq 'Listen' }
+```
 # decode Base64 with PowerShell ✅
 ```ps
 $base64String = 
