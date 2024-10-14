@@ -14,39 +14,39 @@ $name.Count # for Count command result
 ```
 # Enumeration ✅
 ## Local-Users-Enumeration ✡️
-### Find-Local-Users-Sid
+### Find-Local-Users-Sid ⚙️
 ```ps
 Get-LocalUser # like who OR users in linux
 Get-LocalUser | Select Name, SID  # Find Sid users 
 ```
-### Find-Local-Users-Not-password-required
+### Find-Local-Users-Not-password-required ⚙️
 ```ps
 Get-LocalUser | Where-Object { $_.PasswordRequired -eq $false }
 ```
 ## Active-Directory-Users-Enumeration ✡️
-### Find-Active-Directory-Users-Sid
+### Find-Active-Directory-Users-Sid ⚙️
 ```ps
 Get-ADUser -Filter * | Select Name, SID
 Get-ADUser -Identity username | Select Name, SID
 ```
-### Find-Active-Directory-Not-password-required
+### Find-Active-Directory-Not-password-required ⚙️
 ```ps
 Get-ADUser -Filter {PasswordNotRequired -eq $true}
 ```
-## Get-IP-address-info
+## Get-IP-address-info ✡️
 ```ps
 Get-NetIPAddress
 ```
-## Find-Port-listening
+## Find-Port-listening ✡️
 ```ps
 netstat -an | Select-String 'LISTENING'
 Get-NetTCPConnection | Where-Object { $_.State -eq 'Listen' }
 ```
-## Find-Patch-or-update
+## Find-Patch-or-update ✡️
 ```ps
 Get-hotfix
 ```
-### find-patch-with-specific-ID
+### find-patch-with-specific-ID ⚙️
 ```ps
 Get-HotFix | Where-Object { $_.HotFixID -eq 'KB4023834' }
 ```
