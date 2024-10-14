@@ -63,7 +63,7 @@ Get-ChildItem -Include *.bak* -Path C:\  -File -Recurse -ErrorAction SilentlyCon
 ---------------
 # like grep 'API_KEY' ./  2>/dev/null in linux
 Get-ChildItem C:\ -Recurse | Select-String -pattern "API_KEY"
-Get-ChildItem -Path C:\ -Recurse -ErrorAction SilentlyContinue | "API_KEY"
+Get-ChildItem -Path C:\ -Recurse -ErrorAction SilentlyContinue | Select-String "API_KEY"
 ``` 
 # decode Base64 with PowerShell ✅
 ```ps
