@@ -46,7 +46,7 @@ Get-NetTCPConnection | Where-Object { $_.State -eq 'Listen' }
 ```ps
 Get-hotfix
 ```
-### find-patch-with-specific-ID ⚙️
+### Find-patch-with-specific-ID ⚙️
 ```ps
 Get-HotFix | Where-Object { $_.HotFixID -eq 'KB4023834' }
 ```
