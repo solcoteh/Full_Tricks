@@ -3,8 +3,8 @@
 Get-Help # like 'man' in linux
 Get-Command # show all command
 Get-Location # like 'pwd' in linux
-Get-Content .\file.txt # like cat in linux
-
+Get-Content .\file.txt # like "cat" in linux
+Get-Process # like "ps aux" in linux
 
 Get-Help Get-FileHash # like 'man md5sum' in linux
 Get-FileHash -Algorithm MD5 .\file.txt # like 'md5sum file.txt' in linux
