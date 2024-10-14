@@ -59,7 +59,11 @@ Get-HotFix | Where-Object { $_.HotFixID -eq 'KB4023834' }
 ## Find-file
 ```ps
 # like find / -name "*.bak*" 2>/dev/null in linux
-Get-ChildItem -Path C:\ -Include *.bak* -File -Recurse -ErrorAction SilentlyContinue 
+Get-ChildItem -Include *.bak* -Path C:\  -File -Recurse -ErrorAction SilentlyContinue 
+---------------
+# like grep 'API_KEY' ./  2>/dev/null in linux
+Get-ChildItem C:\ -Recurse | Select-String -pattern "API_KEY"
+Get-ChildItem -Path C:\ -Recurse -ErrorAction SilentlyContinue | "API_KEY"
 ``` 
 # decode Base64 with PowerShell ✅
 ```ps
