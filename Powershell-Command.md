@@ -5,6 +5,7 @@ Get-Command # show all command
 Get-Location # like 'pwd' in linux
 Get-Content .\file.txt # like "cat" in linux
 Get-Process # like "ps aux" in linux
+Get-ScheduledTask 
 
 Get-Help Get-FileHash # like 'man md5sum' in linux
 Get-FileHash -Algorithm MD5 .\file.txt # like 'md5sum file.txt' in linux
@@ -56,7 +57,7 @@ Get-hotfix
 Get-Hotfix -Id KB4023834
 Get-HotFix | Where-Object { $_.HotFixID -eq 'KB4023834' }
 ```
-## Find-file
+## Find-file ✡️
 ```ps
 # like find / -name "*.bak*" 2>/dev/null in linux
 Get-ChildItem -Include *.bak* -Path C:\  -File -Recurse -ErrorAction SilentlyContinue 
@@ -65,6 +66,11 @@ Get-ChildItem -Include *.bak* -Path C:\  -File -Recurse -ErrorAction SilentlyCon
 Get-ChildItem C:\ -Recurse | Select-String -pattern "API_KEY"
 Get-ChildItem -Path C:\ -Recurse -ErrorAction SilentlyContinue | Select-String "API_KEY"
 ``` 
+## ScheduledTask ✡️ 
+```ps
+Get-ScheduledTask 
+Get-ScheduledTask -TaskName new-sched-task
+```
 # decode Base64 with PowerShell ✅
 ```ps
 certutil.exe -decode "C:\Users\Administrator\Desktop\b64.txt" decode.txt
