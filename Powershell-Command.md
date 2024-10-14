@@ -7,16 +7,28 @@ Get-Help Get-FileHash # like 'man md5sum' in linux
 Get-FileHash -Algorithm MD5 .\file.txt # like 'md5sum file.txt' in linux
 ```
 # Enumeration ✅
-### Local-Users-Enumeration ✡️
+## Local-Users-Enumeration ✡️
+### Find-Local-Users-Sid
 ```ps
 Get-LocalUser # like who OR users in linux
 Get-LocalUser | Select Name, SID  # Find Sid users 
 ```
-### Active-Directory-Users-Enumeration ✡️
+### Find-Local-Users-Not-password-required
+```ps
+Get-LocalUser | Where-Object { $_.PasswordRequired -eq $false }
+```
+
+## Active-Directory-Users-Enumeration ✡️
+### Find-Active-Directory-Users-Sid
 ```ps
 Get-ADUser -Filter * | Select Name, SID
 Get-ADUser -Identity username | Select Name, SID
 ```
+### Find-Active-Directory-Not-password-required
+```ps
+Get-ADUser -Filter {PasswordNotRequired -eq $true}
+```
+
 # decode Base64 with PowerShell ✅
 ```ps
 $base64String = 
