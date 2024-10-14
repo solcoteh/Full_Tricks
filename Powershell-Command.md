@@ -3,6 +3,9 @@
 Get-Help # like 'man' in linux
 Get-Command # show all command
 Get-Location # like 'pwd' in linux
+Get-Content .\file.txt # like cat in linux
+
+
 Get-Help Get-FileHash # like 'man md5sum' in linux
 Get-FileHash -Algorithm MD5 .\file.txt # like 'md5sum file.txt' in linux
 <command> | measure 
@@ -52,6 +55,9 @@ Get-HotFix | Where-Object { $_.HotFixID -eq 'KB4023834' }
 ```
 # decode Base64 with PowerShell ✅
 ```ps
+certutil.exe -decode "C:\Users\Administrator\Desktop\b64.txt" decode.txt
+Get-Content .\decode.txt
+------------
 $base64String = 
 "SGVsbG8gd29ybGQh" OR cat .\file.txt OR Get-Content -Path file.txt -Raw
 
