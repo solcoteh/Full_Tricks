@@ -33,7 +33,7 @@ Get-ADUser -Identity username | Select Name, SID
 ```ps
 Get-ADUser -Filter {PasswordNotRequired -eq $true}
 ```
-## get-IP-address-info
+## Get-IP-address-info
 ```ps
 Get-NetIPAddress
 ```
@@ -41,6 +41,14 @@ Get-NetIPAddress
 ```ps
 netstat -an | Select-String 'LISTENING'
 Get-NetTCPConnection | Where-Object { $_.State -eq 'Listen' }
+```
+## Find-Patch-or-update
+```ps
+Get-hotfix
+```
+### find-patch-with-specific-ID
+```ps
+Get-HotFix | Where-Object { $_.HotFixID -eq 'KB4023834' }
 ```
 # decode Base64 with PowerShell ✅
 ```ps
