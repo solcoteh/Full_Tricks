@@ -5,10 +5,11 @@ Get-Command # show all command
 Get-Location # like 'pwd' in linux
 Get-Help Get-FileHash # like 'man md5sum' in linux
 Get-FileHash -Algorithm MD5 .\file.txt # like 'md5sum file.txt' in linux
+<command> | measure 
 ```
 # Variable ✅
 ```ps
-$name = command 
+$name = <command> 
 $name.Count # for Count command result 
 ```
 # Enumeration ✅
