@@ -11,6 +11,7 @@ Copy-Item # like "cp" in linux
 Move-Item # like "mv" in linux
 | findstr # like "grep" in linux
 | Out-File # like ">" in linux
+Get-SMBShare # show share directory
 Get-Help Get-FileHash # like 'man md5sum' in linux
 Get-FileHash -Algorithm MD5 .\file.txt # like 'md5sum file.txt' in linux
 <command> | measure 
