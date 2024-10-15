@@ -17,6 +17,8 @@ Get-FileHash -Algorithm MD5 .\file.txt # like 'md5sum file.txt' in linux
 <command> | measure 
 ```
 https://book.hacktricks.xyz/windows-hardening/basic-powershell-for-pentesters
+https://book.hacktricks.xyz/windows-hardening/basic-powershell-for-pentesters/powerview
+
 # Variable ✅
 ```ps
 $name = <command> 
