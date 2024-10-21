@@ -10,6 +10,8 @@ CTRL + Z
 stty raw -echo;fg
 reset
 xterm‌‌
+
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
 ```
 # Payloads_Shell ✅
 ```bash
