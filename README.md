@@ -371,6 +371,10 @@ xfreerdp /u:Administrator /p:password /v:$ip:3389
 xfreerdp /u:Administrator /p:password /v:$ip:3389 /cert:ignore
 ```
 # Compile-Run-programs ✅
+### python ✡️
+```bash
+python flag.py
+```
 ### C ✡️
 ```bash
 gcc flag.c -o flag # compile
