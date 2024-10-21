@@ -370,9 +370,13 @@ xfreerdp /u:Administrator /v:$ip:3389
 xfreerdp /u:Administrator /p:password /v:$ip:3389 
 xfreerdp /u:Administrator /p:password /v:$ip:3389 /cert:ignore
 ```
-# Compile-programs ✅
+# Compile-Run-programs ✅
 ### java ✡️
 ```bash
 javac file.java # Compile file
 java file # run file
+```
+### ruby ✡️
+```bash
+ruby your_file.rb
 ```
