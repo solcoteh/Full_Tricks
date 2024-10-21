@@ -371,6 +371,16 @@ xfreerdp /u:Administrator /p:password /v:$ip:3389
 xfreerdp /u:Administrator /p:password /v:$ip:3389 /cert:ignore
 ```
 # Compile-Run-programs ✅
+### C ✡️
+```bash
+gcc flag.c -o flag # compile
+./flag # run
+```
+### C++ ✡️
+```bash
+g++ flag.cpp -o flag # compile
+./flag # run
+```
 ### java ✡️
 ```bash
 javac file.java # Compile file
