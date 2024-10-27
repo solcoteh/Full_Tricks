@@ -15,3 +15,16 @@ tracert target_name
 nslookup example.com 1.1.1.1
 ```
 # File and Disk Management ✅
+```cmd
+move 
+type
+tree 
+del or erase # like rm in linux
+mkdir directory_name
+rmdir directory_name
+cd # like pwd in linux
+dir # like ls in linux
+dir /a # Displays hidden and system files as well.
+dir /s # Displays files in the current directory and all subdirectories.
+
+```
