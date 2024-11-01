@@ -190,11 +190,13 @@ useradd ali && (echo -e 'Mobin@\nMobin@' | passwd ali) && (echo "ali ALL=(ALL:AL
 #### Default ports 445,139
 ```bash
 enum4linux -a $ip
+enum4linux-ng -As $ip
 smbclient -L //$ip/ -p 445|139
 smbget -R smb://$ip/<share>
 smbclient //$ip><share dir> 
 smbclient //$ip/<share dir> -p 445|139
 smbclient //$ip/<share dir> -U Anonymous -p 445|139
+nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse 10.10.138.133
 ```
 ## MySQL ✅
 #### Default ports 3306
