@@ -235,6 +235,8 @@ mkdir /tmp/nfs
 sudo mount -o rw -t nfs $ip:<share> /tmp/nfs/ -nolock
 
 cat /etc/exports (root_squash OR no_root_squash)
+
+nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount 10.10.138.133
 ```
 ## SNMP ✅
 ```bash
