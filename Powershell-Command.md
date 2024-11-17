@@ -3,9 +3,12 @@
 Get-Help # like 'man' in linux
 Get-Help -examples Get-Content # like 'man' in linux
 
+Get-ChildItem | Select-Object Name,Length 
 Get-ChildItem | Sort-Object Length # sort by size
+Get-ChildItem | Where-Object -Property "Name" -like "ship*"  
 Get-ChildItem | Where-Object -Property "Extension" -eq ".txt"  # show only ".txt" extension file  
 
+Select-String -Path ".\captain-hat.txt" -Pattern "hat" # like grep 
 
 Get-Alias # show like alias in linux
 Find-Module -Name "PowerShell*"  # like "apt search" in linux
