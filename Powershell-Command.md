@@ -102,9 +102,21 @@ $decodedString = [System.Text.Encoding]::UTF8.GetString($bytes) # Convert byte a
 $decodedString # Output the decoded string
 ```
 
-# New-Item Command ✅
+# *-Item Command ✅
+## New-Item ✡️ 
 ```ps
 New-Item -Path "c:\Mobin" -ItemType "Directory" # Create a directory 
 New-Item -Path "c:\Mobin\flag.txt" -ItemType "File" # Create a empty file in a dir
 New-Item -Path "c:\Mobin\ -Name "flag.txt" -ItemType "file" -Value "solcoteh{B005_b4_7o}" # Create a file with value in a dir
 ```
+## Copy-Item ✡️ 
+```ps
+Copy-Item -Path "c:\mobin\flag.txt -Destination ".\captain-cabin\captain-hat2.txt" # like cp in linux
+```
+## Remove-Item ✡️ 
+```ps
+Remove-Item -Path "c:\Mobin" # Remove a directory 
+Remove-Item -Path ""c:\Mobin\flag.txt" # Remove a file
+```
+
+
