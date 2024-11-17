@@ -5,6 +5,7 @@ Get-Help -examples Get-Content # like 'man' in linux
 
 Get-ChildItem | Select-Object Name,Length 
 Get-ChildItem | Sort-Object Length # sort by size
+Get-ChildItem | Where-Object -Property Length -gt 100 
 Get-ChildItem | Where-Object -Property "Name" -like "ship*"  
 Get-ChildItem | Where-Object -Property "Extension" -eq ".txt"  # show only ".txt" extension file  
 
