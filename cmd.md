@@ -6,6 +6,8 @@ systeminfo # list various information about the system such as OS information, s
 driverquery | more # more like less in linux
 driverquery # displays a list of installed device drivers.
 
+findstr "flag{}" "flag.txt" # like grep 
+
 shutdown /s # can shut down a system
 shutdown /r # reboot system
 ```
