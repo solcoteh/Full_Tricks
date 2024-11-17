@@ -27,6 +27,70 @@ https://book.hacktricks.xyz/windows-hardening/basic-powershell-for-pentesters
 
 https://book.hacktricks.xyz/windows-hardening/basic-powershell-for-pentesters/powerview
 
+
+# PowerShell-Alias ✅
+```ps
+gc -> Get-Content
+cat -> Get-Content
+type -> Get-Content
+
+cd -> Set-Location
+sl -> Set-Location
+chdir -> Set-Location
+
+md -> mkdir
+
+cp -> Copy-Item
+cpi -> Copy-Item
+copy -> Copy-Item
+
+
+mv -> Move-Item
+mi -> Move-Item
+move -> Move-Item
+
+
+rm -> Remove-Item
+del -> Remove-Item
+rmdir -> Remove-Item
+
+echo -> Write-Output
+write -> Write-Output
+
+ls -> Get-ChildItem
+dir -> Get-ChildItem
+
+cls -> Clear-Host
+clear -> Clear-Host
+
+wget -> Invoke-WebRequest
+curl -> Invoke-WebRequest
+
+cli -> Clear-Item
+
+fhx -> Format-Hex 
+
+set -> Set-Variable
+
+kill -> Stop-Process
+
+man -> help
+
+sal -> Set-Alias
+nal -> New-Alias
+gal -> Get-Alias
+ipal -> Import-Alias
+
+h -> Get-History
+ghy -> Get-History
+history -> Get-History
+
+gi -> Get-Item
+glu -> Get-LocalUser
+
+
+ihy -> Invoke-History
+```
 # Variable ✅
 ```ps
 $name = <command> 
