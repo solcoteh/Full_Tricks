@@ -101,3 +101,10 @@ $bytes = [Convert]::FromBase64String($base64String) OR $bytes = [Convert]::FromB
 $decodedString = [System.Text.Encoding]::UTF8.GetString($bytes) # Convert byte array to a plain text string
 $decodedString # Output the decoded string
 ```
+
+# New-Item Command ✅
+```ps
+New-Item -Path "c:\Mobin" -ItemType "Directory" # Create a directory 
+New-Item -Path "c:\Mobin\flag.txt" -ItemType "File" # Create a empty file in a dir
+New-Item -Path "c:\Mobin\ -Name "flag.txt" -ItemType "file" -Value "solcoteh{B005_b4_7o}" # Create a file with value in a dir
+```
