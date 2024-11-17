@@ -2,7 +2,10 @@
 ```ps
 Get-Help # like 'man' in linux
 Get-Help -examples Get-Content
-Get-Alias
+Get-Alias # show like alias in linux
+Find-Module -Name "PowerShell*"  # like "apt search" in linux
+Install-Module -Name "PowerShellGet" # like apt install in linux
+ 
 
 Get-Command # show all command
 Get-Location # like 'pwd' in linux
