@@ -1,7 +1,12 @@
 # General Command ✅
 ```ps
 Get-Help # like 'man' in linux
-Get-Help -examples Get-Content
+Get-Help -examples Get-Content # like 'man' in linux
+
+Get-ChildItem | Sort-Object Length # sort by size
+Get-ChildItem | Where-Object -Property "Extension" -eq ".txt"  # show only ".txt" extension file  
+
+
 Get-Alias # show like alias in linux
 Find-Module -Name "PowerShell*"  # like "apt search" in linux
 Install-Module -Name "PowerShellGet" # like apt install in linux
@@ -15,9 +20,11 @@ Get-Process # like "ps aux" in linux
 Get-Acl c:/ # find owner directory  
 Start-Process # like "open" in linux
 Copy-Item # like "cp" in linux
+
 Move-Item # like "mv" in linux
 | findstr # like "grep" in linux
 | Out-File # like ">" in linux
+
 Get-SMBShare # show share directory
 Get-Help Get-FileHash # like 'man md5sum' in linux
 Get-FileHash -Algorithm MD5 .\file.txt # like 'md5sum file.txt' in linux
