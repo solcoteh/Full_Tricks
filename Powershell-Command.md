@@ -2,6 +2,7 @@
 ```ps
 Get-Help # like 'man' in linux
 Get-Help -examples Get-Content
+Get-Alias
 
 Get-Command # show all command
 Get-Location # like 'pwd' in linux
