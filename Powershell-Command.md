@@ -1,5 +1,5 @@
 # General Command ✅
-```ps
+```powershell
 Get-Help # like 'man' in linux
 Get-Help -examples Get-Content # like 'man' in linux
 
