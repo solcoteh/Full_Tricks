@@ -42,7 +42,7 @@ https://book.hacktricks.xyz/windows-hardening/basic-powershell-for-pentesters/po
 
 
 # PowerShell-Alias ✅
-```ps
+```powershell
 gc -> Get-Content
 cat -> Get-Content
 type -> Get-Content
@@ -105,66 +105,66 @@ glu -> Get-LocalUser
 ihy -> Invoke-History
 ```
 # Variable ✅
-```ps
+```powershell
 $name = <command> 
 $name.Count # for Count command result 
 ```
 # Enumeration ✅
 ## Local-Users-Enumeration ✡️
 ### Find-Local-Users-Sid ⚙️
-```ps
+```powershell
 Get-LocalUser # like who OR users in linux
 Get-LocalUser | Select Name, SID  # Find Sid users 
 ```
 ### Find-Local-Users-Not-password-required ⚙️
-```ps
+```powershell
 Get-LocalUser | Where-Object { $_.PasswordRequired -eq $false }
 Get-LocalUser | Where-Object -Property PasswordRequired -Match false
 ```
 ## PS-Enumeration ✡️
-```ps
+```powershell
 Get-Process 
 Get-Service
 ```
 ## Active-Directory-Users-Enumeration ✡️
 ### Find-Active-Directory-Users-Sid ⚙️
-```ps
+```powershell
 Get-ADUser -Filter * | Select Name, SID
 Get-ADUser -Identity username | Select Name, SID
 ```
 ### Find-Active-Directory-Not-password-required ⚙️
-```ps
+```powershell
 Get-ADUser -Filter {PasswordNotRequired -eq $true}
 ```
 ## Get-IP-address-info-&-Config ✡️
-```ps
+```powershell
 ipconfig 
 Get-NetIPAddress
 Get-NetTCPConnection
 Get-NetIPConfiguration
 ```
 ## Get-Comprehensive-System-Information ✡️
-```ps
+```powershell
 systeminfo 
 Get-ComputerInfo
 ```
 ## Find-Port-listening ✡️
-```ps
+```powershell
 netstat -an | Select-String 'LISTENING'
 Get-NetTCPConnection | Where-Object { $_.State -eq 'Listen' }
 GEt-NetTCPConnection | Where-Object -Property State -Match Listen | measure
 ```
 ## Find-Patch-or-update ✡️
-```ps
+```powershell
 Get-hotfix
 ```
 ### Find-patch-with-specific-ID ⚙️
-```ps
+```powershell
 Get-Hotfix -Id KB4023834
 Get-HotFix | Where-Object { $_.HotFixID -eq 'KB4023834' }
 ```
 ## Find-file ✡️
-```ps
+```powershell
 # like find / -name "*.bak*" 2>/dev/null in linux
 Get-ChildItem -Include *.bak* -Path C:\  -File -Recurse -ErrorAction SilentlyContinue 
 ---------------
@@ -173,12 +173,12 @@ Get-ChildItem C:\ -Recurse | Select-String -pattern "API_KEY"
 Get-ChildItem -Path C:\ -Recurse -ErrorAction SilentlyContinue | Select-String "API_KEY"
 ``` 
 ## ScheduledTask ✡️ 
-```ps
+```powershell
 Get-ScheduledTask 
 Get-ScheduledTask -TaskName new-sched-task
 ```
 # decode Base64 with PowerShell ✅
-```ps
+```powershell
 certutil.exe -decode "C:\Users\Administrator\Desktop\b64.txt" decode.txt
 Get-Content .\decode.txt
 ------------
@@ -194,17 +194,17 @@ $decodedString # Output the decoded string
 
 # *-Item Command ✅
 ## New-Item ✡️ 
-```ps
+```powershell
 New-Item -Path "c:\Mobin" -ItemType "Directory" # Create a directory 
 New-Item -Path "c:\Mobin\flag.txt" -ItemType "File" # Create a empty file in a dir
 New-Item -Path "c:\Mobin\ -Name "flag.txt" -ItemType "file" -Value "solcoteh{B005_b4_7o}" # Create a file with value in a dir
 ```
 ## Copy-Item ✡️ 
-```ps
+```powershell
 Copy-Item -Path "c:\mobin\flag.txt -Destination ".\captain-cabin\captain-hat2.txt" # like cp in linux
 ```
 ## Remove-Item ✡️ 
-```ps
+```powershell
 Remove-Item -Path "c:\Mobin" # Remove a directory 
 Remove-Item -Path ""c:\Mobin\flag.txt" # Remove a file
 ```
