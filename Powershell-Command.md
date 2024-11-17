@@ -129,9 +129,16 @@ Get-ADUser -Identity username | Select Name, SID
 ```ps
 Get-ADUser -Filter {PasswordNotRequired -eq $true}
 ```
-## Get-IP-address-info ✡️
+## Get-IP-address-info-&-Config ✡️
 ```ps
+ipconfig 
 Get-NetIPAddress
+Get-NetIPConfiguration
+```
+## Get-Comprehensive-System-Information ✡️
+```ps
+systeminfo 
+Get-ComputerInfo
 ```
 ## Find-Port-listening ✡️
 ```ps
