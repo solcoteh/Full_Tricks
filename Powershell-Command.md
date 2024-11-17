@@ -7,7 +7,7 @@ Find-Module -Name "PowerShell*"  # like "apt search" in linux
 Install-Module -Name "PowerShellGet" # like apt install in linux
 Write-Output # like echo in linux
 Get-ChildItem # like ls in linux
-
+Set-Location # like cd in linux
 Get-Command # show all command
 Get-Location # like 'pwd' in linux
 Get-Content .\file.txt # like "cat" in linux
