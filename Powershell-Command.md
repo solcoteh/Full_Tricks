@@ -1,6 +1,8 @@
 # General Command ✅
 ```ps
 Get-Help # like 'man' in linux
+Get-Help -examples Get-Content
+
 Get-Command # show all command
 Get-Location # like 'pwd' in linux
 Get-Content .\file.txt # like "cat" in linux
