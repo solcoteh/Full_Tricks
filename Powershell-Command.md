@@ -20,7 +20,7 @@ Set-Location # like cd in linux
 Get-Command # show all command
 Get-Location # like 'pwd' in linux
 Get-Content .\file.txt # like "cat" in linux
-Get-Process # like "ps aux" in linux
+
 Get-Acl c:/ # find owner directory  
 Start-Process # like "open" in linux
 Copy-Item # like "cp" in linux
@@ -119,6 +119,11 @@ Get-LocalUser | Select Name, SID  # Find Sid users
 Get-LocalUser | Where-Object { $_.PasswordRequired -eq $false }
 Get-LocalUser | Where-Object -Property PasswordRequired -Match false
 ```
+## PS-Enumeration ✡️
+```ps
+Get-Process 
+Get-Service
+```
 ## Active-Directory-Users-Enumeration ✡️
 ### Find-Active-Directory-Users-Sid ⚙️
 ```ps
@@ -133,6 +138,7 @@ Get-ADUser -Filter {PasswordNotRequired -eq $true}
 ```ps
 ipconfig 
 Get-NetIPAddress
+Get-NetTCPConnection
 Get-NetIPConfiguration
 ```
 ## Get-Comprehensive-System-Information ✡️
