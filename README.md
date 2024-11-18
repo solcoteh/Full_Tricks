@@ -261,11 +261,12 @@ braa <community string>@<IP>:.1.3.6.*
 # Other_useful_tricks ✅
 ## gpg command cheetsheet ✅
 ```bash
-gpg --import key.gpg
-gpg --import key.asc
+gpg --import key.gpg # OpenPGP Secret Key
+gpg --import key.asc # OpenPGP Secret Key
+gpg --import backup.key # OpenPGP Secret Key
 
-gpg -d <file.gpg|pgp>
-gpg --batch --yes -d <file.gpg|pgp>
+gpg -d <file.gpg|pgp> # PGP encrypted session key
+gpg --batch --yes -d <file.gpg|pgp> #  PGP encrypted session key
 gpg --batch --yes -d <file.gpg|pgp> -o secret.txt  # decrypt 
 gpg --batch --yes --passphrase 'passphrase' <file.gpg|pgp> # decrypt 
 ---------------------------------------------------------
