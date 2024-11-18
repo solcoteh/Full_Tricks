@@ -325,9 +325,10 @@ sudo tcpdump ip proto \\icmp -i tun0
 ```
 # Extract ✅
 ```bash
+7z x file.zip
 tar -xf archive.tar
 gzip -d file.gz
-7z x file.zip
+chromium --ssl-key-log-file=~/ssl-key.log  # dump ssl-key
 ```
 ## Git ✅
 ```bash
