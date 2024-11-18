@@ -19,6 +19,10 @@ ipconfig /all
 ping target_name
 tracert target_name
 nslookup example.com 1.1.1.1
+
+
+sc stop "service name" 
+sc start "service name" 
 ```
 # File and Disk Management 
 ```cmd
