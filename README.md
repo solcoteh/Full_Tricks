@@ -137,6 +137,14 @@ ncrack -vv --user username -P password-file.txt rdp://[host] # Ncrack can be use
 ```bash
 hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -vV $ip ftp
 ```
+## Crack-Ssh-Pubkey-To-Privatekey ✅
+```bash
+git clone https://github.com/RsaCtfTool/RsaCtfTool.git
+
+pip install -r requirements.txt
+
+RsaCtfTool.py --publickey ./key.pub --private
+```
 ### Web_Method Brute Force ✅
 ```bash
 nikto -h http://10.10.131.147:1234/manager/html -id bob:<password> (get-method)
