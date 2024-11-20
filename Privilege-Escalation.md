@@ -12,15 +12,17 @@ cat ~/.bashrc
 cat ~/.bash_history
 cat ~/.bash_profile
 
+cat /etc/hosts
 cat /etc/passwd
 cat /etc/shadow
 cat /etc/sudoers
 cat /etc/crontab
 
+cat /proc/version (Linux kernel version)
 cat /etc/issue (Linux distribution version) 
 cat /etc/*-release (Linux distribution version) 
-cat /proc/version (Linux kernel version)
 
+ls -ltrh /etc/hosts
 ls -ltrh /etc/passwd
 ls -ltrh /etc/shadow
 ls -ltrh /etc/crontab
