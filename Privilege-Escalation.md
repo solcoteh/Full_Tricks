@@ -18,6 +18,7 @@ cat /etc/*-release (Linux distribution version)
 cat /etc/hosts
 cat /etc/passwd
 cat /etc/shadow
+cat /etc/shells
 cat /etc/sudoers
 cat /etc/crontab
 
