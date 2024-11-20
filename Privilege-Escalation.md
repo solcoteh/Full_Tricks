@@ -35,7 +35,12 @@ searchsploit <protocol> <version>
 ```
 ## Tools-For-Enumeration ✅
 [LinEnum](https://github.com/rebootuser/LinEnum)
+
 [PEASS-ng](https://github.com/peass-ng/PEASS-ng)
+
+[linux-exploit-suggester](https://github.com/The-Z-Labs/linux-exploit-suggester)
+
+[linux-exploit-suggester-2](https://github.com/jondonas/linux-exploit-suggester-2)
 
 ## Network-Enumeration ✅
 ```bash
