@@ -5,8 +5,9 @@ perl -e 'exec "/bin/bash";'
 python3 -c 'import pty;pty.spawn("/bin/bash")'
 
 -----------------
-export TERM=xterm‌‌
 export SHELL=bash
+export TERM=xterm-256color
+
 
 CTRL + Z
 stty raw -echo;fg
