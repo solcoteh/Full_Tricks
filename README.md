@@ -63,6 +63,16 @@ go install github.com/jpillora/chisel@latest
 ```
 [Port-Forwarding](https://fumenoid.github.io/posts/port-forwarding)
 
+# Remote-Desktop with kali-linux ✅
+### xfreerdp ✡️
+```bash
+xfreerdp /v:$ip:3389 
+xfreerdp /u:Administrator /v:$ip:3389 
+xfreerdp /u:Administrator /p:password /v:$ip:3389 
+xfreerdp /u:Administrator /p:password /v:$ip:3389 /cert:ignore
+xfreerdp /dynamic-resolution +clipboard /cert:ignore /v:$ip:3389 /u:Administrator /p:'password'
+```
+
 # File_Transfer ✅
 ## linux ✅
 ```bash
@@ -357,14 +367,6 @@ john --format=PKZIP  --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
 ```bash
 rar2john secure.rar  > hashfile.txt
 john --format=rar  --wordlist=/usr/share/wordlists/rockyou.txt hashfile.txt
-```
-# Remote-Desktop with kali-linux ✅
-### xfreerdp ✡️
-```bash
-xfreerdp /v:$ip:3389 
-xfreerdp /u:Administrator /v:$ip:3389 
-xfreerdp /u:Administrator /p:password /v:$ip:3389 
-xfreerdp /u:Administrator /p:password /v:$ip:3389 /cert:ignore
 ```
 # Compile-Run-programs ✅
 ### python ✡️
