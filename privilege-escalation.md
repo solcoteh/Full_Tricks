@@ -1,8 +1,14 @@
 # Basic-Enumeration ✅
 ```bash
-sudo -V
+
 uname -a
+sudo -V
+sudo -l
 history
+
+cat ~/.bashrc
+cat ~/.bash_history
+cat ~/.bash_profile
 
 searchsploit <protocol> <version>
 ```
