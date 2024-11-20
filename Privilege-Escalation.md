@@ -21,6 +21,11 @@ cat /etc/issue (Linux distribution version)
 cat /etc/*-release (Linux distribution version) 
 cat /proc/version (Linux kernel version)
 
+ls -ltrh /etc/passwd
+ls -ltrh /etc/shadow
+ls -ltrh /etc/crontab
+ls -ltrh /etc/sudoers
+
 searchsploit <protocol> <version>
 ```
 ## SUID_SGID_Capabilities_Files_enumeration ✅
