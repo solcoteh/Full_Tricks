@@ -47,3 +47,10 @@ tasklist /?
 tasklist /FI "imagename eq sshd.exe"
 taskkill /PID target_pid 
 ```
+
+# User-Management ✅
+```cmd
+net user <username> * # change password
+net user <username> <password> /add
+net localgroup administrators <username> /add
+```
