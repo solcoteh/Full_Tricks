@@ -10,6 +10,8 @@ cat ~/.bashrc
 cat ~/.bash_history
 cat ~/.bash_profile
 
+cat /etc/passwd
+
 searchsploit <protocol> <version>
 ```
 
