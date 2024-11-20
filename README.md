@@ -86,24 +86,7 @@ sudo nmap -sn 10.10.10.0/24 -T5
 sudo rustscan -a 10.10.10.0/24
 sudo netdiscover -f -r 10.10.10.0/24 -i eth0 -P
 ```
-## hosts are communicating ✅
-```bash
-last
-lsof -i
-lsof -i :80
-ss -tulpn
-netstat -antp
-netstat -antup
-netstat -tulpn
-grep 80 /etc/services
-```
-## Users_enumeration ✅
-```bash
-who | wc -l
-users | wc -w
-cat /etc/passwd 
-awk -F: '$3 >= 1000 {print $1}' /etc/passwd | wc -l
-```
+
 ## WEB_Enumeration ✅
 ### subdomains_enumeration ✡️
 ```bash
