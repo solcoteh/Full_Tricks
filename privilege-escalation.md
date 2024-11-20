@@ -1,3 +1,12 @@
+# Basic-Enumeration ✅
+```bash
+sudo -V
+uname -a
+history
+
+searchsploit <protocol> <version>
+```
+
 # Metasploit-Command-for-Enumeration ✅
 ```bash
 set --global LHOST 10.11.99.141
