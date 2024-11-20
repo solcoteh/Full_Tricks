@@ -12,7 +12,6 @@ export TERM=xterm-256color
 CTRL + Z
 stty raw -echo;fg
 reset
-xterm‌‌
 -----------------
 sudo -u#-1 /bin/bash
 sudo -u silvio /usr/bin/zip # run with another user
