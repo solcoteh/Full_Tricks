@@ -52,9 +52,8 @@ ssh -tt -L8080:localhost:8157 solcoteh@10.10.10.10 ssh -t -D 8157 solcoteh@10.10
 ```bash
 gh repo clone jpillora/chisel
 go install github.com/jpillora/chisel@latest
-
 ```
-[port-forwarding](https://fumenoid.github.io/posts/port-forwarding)
+[Port-Forwarding](https://fumenoid.github.io/posts/port-forwarding)
 
 # File_Transfer ✅
 ## linux ✅
