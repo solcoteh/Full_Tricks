@@ -33,6 +33,10 @@ find / -type f -name "*.conf" 2>/dev/null
 
 searchsploit <protocol> <version>
 ```
+## Tools-For-Enumeration ✅
+[LinEnum](https://github.com/rebootuser/LinEnum)
+[PEASS-ng](https://github.com/peass-ng/PEASS-ng)
+
 ## Network-Enumeration ✅
 ```bash
 last
