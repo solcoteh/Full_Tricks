@@ -33,6 +33,24 @@ find / -type f -name "*.conf" 2>/dev/null
 
 searchsploit <protocol> <version>
 ```
+## Network-Enumeration ✅
+```bash
+last
+lsof -i
+lsof -i :80
+ss -tulpn
+netstat -antp
+netstat -antup
+netstat -tulpn
+grep 80 /etc/services
+```
+## Users_Enumeration ✅
+```bash
+who | wc -l
+users | wc -w
+cat /etc/passwd
+awk -F: '$3 >= 1000 {print $1}' /etc/passwd | wc -l
+```
 ## SUID_SGID_Capabilities_Files_enumeration ✅
 ```
 getcap -r / 2>/dev/null 
