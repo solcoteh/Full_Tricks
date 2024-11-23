@@ -39,11 +39,11 @@ searchsploit <protocol> <version>
 
 [PEASS-ng](https://github.com/peass-ng/PEASS-ng)
 
-[linux-smart-enumeration](https://github.com/diego-treitos/linux-smart-enumeration)
+[linux-Exploit-Suggester](https://github.com/The-Z-Labs/linux-exploit-suggester)
 
-[linux-exploit-suggester](https://github.com/The-Z-Labs/linux-exploit-suggester)
+[linux-Exploit-Suggester-2](https://github.com/jondonas/linux-exploit-suggester-2)
 
-[linux-exploit-suggester-2](https://github.com/jondonas/linux-exploit-suggester-2)
+[linux-Smart-Enumeration](https://github.com/diego-treitos/linux-smart-enumeration)
 
 ## Network-Enumeration ✅
 ```bash
