@@ -39,6 +39,8 @@ searchsploit <protocol> <version>
 
 [PEASS-ng](https://github.com/peass-ng/PEASS-ng)
 
+[linux-smart-enumeration](https://github.com/diego-treitos/linux-smart-enumeration)
+
 [linux-exploit-suggester](https://github.com/The-Z-Labs/linux-exploit-suggester)
 
 [linux-exploit-suggester-2](https://github.com/jondonas/linux-exploit-suggester-2)
