@@ -61,6 +61,7 @@ ssh -R 12340:localhost:9999 user@10.10.10.10 # for
 ssh -C2qTnN -D 1080 user@target.host
 ssh -tt -L8080:localhost:8157 solcoteh@10.10.10.10 ssh -t -D 8157 solcoteh@10.10.10.10 -p 222
 -oHostKeyAlgorithms=+ssh-rsa
+-oPubkeyAcceptedKeyTypes=+ssh-rsa
 ```
 ## Chisel ✡️
 ```bash
