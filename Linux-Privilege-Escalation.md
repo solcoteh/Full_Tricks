@@ -4,9 +4,11 @@
 id
 sudo -V
 sudo -l
+dpkg -l
 history
 uname -a
 bash --version
+
 
 cat ~/.bashrc
 cat ~/.bash_history
