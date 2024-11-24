@@ -189,6 +189,7 @@ nc -nvlp 4444 # our kali
 ```bash
 searchsploit <name app>
 ```
+### **Symlinks** ✡️
 ### Shared Object Injection ✡️
 ```bash
 file /usr/local/bin/suid-so # setuid setgid ELF 64-bit LSB executable
