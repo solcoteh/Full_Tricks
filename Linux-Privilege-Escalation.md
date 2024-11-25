@@ -2,13 +2,25 @@
 ## Basic-Enumeration ✅
 ```bash
 id
+env
 sudo -V
 sudo -l
 dpkg -l
 history
 uname -a
+ifconfig
 bash --version
 
+ps -A
+ps aux
+ps axjf
+
+netstat -a # (all)
+netstat -p # (pid)
+netstat -a # (tcp)
+netstat -u # (udp)
+netstat -l # (listening mode)
+netstat -i # (Shows interface statistics)
 
 cat ~/.bashrc
 cat ~/.bash_history
