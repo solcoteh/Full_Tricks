@@ -390,6 +390,10 @@ gcc flag.c -o flag # compile
 g++ flag.cpp -o flag # compile
 ./flag # run
 ```
+### C# ✡️
+```bash
+
+```
 ### java ✡️
 ```bash
 javac file.java # Compile file
