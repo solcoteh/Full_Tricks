@@ -70,11 +70,13 @@ searchsploit <protocol> <version>
 
 [linuxprivchecker](https://github.com/sleventyeleven/linuxprivchecker)
 
+[linux-smart-enum](https://github.com/diego-treitos/linux-smart-enumeration)
+
 [linux-Exploit-Suggester](https://github.com/The-Z-Labs/linux-exploit-suggester)
 
 [linux-Exploit-Suggester-2](https://github.com/jondonas/linux-exploit-suggester-2)
 
-[linux-Smart-Enumeration](https://github.com/diego-treitos/linux-smart-enumeration)
+
 
 ## Network-Enumeration ✅
 ```bash
