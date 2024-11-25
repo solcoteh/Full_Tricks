@@ -20,7 +20,10 @@ netstat -p # (pid)
 netstat -a # (tcp)
 netstat -u # (udp)
 netstat -l # (listening mode)
-netstat -i # (Shows interface statistics)
+netstat -o # (Display timers)
+netstat -i # (Shows interface)
+netstat -n # (Do not resolve names)
+
 
 cat ~/.bashrc
 cat ~/.bash_history
