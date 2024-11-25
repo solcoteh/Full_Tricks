@@ -48,10 +48,18 @@ ls -ltrh /etc/sudoers
 find / -name id_rsa 2> /dev/null
 find / -name authorized_keys 2> /dev/null
 
+
 find / -type f -name "*.log" 2>/dev/null
 find / -type f -name "*.bak" 2>/dev/null
-find / -type f -name "*.conf" 2>/dev/null 
+find / -type f -name "*.conf" 2>/dev/null
 
+find / -writable -type d 2>/dev/null # (Find world-writeable folders)
+find / -perm -o w -type d 2>/dev/null # (Find world-writeable folders)
+find / -perm -222 -type d 2>/dev/null # (Find world-writeable folders)
+
+find / -writable -type f 2>/dev/null # (Find world-writeable files)
+find / -perm -o w -type f 2>/dev/null # (Find world-writeable files)
+find / -perm -222 -type f 2>/dev/null # (Find world-writeable files)
 
 searchsploit <protocol> <version>
 ```
