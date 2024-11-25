@@ -28,9 +28,9 @@ netstat -n # (Do not resolve names)
 cat ~/.bashrc
 cat ~/.bash_history
 cat ~/.bash_profile
-cat /proc/version (Linux kernel version)
-cat /etc/issue (Linux distribution version) 
-cat /etc/*-release (Linux distribution version)
+cat /proc/version # (Linux kernel version)
+cat /etc/issue # (Linux distribution version) 
+cat /etc/*-release # (Linux distribution version)
 
 cat /etc/hosts
 cat /etc/passwd
