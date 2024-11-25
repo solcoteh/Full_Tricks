@@ -68,6 +68,8 @@ searchsploit <protocol> <version>
 
 [PEASS-ng](https://github.com/peass-ng/PEASS-ng)
 
+[linuxprivchecker](https://github.com/sleventyeleven/linuxprivchecker)
+
 [linux-Exploit-Suggester](https://github.com/The-Z-Labs/linux-exploit-suggester)
 
 [linux-Exploit-Suggester-2](https://github.com/jondonas/linux-exploit-suggester-2)
