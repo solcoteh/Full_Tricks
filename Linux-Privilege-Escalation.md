@@ -15,15 +15,6 @@ ps -A
 ps aux
 ps axjf
 
-netstat -a # (all)
-netstat -p # (pid)
-netstat -a # (tcp)
-netstat -u # (udp)
-netstat -l # (listening mode)
-netstat -o # (Display timers)
-netstat -i # (Shows interface)
-netstat -n # (Do not resolve names)
-
 
 cat ~/.bashrc
 cat ~/.bash_history
@@ -76,8 +67,6 @@ searchsploit <protocol> <version>
 
 [linux-Exploit-Suggester-2](https://github.com/jondonas/linux-exploit-suggester-2)
 
-
-
 ## Network-Enumeration ✅
 ```bash
 last
@@ -88,6 +77,15 @@ netstat -antp
 netstat -antup
 netstat -tulpn
 grep 80 /etc/services
+
+netstat -a # (all)
+netstat -p # (pid)
+netstat -a # (tcp)
+netstat -u # (udp)
+netstat -l # (listening mode)
+netstat -o # (Display timers)
+netstat -i # (Shows interface)
+netstat -n # (Do not resolve names)
 ```
 ## Users_Enumeration ✅
 ```bash
@@ -272,7 +270,6 @@ void inject() {
 gcc /tmp/libcalc.c -shared -fPIC -o /home/user/.config/libcalc.so
 /usr/local/bin/suid-so
 ```
-
 ### Environment Variables(1) ✡️
 ```bash
 /usr/local/bin/suid-env
@@ -313,8 +310,6 @@ gcc /tmp/service.c -o /tmp/service
 export PATH=/tmp:$PATH
 /usr/local/bin/suid-env
 ```
-
-
 ### Abusing Shell Features ✡️
 ```bash
 /bin/bash --version
