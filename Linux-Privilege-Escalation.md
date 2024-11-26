@@ -112,7 +112,7 @@ run post/multi/recon/local_exploit_suggester
 
 # Privilege-Escalation ✅📚
 ## sudo ✅📚
-[Every-Tools-Shell-Escap](https://gtfobins.github.io/)
+[**GTFOBins**](https://gtfobins.github.io/)
 ### Shell Escape Sequences ✡️
 ```bash
 sudo -l
