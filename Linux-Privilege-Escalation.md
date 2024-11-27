@@ -98,7 +98,7 @@ awk -F: '$3 >= 1000 {print $1}' /etc/passwd | wc -l
 ```
 ## SUID_SGID_Capabilities_Files_enumeration ✅
 ```
-getcap -r / 2>/dev/null # Capabilities enumeration
+getcap -r / 2>/dev/null # Capabilities enumeration # If "cap_setuid+ep" existed. 
 find / -perm -02000 -ls 2>/dev/null
 find / -perm -04000 -ls 2>/dev/null
 find / -type f \( -perm -4000 -o -perm -2000 \) -ls 2> /dev/null
