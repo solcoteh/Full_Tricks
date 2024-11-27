@@ -44,7 +44,7 @@ find / -type f -name "*.log" 2>/dev/null
 find / -type f -name "*.bak" 2>/dev/null
 find / -type f -name "*.conf" 2>/dev/null
 
-
+find / -user user 2>/dev/null
 
 find / -writable -type f 2>/dev/null # (Find world-writeable files)
 find / -perm -o w -type f 2>/dev/null # (Find world-writeable files)
