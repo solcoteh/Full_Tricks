@@ -4,7 +4,7 @@ Get-Help # like 'man' in linux
 Get-Help -examples Get-Content # like 'man' in linux
 
 Select-String -Path ".\captain-hat.txt" -Pattern "hat" # like grep 
-
+2>$null # like 2>/dev/null
 Get-ChildItem | Select-Object Name,Length 
 Get-ChildItem | Sort-Object Length # sort by size
 Get-ChildItem | Where-Object -Property Length -gt 100 
