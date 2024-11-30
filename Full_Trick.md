@@ -273,11 +273,10 @@ gpg --output original_message.txt --decrypt message.gpg # decrypt
 openssl aes-256-cbc -e -in message.txt -out encrypted_message # encrypt 
 openssl aes-256-cbc -pbkdf2 -iter 10000 -e -in message.txt -out encrypted_message # encrypt & more secure 
 
-
-
 openssl aes-256-cbc -d -in encrypted_message -out original_message.txt # decrypt 
 openssl aes-256-cbc -d -in les-mis.txt.enc -out les-mis.txt -K 58593a7522257f2a95cce9a68886ff78546784ad7db4473dbd91aecd9eefd508 -iv 7a12fd4dc1898efcd997a1b9496e7591  # decrypt  with key & iv
 
+openssl des3 -d -salt -in file.des3 -out file.txt -k supersecretpassword123 # decrypt with salt
 openssl aes-256-cbc -pbkdf2 -iter 10000 -d -in encrypted_message -out original_message.txt # decrypt & more secure  
 ----------------------------------
 openssl genrsa -out private-key.pem 2048 # generate an RSA private key
@@ -307,7 +306,7 @@ openssl req -x509 -newkey -nodes rsa:4096 -keyout key.pem -out cert.pem -sha256 
 sudo tshark -i any -f "icmp"
 sudo tcpdump ip proto \\icmp -i tun0
 ```
-# Extract ✅
+## Extract ✅
 ```bash
 7z x file.zip
 tar -xf archive.tar
