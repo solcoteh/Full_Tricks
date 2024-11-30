@@ -25,4 +25,9 @@ dd if=flag2of2-final.pdf of=output_image.zlib skip=1149 bs=1 # extract just zlib
 dd if=flag2of2-final.pdf of=output_image.pdf skip=914 bs=1  # extract pdf full
 dd if=flag2of2-final.pdf of=output_image.pdf skip=914 bs=1 count=$((1149-914)) # extract just pdf without data
 ```
-
+## Recon file ✅
+```bash
+stat <file-name>
+file <file-name>
+exiftool <file-name>
+```
