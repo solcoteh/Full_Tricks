@@ -1,13 +1,15 @@
 # File-Unattended ✅
 ## cmd ✡️
 ```cmd
+dir C:\sysprep.inf /s /p
+dir C:\sysprep.xml /s /p
+dir C:\unattend.xml /s /p
 ```
 ## powershell ✡️
 ```powershell
-C:\Unattend.xml
+Get-ChildItem -Path C:\ -Filter "sysprep.inf" -Recurse -ErrorAction SilentlyContinue
+Get-ChildItem -Path C:\ -Filter "Unattend.xml" -Recurse -ErrorAction SilentlyContinue
 Get-ChildItem -Path C:\Windows\Panther\ -Filter "*.xml" -Recurse -ErrorAction SilentlyContinue
-
-Get-ChildItem -Path C:\Windows\system32\ -Filter "sysprep.inf" -Recurse -ErrorAction SilentlyContinue
 Get-ChildItem -Path C:\Windows\system32\sysprep\ -Filter "*.xml" -Recurse -ErrorAction SilentlyContinue
 ```
 
