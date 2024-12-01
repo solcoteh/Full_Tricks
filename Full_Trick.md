@@ -345,6 +345,23 @@ mkdir ~/.localpython
 ./configure --prefix=/home/$(whoami)/.localpython
 make;make install
 ```
+# Connect-Usb-To-WSL ✅
+```powershell
+wsl --update
+wsl --shutdown
+winget install --interactive --exact dorssel.usbipd-win
+
+
+usbipd list
+usbipd bind --force --busid  1-4
+usbipd attach --wsl --busid 1-4
+```
+[usbipd-win](https://github.com/dorssel/usbipd-win)
+
+[wsl-usb-gui](https://gitlab.com/alelec/wsl-usb-gui)
+
+[Connecting-USB-devices-to-wsl2](https://hackmd.io/@aeefs2Y8TMms-cjTDX4cfw/r1fqAa_Da)
+
 # Connect with OpenVpn ✅
 ```bash
 /usr/sbin/openvpn --config /etc/thm.ovpn # without proxy 
