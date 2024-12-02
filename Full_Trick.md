@@ -145,32 +145,7 @@ sudo netdiscover -f -r 10.10.10.0/24 -i eth0 -P
 ```
 
 ## WEB_Enumeration ✅
-### subdomains_enumeration ✡️
-```bash
-gobuster vhost -u http://example.com -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt —append-domain -t 100 --no-error 
-ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt -u http://example.com/ -H "Host:FUZZ.example.com" -fw 6
-wfuzz -c -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-110000.txt --hc 400,404,403 -H "Host: FUZZ.example.com" -u http://example.com -t 100
-```
-### directory _enumeration ✡️
-```bash
-nikto -h http://example.com
 
-dirb http://example.com
-dirb http://example.com -X .php,.html,.bak,.log,.txt,.zip,.enc,.docx
-gobuster dir -u http://example.com -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt
-gobuster dir -u http://example.com -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt -x .php,.html,.bak,.log,.txt,.zip,.enc
-
-ffuf -u http://example.com/FUZZ -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt -fc 500,404
-ffuf -u http://example.com/FUZZ -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt -e .php,.html,.bak,.log,.txt,.zip,.enc
-
-wfuzz -c -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt --hc 404,500 http://example.com/FUZZ
-```
-### Wpscan ✡️
-```bash
-wpscan --url http://<adress>/ -e u (enum user)
-wpscan --url http://<adress>/ -e ap (plugin)
-wpscan --url http://<adress>/ --usernames <user> --passwords /usr/share/wordlists/rockyou.txt
-```
 # Brute Force Attack ✅📚
 ## Crack Type Cheat Sheet ✅
 ```bash
