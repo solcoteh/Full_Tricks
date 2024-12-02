@@ -132,7 +132,7 @@ sudo nano /etc/proxychains4.conf # to end file and change  ( socks5 127.0.0.1 13
 sudo proxychains4 ip a # run "ip a" command in our kali but exce in target
 sudo proxychains4 nmap -sT 127.0.0.1 # port target scan in our kali
 sudo proxychains4 nmap -sn 10.10.233.188/24 # ip target scan in our kali
-sudo ssh errorcauser@10.10.217.6 -i id_rsa -L 80:127.0.0.1:8000 # (YOU <-- CLIENT) transfer port from target system to our system
+sudo ssh errorcauser@10.10.217.6 -i id_rsa -L 8000:127.0.0.1:80 # (YOU <-- CLIENT) transfer port from target system to our system
 ```
 
 [Automate Tool](https://github.com/solcoteh/NmapScan_Automate)
