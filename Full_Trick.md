@@ -144,8 +144,6 @@ sudo rustscan -a 10.10.10.0/24
 sudo netdiscover -f -r 10.10.10.0/24 -i eth0 -P
 ```
 
-## WEB_Enumeration ✅
-
 # Brute Force Attack ✅📚
 ## Crack Type Cheat Sheet ✅
 ```bash
