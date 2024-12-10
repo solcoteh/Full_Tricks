@@ -368,6 +368,16 @@ hash-identifier '5460C85BD858A11475115D2DD3A82333' # identify with hash-identifi
 ```
 [example_hashes](https://hashcat.net/wiki/doku.php?id=example_hashes)
 
+# generate base64 password ✅
+```python
+import base64
+
+# Read the password list
+with open("passwords.txt", "r") as infile, open("encoded_passwords.txt", "w") as outfile:
+    for password in infile:
+        encoded_password = base64.b64encode(password.strip().encode()).decode()
+        outfile.write(encoded_password + "\n")
+```
 # Crack Hash with john ✅
 ```bash
 john --single --format=Raw-MD5  hashfile.txt # Single mode brute force attack
