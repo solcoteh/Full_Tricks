@@ -1,14 +1,15 @@
 # Shell ✅
 ```bash
 /bin/bash -ip
+export SHELL=/bin/bash script -q /dev/null
 perl -e 'exec "/bin/bash";'
 python3 -c 'import pty;pty.spawn("/bin/bash")'
 ---------------------------------------------------------------------
 CTRL + Z
 stty raw -echo;fg
 reset
-export SHELL=bash
-export TERM=xterm-256color
+export SHELL=/bin/bash
+export TERM=xterm
 stty rows 52 columns 209 
 ---------------------------------------------------------------------
 socat TCP-L:<port> # in our system
