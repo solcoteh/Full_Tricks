@@ -2,7 +2,7 @@
 ```bash
 /bin/bash -ip
 perl -e 'exec "/bin/bash";'
-export SHELL=/bin/bash script -q /dev/null
+SHELL=/bin/bash script -q /dev/null
 python3 -c 'import pty;pty.spawn("/bin/bash")'
 ---------------------------------------------------------------------
 use post/multi/manage/shell_to_meterpreter # metaslpoit 
