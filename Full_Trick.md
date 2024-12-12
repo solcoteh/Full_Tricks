@@ -1,9 +1,11 @@
 # Shell ✅
 ```bash
 /bin/bash -ip
-export SHELL=/bin/bash script -q /dev/null
 perl -e 'exec "/bin/bash";'
+export SHELL=/bin/bash script -q /dev/null
 python3 -c 'import pty;pty.spawn("/bin/bash")'
+---------------------------------------------------------------------
+use post/multi/manage/shell_to_meterpreter # metaslpoit 
 ---------------------------------------------------------------------
 CTRL + Z
 stty raw -echo;fg
