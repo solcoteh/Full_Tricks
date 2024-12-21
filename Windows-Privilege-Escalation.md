@@ -69,5 +69,9 @@ msiexec /quiet /qn /i C:\Windows\Temp\malicious.msi # target system
 ```
 ## Windows-Services-Enum ✅
 ```cmd
- sc qc apphostsvc
+sc qc apphostsvc
+```
+## Change-Powershell-User-with-admin ✅
+```powershell
+Start-Process powershell 'Start-Process cmd -Verb RunAs' -Credential adm1n
 ```
