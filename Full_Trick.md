@@ -101,6 +101,7 @@ xfreerdp /u:Administrator /v:$ip:3389
 xfreerdp /u:Administrator /p:password /v:$ip:3389 
 xfreerdp /u:Administrator /p:password /v:$ip:3389 /cert:ignore
 xfreerdp /dynamic-resolution +clipboard /cert:ignore /v:$ip:3389 /u:Administrator /p:'password'
+xfreerdp /dynamic-resolution +clipboard /cert:ignore /v:$ip:3389 /u:Administrator /p:'password' /drive:share,/tmp
 ```
 
 # File_Transfer ✅
