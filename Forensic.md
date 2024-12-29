@@ -31,3 +31,6 @@ stat <file-name>
 file <file-name>
 exiftool <file-name>
 ```
+```bsah
+steghide extract  -sf  (fiilname)
+```
