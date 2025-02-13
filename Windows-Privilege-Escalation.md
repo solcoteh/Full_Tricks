@@ -37,6 +37,7 @@ Get-NetFirewallRule | select DisplayName, Enabled, Description # Check of specif
 
 
 Test-NetConnection -ComputerName 127.0.0.1 -Port 80  # Check whether a particular port is open in firewall rules or not
+$portRange = 80..90; $portRange | ForEach-Object { Test-NetConnection -ComputerName 127.0.0.1 -Port $_ } # Check whether a particular range ports are open in firewall rules or not
 ```
 
 ## Windows-Services-Enum ✅
