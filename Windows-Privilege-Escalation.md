@@ -35,6 +35,9 @@ Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False # If we h
 Get-NetFirewallRule | select DisplayName, Enabled, Description # Review of firewall rules
 Get-NetFirewallRule | select DisplayName, Enabled, Description # Check of specific firewall rules
 
+Get-MpThreat # View threats identified by Microsoft Defender
+
+Get-EventLog -List # Check the list of logs in the system
 
 Test-NetConnection -ComputerName 127.0.0.1 -Port 80  # Check whether a particular port is open in firewall rules or not
 $portRange = 80..90; $portRange | ForEach-Object { Test-NetConnection -ComputerName 127.0.0.1 -Port $_ } # Check whether a particular range ports are open in firewall rules or not
