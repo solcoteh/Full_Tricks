@@ -21,7 +21,10 @@ netstat -anot      # بررسی پورت‌های باز و اتصالات شب�
 tasklist          # لیست پردازش‌های فعال
 wmic process list full  # نمایش تمام جزئیات پردازش‌ها
 Get-ChildItem -Hidden -Path C:\Users\Public\  # لیست فایل‌های مخفی
-
+--------------------------------------------------------------------------
+# These tools are for gathering information and abusing common mistakes in Windows security configurations.
+https://github.com/GhostPack/Seatbelt
+https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS
 ```
 
 ## Host-Security-Enum ✅
