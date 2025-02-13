@@ -46,7 +46,10 @@ reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microso
 # If the hacker can access the Sysmon configuration file, he can find out what activities are being monitored and trying to erase his rejection!
 findstr /si '<ProcessCreate onmatch="exclude">' C:\tools\* 
 ----------------------------------------------------------------
-
+# Check what are security software such as antivirus, EDR, or monitoring runs on the system with External tools
+https://github.com/PwnDexter/Invoke-EDRChecker
+https://github.com/PwnDexter/SharpEDRChecker
+----------------------------------------------------------------
 Test-NetConnection -ComputerName 127.0.0.1 -Port 80  # Check whether a particular port is open in firewall rules or not
 $portRange = 80..90; $portRange | ForEach-Object { Test-NetConnection -ComputerName 127.0.0.1 -Port $_ } # Check whether a particular range ports are open in firewall rules or not
 ```
