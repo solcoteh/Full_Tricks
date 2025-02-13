@@ -10,6 +10,7 @@ history
 uname -a
 ifconfig
 bash --version
+lsmod
 
 ps -A
 ps aux
