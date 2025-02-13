@@ -6,6 +6,11 @@ wmic os get Caption, Version, OSArchitecture
 whoami /priv      # بررسی سطح دسترسی
 net user          # لیست یوزرهای سیستم
 net localgroup administrators  # بررسی ادمین‌های محلی
+Get-ADUser -Filter * # Find users in Active Directory
+Get-ADUser -Filter * -SearchBase "DC=THMREDTEAM,DC=COM" # Find all users in a particular DC (Domain Component)
+Get-ADUser -Filter * -SearchBase "CN=Users,DC=THMREDTEAM,DC=COM" # Search users in a particular CN (Common Name)
+Get-ADUser -Filter * -SearchBase "OU=THM,DC=THMREDTEAM,DC=COM" # Find all users in a particular OU (Organizational Unit)
+
 
 arp -a     # برسی جدول آرپ برای شناسایی دستگاه‌های دیگری که در شبکه فعال هستند
 ipconfig /all     # بررسی اطلاعات شبکه
