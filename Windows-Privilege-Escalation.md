@@ -39,6 +39,14 @@ Get-MpThreat # View threats identified by Microsoft Defender
 
 Get-EventLog -List # Check the list of logs in the system
 
+Get-Process | Where-Object { $_.ProcessName -eq "Sysmon" }  # Checking SysMon Installation on System
+Get-CimInstance win32_service -Filter "Description = 'System Monitor service'"  # Checking SysMon Installation on System
+reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Sysmon/Operational  # Checking SysMon Installation on System
+----------------------------------------------------------------
+# If the hacker can access the Sysmon configuration file, he can find out what activities are being monitored and trying to erase his rejection!
+findstr /si '<ProcessCreate onmatch="exclude">' C:\tools\* 
+----------------------------------------------------------------
+
 Test-NetConnection -ComputerName 127.0.0.1 -Port 80  # Check whether a particular port is open in firewall rules or not
 $portRange = 80..90; $portRange | ForEach-Object { Test-NetConnection -ComputerName 127.0.0.1 -Port $_ } # Check whether a particular range ports are open in firewall rules or not
 ```
