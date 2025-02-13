@@ -2,7 +2,8 @@
 ## Basic-Enumeration ✅
 ```powershell
 systeminfo        # اطلاعات سیستم و ویندوز
-wmic os get Caption, Version, OSArchitecture
+wmic os get Caption, Version, OSArchitecture # اطلاعات سیستم و ویندوز
+
 whoami /priv      # بررسی سطح دسترسی
 net user          # لیست یوزرهای سیستم
 net localgroup administrators  # بررسی ادمین‌های محلی
@@ -22,6 +23,22 @@ wmic process list full  # نمایش تمام جزئیات پردازش‌ها
 Get-ChildItem -Hidden -Path C:\Users\Public\  # لیست فایل‌های مخفی
 
 ```
+
+## Host-Security-Enum ✅
+```powershell
+wmic /namespace:\\root\securitycenter2 path antivirusproduct # Antivirus Identification Method
+Get-CimInstance -Namespace root/SecurityCenter2 -ClassName AntivirusProduct # Antivirus Identification Method
+Get-Service WinDefend # Check Windows Defender's status
+Get-MpComputerStatus | select RealTimeProtectionEnabled # Check Windows Defender's (Real-time Protection)  status
+Get-NetFirewallProfile | Format-Table Name, Enabled # Checking the Firewall Status in Windows
+Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False # If we have admin access, we can disable the firewall
+Get-NetFirewallRule | select DisplayName, Enabled, Description # Review of firewall rules
+Get-NetFirewallRule | select DisplayName, Enabled, Description # Check of specific firewall rules
+
+
+Test-NetConnection -ComputerName 127.0.0.1 -Port 80  # Check whether a particular port is open in firewall rules or not
+```
+
 ## Windows-Services-Enum ✅
 ```cmd
 sc qc apphostsvc
