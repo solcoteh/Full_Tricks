@@ -1,12 +1,27 @@
-
-# Create Custom Rules in John
-
-## Add a Custom Rule to john Tool config file
+# Password-Attacks ✅
+## Types of passwords for attack ✅
+```c
+Default Passwords wordlists
+Weak Passwords wordlists
+Leaked Passwords wordlists
+Combined wordlists
+Customized Wordlists
+```
+## Types of attacks to break the password ✅
+```c
+Dictionary Brute-Force attack
+Combination Brute-Force attack
+Rule-Based Brute-Force attacks
+Custom Rules-Based Brute-Force attack
+Password spray attack
+```
+# Create Custom Rules in John ✅
+## Add a Custom Rule to john Tool config file 💡
 ```bash
 sudo nano /etc/john/john.conf
 append '[List.Rules:NameRule]' end of the file
 ```
-## The structure of creating rules
+## The structure of creating rules 💡
 ```bash
 Az - append to the end of the words from Wordlist 
 A0 - append to before the word Wordlist
@@ -14,22 +29,22 @@ $X - append character X to the word
 $[0-9] - append character 0-9 to the word
 ```
 **More:** [Full john structure rule](https://www.openwall.com/john/doc/RULES.shtml)
-## Example
+## Example 📌
 ```bash
 Hash Type : MD5
 Hash : 44cbd7b32e750b7b3aa1ff6e9a379d65
 Password : 98mobinFd5
 ```
-### My Rule For Exploit 
+### My Rule For Exploit 📌
 ```bash
 [List.Rules:myrule]
 A0"[0-9][0-9]"Az"[A-F][a-f][0-9]"
 ```
-### Command Run For Exploit
+### Command Run For Exploit 📌
 ```
 john --format=Raw-MD5 --rules=myrule --wordlist=mywordlist hashfile.txt
 ```
-### MyWordlist
+### MyWordlist 💡
 ```bash
 ali
 sosan
