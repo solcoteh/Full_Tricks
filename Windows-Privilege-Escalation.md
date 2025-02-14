@@ -83,8 +83,7 @@ Get-SmbServerConfiguration # Check the SMB version running on a Windows system (
 # Check DNS service (to analyze domain name on the network) 
 > nslookup.exe # run tool
 > server <IP-Dns-Server> # Set dns server
-> ls -d thmredteam.com # Check DNS service (to analyze domain name on the network)
-
+> ls -d thmredteam.com # Check Zone Transfer (if the server is not configured correctly, the domain information can be extracted)
 ```
 
 # Password History ✅
