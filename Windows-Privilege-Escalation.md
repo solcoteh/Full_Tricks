@@ -101,14 +101,14 @@ Get-ChildItem -Path C:\ -Filter "sysprep.inf" -Recurse -ErrorAction SilentlyCont
 Get-ChildItem -Path C:\ -Filter "Unattend.xml" -Recurse -ErrorAction SilentlyContinue
 Get-ChildItem -Path C:\Windows\Panther\ -Filter "*.xml" -Recurse -ErrorAction SilentlyContinue
 Get-ChildItem -Path C:\Windows\system32\sysprep\ -Filter "*.xml" -Recurse -ErrorAction SilentlyContinue
+
+Get-ChildItem -Path C:\Users -Recurse -Force | Select-String -Pattern "password|passwd|credentials|login" # Password hunting and sensitive information
+
 ```
 ## Powershell History ✅
 ### cmd ✡️
 ```cmd
 type %userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt # run in cmd
-```
-### powershell ✡️
-```powershell
 type $Env:userprofile\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt # run in powershell
 ```
 ## Saved Windows Credentials ✅
