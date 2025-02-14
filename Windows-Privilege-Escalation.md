@@ -78,9 +78,13 @@ Get-ChildItem -Hidden -Path C:\Users\Public\  # لیست فایل‌های مخ�
 
 
 sc qc apphostsvc # برسی جزئیات پیکربندی یک سرویس خاص
-
-
 Get-SmbServerConfiguration # Check the SMB version running on a Windows system (in the internal network)
+----------------------------------------------------------------
+# Check DNS service (to analyze domain name on the network) 
+> nslookup.exe # run tool
+> server <IP-Dns-Server> # Set dns server
+> ls -d thmredteam.com # Check DNS service (to analyze domain name on the network)
+
 ```
 
 # Password History ✅
