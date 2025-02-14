@@ -19,6 +19,7 @@ netstat -anot      # بررسی پورت‌های باز و اتصالات شب�
 
 
 tasklist          # لیست پردازش‌های فعال
+wmic product get name,version # چک کردن لیست همه‌ی نرم‌افزارهای نصب‌شده همراه با نسخه‌شون
 wmic process list full  # نمایش تمام جزئیات پردازش‌ها
 Get-ChildItem -Hidden -Path C:\Users\Public\  # لیست فایل‌های مخفی
 --------------------------------------------------------------------------
@@ -34,7 +35,8 @@ Get-CimInstance -Namespace root/SecurityCenter2 -ClassName AntivirusProduct # An
 Get-Service WinDefend # Check Windows Defender's status
 Get-MpComputerStatus | select RealTimeProtectionEnabled # Check Windows Defender's (Real-time Protection)  status
 Get-NetFirewallProfile | Format-Table Name, Enabled # Checking the Firewall Status in Windows
-Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False # If we have admin access, we can disable the firewall
+netsh advfirewall set allprofiles state off # disable the firewall on all profiles
+Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False # If we have admin access, we can disable the firewall on profiles
 Get-NetFirewallRule | select DisplayName, Enabled, Description # Review of firewall rules
 Get-NetFirewallRule | select DisplayName, Enabled, Description # Check of specific firewall rules
 
@@ -55,6 +57,8 @@ https://github.com/PwnDexter/SharpEDRChecker
 ----------------------------------------------------------------
 Test-NetConnection -ComputerName 127.0.0.1 -Port 80  # Check whether a particular port is open in firewall rules or not
 $portRange = 80..90; $portRange | ForEach-Object { Test-NetConnection -ComputerName 127.0.0.1 -Port $_ } # Check whether a particular range ports are open in firewall rules or not
+
+(New-Object System.Net.Sockets.TcpClient("127.0.0.1", "445")).Connected
 ```
 
 ## Windows-Services-Enum ✅
