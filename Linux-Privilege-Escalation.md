@@ -89,10 +89,12 @@ last
 lsof -i
 lsof -i :80
 ss -tulpn
-netstat -plt
+
 netstat -antp
 netstat -antup
 netstat -tulpn
+netstat -plt # return Programs Listening on TCP sockets
+
 grep 80 /etc/services
 
 netstat -a # (all)
