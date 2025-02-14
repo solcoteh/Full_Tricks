@@ -89,13 +89,14 @@ Get-SmbServerConfiguration # Check the SMB version running on a Windows system (
 > ls -d thmredteam.com # Check Zone Transfer (if the server is not configured correctly, the domain information can be extracted)
 ```
 
-# Password History ✅
+# Credentials ✅
 ## File-Unattended ✅
 ### cmd ✡️
 ```powershell
 dir C:\sysprep.inf /s /p
 dir C:\sysprep.xml /s /p
 dir C:\unattend.xml /s /p
+dir C:\Users\*\.ssh\ # Check SSH keys
 
 Get-ChildItem -Path C:\ -Filter "sysprep.inf" -Recurse -ErrorAction SilentlyContinue
 Get-ChildItem -Path C:\ -Filter "Unattend.xml" -Recurse -ErrorAction SilentlyContinue
