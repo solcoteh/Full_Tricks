@@ -3,7 +3,8 @@
 ```powershell
 systeminfo        # اطلاعات سیستم و ویندوز
 wmic os get Caption, Version, OSArchitecture # اطلاعات سیستم و ویندوز
-
+-------------------------------------------------
+# User-Enumeration
 whoami /priv      # بررسی سطح دسترسی
 net user          # لیست یوزرهای سیستم
 net localgroup administrators  # بررسی ادمین‌های محلی
@@ -11,24 +12,19 @@ Get-ADUser -Filter * # Find users in Active Directory
 Get-ADUser -Filter * -SearchBase "DC=THMREDTEAM,DC=COM" # Find all users in a particular DC (Domain Component)
 Get-ADUser -Filter * -SearchBase "CN=Users,DC=THMREDTEAM,DC=COM" # Search users in a particular CN (Common Name)
 Get-ADUser -Filter * -SearchBase "OU=THM,DC=THMREDTEAM,DC=COM" # Find all users in a particular OU (Organizational Unit)
-
-
+-------------------------------------------------
+# Network-Enumeration
 arp -a     # برسی جدول آرپ برای شناسایی دستگاه‌های دیگری که در شبکه فعال هستند
 ipconfig /all     # بررسی اطلاعات شبکه
 netstat -anot      # بررسی پورت‌های باز و اتصالات شبکه
-
-
-tasklist          # لیست پردازش‌های فعال
-wmic product get name,version # چک کردن لیست همه‌ی نرم‌افزارهای نصب‌شده همراه با نسخه‌شون
-wmic process list full  # نمایش تمام جزئیات پردازش‌ها
-Get-ChildItem -Hidden -Path C:\Users\Public\  # لیست فایل‌های مخفی
+-------------------------------------------------------
 --------------------------------------------------------------------------
 # These tools are for gathering information and abusing common mistakes in Windows security configurations.
 https://github.com/GhostPack/Seatbelt
 https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS
 ```
 
-## Host-Security-Enum ✅
+## Host-Security-Enumeration ✅
 ```powershell
 wmic /namespace:\\root\securitycenter2 path antivirusproduct # Antivirus Identification Method
 Get-CimInstance -Namespace root/SecurityCenter2 -ClassName AntivirusProduct # Antivirus Identification Method
@@ -61,20 +57,24 @@ $portRange = 80..90; $portRange | ForEach-Object { Test-NetConnection -ComputerN
 (New-Object System.Net.Sockets.TcpClient("127.0.0.1", "445")).Connected
 ```
 
-## Windows-Services-Enum ✅
+## Windows-Applications/Services-Enumeration ✅
 ```cmd
-sc qc apphostsvc
+sc qc apphostsvc # برسی جزئیات پیکربندی یک سرویس خاص
+wmic product get name,version # چک کردن لیست همه‌ی نرم‌افزارهای نصب‌شده همراه با نسخه‌شون
+tasklist          # لیست پردازش‌های فعال
+wmic process list full  # نمایش تمام جزئیات پردازش‌ها
+Get-ChildItem -Hidden -Path C:\Users\Public\  # لیست فایل‌های مخفی
+
 ```
 
 # Password History ✅
 ## File-Unattended ✅
 ### cmd ✡️
-```cmd
+```powershell
 dir C:\sysprep.inf /s /p
 dir C:\sysprep.xml /s /p
 dir C:\unattend.xml /s /p
-```
-```powershell
+
 Get-ChildItem -Path C:\ -Filter "sysprep.inf" -Recurse -ErrorAction SilentlyContinue
 Get-ChildItem -Path C:\ -Filter "Unattend.xml" -Recurse -ErrorAction SilentlyContinue
 Get-ChildItem -Path C:\Windows\Panther\ -Filter "*.xml" -Recurse -ErrorAction SilentlyContinue
