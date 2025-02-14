@@ -30,21 +30,30 @@ https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS
 
 ## Host-Security-Enumeration ✅
 ```powershell
+# Antivirus
 wmic /namespace:\\root\securitycenter2 path antivirusproduct # Antivirus Identification Method
 Get-CimInstance -Namespace root/SecurityCenter2 -ClassName AntivirusProduct # Antivirus Identification Method
 Get-Service WinDefend # Check Windows Defender's status
-Get-MpComputerStatus | select RealTimeProtectionEnabled # Check Windows Defender's (Real-time Protection)  status
-Get-NetFirewallProfile | Format-Table Name, Enabled # Checking the Firewall Status in Windows
-netsh advfirewall set allprofiles state off # disable the firewall on all profiles
+Get-MpComputerStatus | select RealTimeProtectionEnabled # Check Windows Defender's (Real-time Protection) status
+Get-MpThreat # View threats identified by Microsoft Defender
+--------------------------------------------------------------------------
+# Firewall
+Get-NetFirewallProfile | Format-Table Name, Enabled # Checking the Firewall Status 
 Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False # If we have admin access, we can disable the firewall on profiles
-Get-NetFirewallRule | select DisplayName, Enabled, Description # Review of firewall rules
+Get-NetFirewallRule | select DisplayName, Enabled, Description # Checking the firewall rules
 Get-NetFirewallRule | select DisplayName, Enabled, Description # Check of specific firewall rules
+
+netsh firewall show state # Checking the Firewall Status
+netsh advfirewall firewall show rule name=all # Checking the firewall rules
+netsh advfirewall set allprofiles state off # Disable firewall in all profiles
 netsh advfirewall firewall show rule name=all | findstr /i "3366" # Checking a particular port in the firewall rules
 
-Get-MpThreat # View threats identified by Microsoft Defender
-
+(New-Object System.Net.Sockets.TcpClient("127.0.0.1", "445")).Connected # Check whether a particular port is open in firewall rules or not
+Test-NetConnection -ComputerName 127.0.0.1 -Port 445  # Check whether a particular port is open in firewall rules or not
+$portRange = 80..90; $portRange | ForEach-Object { Test-NetConnection -ComputerName 127.0.0.1 -Port $_ } # Check whether a particular range ports are open in firewall rules or not
+--------------------------------------------------------------------------
+# Log
 Get-EventLog -List # Check the list of logs in the system
-
 Get-Process | Where-Object { $_.ProcessName -eq "Sysmon" }  # Checking SysMon Installation on System
 Get-CimInstance win32_service -Filter "Description = 'System Monitor service'"  # Checking SysMon Installation on System
 reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Sysmon/Operational  # Checking SysMon Installation on System
@@ -55,11 +64,6 @@ findstr /si '<ProcessCreate onmatch="exclude">' C:\tools\*
 # Check what are security software such as antivirus, EDR, or monitoring runs on the system with External tools
 https://github.com/PwnDexter/Invoke-EDRChecker
 https://github.com/PwnDexter/SharpEDRChecker
-----------------------------------------------------------------
-Test-NetConnection -ComputerName 127.0.0.1 -Port 80  # Check whether a particular port is open in firewall rules or not
-$portRange = 80..90; $portRange | ForEach-Object { Test-NetConnection -ComputerName 127.0.0.1 -Port $_ } # Check whether a particular range ports are open in firewall rules or not
-
-(New-Object System.Net.Sockets.TcpClient("127.0.0.1", "445")).Connected # برای تست اتصال به پورت 445 روی 127.0.0.1 
 ```
 
 ## Windows-Applications/Services-Enumeration ✅
