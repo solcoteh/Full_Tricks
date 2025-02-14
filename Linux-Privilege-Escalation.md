@@ -12,7 +12,6 @@ lsmod
 hostname
 dpkg -l # get the list of installed packages
 
-
 w # See users' activities
 who # Checking the login users
 last # displays a listing of the last logged-in users
@@ -83,11 +82,11 @@ find / -writable 2>/dev/null | cut -d "/" -f 2,3 | grep -v proc | sort -u # (Fin
 
 ## Network-Enumeration ✅
 ```bash
+ip a
 ifconfig
 
-last
 lsof -i
-lsof -i :80
+sudo lsof -i :80 # Find the service to run on the port
 ss -tulpn
 
 netstat -antp
