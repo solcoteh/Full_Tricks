@@ -41,7 +41,6 @@ Get-NetFirewallRule | select DisplayName, Enabled, Description # Review of firew
 Get-NetFirewallRule | select DisplayName, Enabled, Description # Check of specific firewall rules
 netsh advfirewall firewall show rule name=all | findstr /i "3366" # Checking a particular port in the firewall rules
 
-
 Get-MpThreat # View threats identified by Microsoft Defender
 
 Get-EventLog -List # Check the list of logs in the system
