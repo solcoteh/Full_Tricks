@@ -17,8 +17,11 @@ who # Checking the login users
 last # displays a listing of the last logged-in users
 
 ps -A
+ps -ef
 ps aux
+ps axf
 ps axjf
+
 
 cat ~/.bashrc
 cat ~/.bash_history
