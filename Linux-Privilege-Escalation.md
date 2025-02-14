@@ -5,17 +5,21 @@ id
 env
 sudo -V
 sudo -l
-dpkg -l
 history
 uname -a
-ifconfig
 bash --version
 lsmod
+hostname
+dpkg -l # get the list of installed packages
+
+
+w # See users' activities
+who # Checking the login users
+last # displays a listing of the last logged-in users
 
 ps -A
 ps aux
 ps axjf
-
 
 cat ~/.bashrc
 cat ~/.bash_history
@@ -25,11 +29,13 @@ cat /etc/issue # (Linux distribution version)
 cat /etc/*-release # (Linux distribution version)
 
 cat /etc/hosts
+cat /etc/group
 cat /etc/passwd
 cat /etc/shadow
 cat /etc/shells
 cat /etc/sudoers
 cat /etc/crontab
+cat /etc/resolv.conf
 
 ls -ltrh /etc/hosts
 ls -ltrh /etc/passwd
@@ -37,9 +43,12 @@ ls -ltrh /etc/shadow
 ls -ltrh /etc/crontab
 ls -ltrh /etc/sudoers
 
+ls -lh /sbin/
+ls -lh /usr/bin/
+ls -lh /var/mail/
+
 find / -name id_rsa 2> /dev/null
 find / -name authorized_keys 2> /dev/null
-
 
 find / -type f -name "*.log" 2>/dev/null
 find / -type f -name "*.bak" 2>/dev/null
@@ -74,10 +83,13 @@ find / -writable 2>/dev/null | cut -d "/" -f 2,3 | grep -v proc | sort -u # (Fin
 
 ## Network-Enumeration ✅
 ```bash
+ifconfig
+
 last
 lsof -i
 lsof -i :80
 ss -tulpn
+netstat -plt
 netstat -antp
 netstat -antup
 netstat -tulpn
