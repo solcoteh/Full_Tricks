@@ -4,6 +4,10 @@
 systeminfo        # اطلاعات سیستم و ویندوز
 wmic os get Caption, Version, OSArchitecture # اطلاعات سیستم و ویندوز
 --------------------------------------------------------------------------
+# Sharing files and Printers Enumeration
+net view \\TARGET-IP 
+net use Z: \\TARGET-IP\SharedFolder
+--------------------------------------------------------------------------
 # User-Enumeration
 whoami /priv      # بررسی سطح دسترسی
 net user          # لیست یوزرهای سیستم
@@ -18,7 +22,6 @@ arp -a     # برسی جدول آرپ برای شناسایی دستگاه‌ه�
 ipconfig /all     # بررسی اطلاعات شبکه
 netstat -anot      # بررسی پورت‌های باز و اتصالات شبکه
 netstat -ano | findstr :3366  # بررسی باز بودن یا نبودن یک پورت خاص 
-
 --------------------------------------------------------------------------
 # These tools are for gathering information and abusing common mistakes in Windows security configurations.
 https://github.com/GhostPack/Seatbelt
@@ -62,13 +65,19 @@ $portRange = 80..90; $portRange | ForEach-Object { Test-NetConnection -ComputerN
 
 ## Windows-Applications/Services-Enumeration ✅
 ```cmd
-sc qc apphostsvc # برسی جزئیات پیکربندی یک سرویس خاص
+net start # لیست کردن سرویس‌های فعال در سیستم
+wmic service where "name like 'THM Demo'" get Name,PathName #  پیدا کردن مسیر فایل اجرایی سرویس خاص
+Get-Process -Name thm-demo # Checking Process activities associated with this service
+# Note: Process ID (PID) This is useful for the next steps.
+
 wmic product get name,version # چک کردن لیست همه‌ی نرم‌افزارهای نصب‌شده همراه با نسخه‌شون
 tasklist          # لیست پردازش‌های فعال
 tasklist | findstr <PID> 
 wmic process list full  # نمایش تمام جزئیات پردازش‌ها
 Get-ChildItem -Hidden -Path C:\Users\Public\  # لیست فایل‌های مخفی
 
+
+sc qc apphostsvc # برسی جزئیات پیکربندی یک سرویس خاص
 
 
 Get-SmbServerConfiguration # Check the SMB version running on a Windows system (in the internal network)
