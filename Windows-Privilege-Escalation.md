@@ -69,6 +69,9 @@ tasklist | findstr <PID>
 wmic process list full  # نمایش تمام جزئیات پردازش‌ها
 Get-ChildItem -Hidden -Path C:\Users\Public\  # لیست فایل‌های مخفی
 
+
+
+Get-SmbServerConfiguration # Check the SMB version running on a Windows system (in the internal network)
 ```
 
 # Password History ✅
