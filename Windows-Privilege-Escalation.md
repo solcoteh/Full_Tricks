@@ -3,7 +3,7 @@
 ```powershell
 systeminfo        # اطلاعات سیستم و ویندوز
 wmic os get Caption, Version, OSArchitecture # اطلاعات سیستم و ویندوز
--------------------------------------------------
+--------------------------------------------------------------------------
 # User-Enumeration
 whoami /priv      # بررسی سطح دسترسی
 net user          # لیست یوزرهای سیستم
@@ -12,12 +12,13 @@ Get-ADUser -Filter * # Find users in Active Directory
 Get-ADUser -Filter * -SearchBase "DC=THMREDTEAM,DC=COM" # Find all users in a particular DC (Domain Component)
 Get-ADUser -Filter * -SearchBase "CN=Users,DC=THMREDTEAM,DC=COM" # Search users in a particular CN (Common Name)
 Get-ADUser -Filter * -SearchBase "OU=THM,DC=THMREDTEAM,DC=COM" # Find all users in a particular OU (Organizational Unit)
--------------------------------------------------
+--------------------------------------------------------------------------
 # Network-Enumeration
 arp -a     # برسی جدول آرپ برای شناسایی دستگاه‌های دیگری که در شبکه فعال هستند
 ipconfig /all     # بررسی اطلاعات شبکه
 netstat -anot      # بررسی پورت‌های باز و اتصالات شبکه
--------------------------------------------------------
+netstat -ano | findstr :3366  # بررسی باز بودن یا نبودن یک پورت خاص 
+
 --------------------------------------------------------------------------
 # These tools are for gathering information and abusing common mistakes in Windows security configurations.
 https://github.com/GhostPack/Seatbelt
@@ -35,6 +36,8 @@ netsh advfirewall set allprofiles state off # disable the firewall on all profil
 Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False # If we have admin access, we can disable the firewall on profiles
 Get-NetFirewallRule | select DisplayName, Enabled, Description # Review of firewall rules
 Get-NetFirewallRule | select DisplayName, Enabled, Description # Check of specific firewall rules
+netsh advfirewall firewall show rule name=all | findstr /i "3366" # Checking a particular port in the firewall rules
+
 
 Get-MpThreat # View threats identified by Microsoft Defender
 
@@ -54,7 +57,7 @@ https://github.com/PwnDexter/SharpEDRChecker
 Test-NetConnection -ComputerName 127.0.0.1 -Port 80  # Check whether a particular port is open in firewall rules or not
 $portRange = 80..90; $portRange | ForEach-Object { Test-NetConnection -ComputerName 127.0.0.1 -Port $_ } # Check whether a particular range ports are open in firewall rules or not
 
-(New-Object System.Net.Sockets.TcpClient("127.0.0.1", "445")).Connected
+(New-Object System.Net.Sockets.TcpClient("127.0.0.1", "445")).Connected # برای تست اتصال به پورت 445 روی 127.0.0.1 
 ```
 
 ## Windows-Applications/Services-Enumeration ✅
@@ -62,6 +65,7 @@ $portRange = 80..90; $portRange | ForEach-Object { Test-NetConnection -ComputerN
 sc qc apphostsvc # برسی جزئیات پیکربندی یک سرویس خاص
 wmic product get name,version # چک کردن لیست همه‌ی نرم‌افزارهای نصب‌شده همراه با نسخه‌شون
 tasklist          # لیست پردازش‌های فعال
+tasklist | findstr <PID> 
 wmic process list full  # نمایش تمام جزئیات پردازش‌ها
 Get-ChildItem -Hidden -Path C:\Users\Public\  # لیست فایل‌های مخفی
 
