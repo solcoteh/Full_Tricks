@@ -13,10 +13,11 @@ net use Z: \\TARGET-IP\SharedFolder
 whoami 
 whoami /priv      # بررسی سطح دسترسی
 whoami /groups
-
-
-
-
+--------------------------------------------------------------------------
+# Check password policy,  minimum password length, maximum password age, and lockout duration.
+net accounts # Check the system settings  
+net accounts /domain # Checking the system settings belongs to a domain
+--------------------------------------------------------------------------
 net user # List of system usernames     
 net group # List of system Windows Domain Controller group
 net localgroup # List of system local system group
