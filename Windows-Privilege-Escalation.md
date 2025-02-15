@@ -1,16 +1,25 @@
 # Enumeration ✅📚
 ## Basic-Enumeration ✅
 ```powershell
-systeminfo        # اطلاعات سیستم و ویندوز
+systeminfo        # System and Windows Information Like Hotfix(s)
 wmic os get Caption, Version, OSArchitecture # اطلاعات سیستم و ویندوز
+
 --------------------------------------------------------------------------
 # Sharing files and Printers Enumeration
 net view \\TARGET-IP 
 net use Z: \\TARGET-IP\SharedFolder
 --------------------------------------------------------------------------
 # User-Enumeration
+whoami 
 whoami /priv      # بررسی سطح دسترسی
-net user          # لیست یوزرهای سیستم
+whoami /groups
+
+
+
+
+net user # List of system usernames     
+net group # List of system Windows Domain Controller group
+net localgroup # List of system local system group
 net localgroup administrators  # بررسی ادمین‌های محلی
 Get-ADUser -Filter * # Find users in Active Directory
 Get-ADUser -Filter * -SearchBase "DC=THMREDTEAM,DC=COM" # Find all users in a particular DC (Domain Component)
@@ -73,7 +82,8 @@ wmic service where "name like 'THM Demo'" get Name,PathName #  پیدا کردن
 Get-Process -Name thm-demo # Checking Process activities associated with this service
 # Note: Process ID (PID) This is useful for the next steps.
 
-wmic product get name,version # چک کردن لیست همه‌ی نرم‌افزارهای نصب‌شده همراه با نسخه‌شون
+wmic product get name,version,vendor # چک کردن لیست همه‌ی نرم‌افزارهای نصب‌شده همراه با نسخه‌شون
+
 tasklist          # لیست پردازش‌های فعال
 tasklist | findstr <PID> 
 wmic process list full  # نمایش تمام جزئیات پردازش‌ها
