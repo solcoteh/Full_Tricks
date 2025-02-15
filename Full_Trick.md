@@ -246,12 +246,19 @@ nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount 10.10.138.133
 ## SNMP ✅
 ```bash
 snmpwalk -c public -v1 10.0.0.0
+snmpwalk -v2c -c public 10.10.73.142
 snmpwalk -v X -c public <IP> NET-SNMP-EXTEND-MIB::nsExtendOutputFull
+
 snmpcheck -t 192.168.1.X 
 snmpcheck -t 192.168.1.X -c public
+
+onesixtyone 10.10.73.142
 onesixtyone -c community.txt -i Found_ips.txt
-nmap -sT -p 161 192.168.X.X -oG snmp_results.txt
+
 snmpenum -t 192.168.1.X
+snmp-check 10.10.73.142
+
+nmap -sT -p 161 192.168.X.X -oG snmp_results.txt
 nmap -sV -p 161 --script=snmp* 172.20.10.0/24 -T5
 braa <community string>@<IP>:.1.3.6.*
 ```
