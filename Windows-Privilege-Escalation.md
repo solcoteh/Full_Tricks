@@ -6,6 +6,7 @@ wmic os get Caption, Version, OSArchitecture # اطلاعات سیستم و وی
 
 --------------------------------------------------------------------------
 # Sharing files and Printers Enumeration
+net share
 net view \\TARGET-IP 
 net use Z: \\TARGET-IP\SharedFolder
 --------------------------------------------------------------------------
