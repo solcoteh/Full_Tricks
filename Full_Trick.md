@@ -186,21 +186,7 @@ dig -t AXFR redteam.thm @10.10.73.142
 dig -t CNAME redteam.thm @10.10.73.142
 dig -t DNSSEC redteam.thm @10.10.73.142
 ```
-# Brute Force Attack ✅📚
-## Crack Type Cheat Sheet ✅
-```bash
-hashcat -m 0 -a 0 hash.txt wordlist.txt
-hashcat -m <hash_type> -a <attack_mode> hashfile wordlist
 
-gpp-decrypt [hash] # Group Policy Preferences (GPP)
-ncrack -vv --user username -P password-file.txt rdp://[host] # Ncrack can be used to crack RDP passwords:
-```
-[example_hashes](https://hashcat.net/wiki/doku.php?id=example_hashes)
-
-## Hydra Attack Type Cheat Sheet ✅
-```bash
-hydra -t 4 -l bob -P /usr/share/wordlists/rockyou.txt -vV $ip ftp
-```
 ## Crack-ssh-Pubkey-To-Privatekey ✅
 ```bash
 git clone https://github.com/RsaCtfTool/RsaCtfTool.git
