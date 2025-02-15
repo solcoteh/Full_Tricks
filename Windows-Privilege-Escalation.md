@@ -33,6 +33,9 @@ arp -a     # برسی جدول آرپ برای شناسایی دستگاه‌ه�
 ipconfig /all     # بررسی اطلاعات شبکه
 netstat -anot      # بررسی پورت‌های باز و اتصالات شبکه
 netstat -ano | findstr :3366  # بررسی باز بودن یا نبودن یک پورت خاص 
+dig -t AXFR redteam.thm @10.10.73.142
+dig -t CNAME redteam.thm @10.10.73.142
+dig -t DNSSEC redteam.thm @10.10.73.142
 --------------------------------------------------------------------------
 # These tools are for gathering information and abusing common mistakes in Windows security configurations.
 https://github.com/GhostPack/Seatbelt
