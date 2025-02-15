@@ -4,16 +4,34 @@
 Default Passwords wordlists
 Weak Passwords wordlists
 Leaked Passwords wordlists
-Combined wordlists
+Combine multiple wordlists
 Customized Wordlists
 ```
 ## Types of attacks to break the password ✅
 ```c
-Dictionary Brute-Force attack
-Combination Brute-Force attack
-Rule-Based Brute-Force attacks
-Custom Rules-Based Brute-Force attack
+Guessing Attack
+Dictionary attack
+Brute-Force attack
+Combination attack
+Rule-Based  attacks
+Custom Rules-Based attack
 Password spray attack
+```
+## Generate-passwords-Tricks ✅
+```c
+# Combine multiple passwords generator
+cat WordList1.txt WordList2.txt WordList3.txt > combined_list.txt
+sort combined_list.txt | uniq -u > cleaned_combined_list.txt
+----------------------------------
+# Custom WordList generator with site target
+https://github.com/digininja/CeWL
+----------------------------------
+username_generator # # User WordList generator
+https://github.com/shroudri/username_generator
+----------------------------------
+# Keyspace technique
+cupp -h
+crunch -h
 ```
 # Create Custom Rules in John ✅
 ## Add a Custom Rule to john Tool config file 💡
