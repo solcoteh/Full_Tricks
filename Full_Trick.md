@@ -166,6 +166,26 @@ sudo rustscan -a 10.10.10.0/24
 sudo netdiscover -f -r 10.10.10.0/24 -i eth0 -P
 ```
 
+## DNS_Scan_Enumeration ✅
+```bash
+dnsrecon
+dnsenum
+
+dig example.com
+dig example.com A
+dig example.com MX
+dig example.com NS
+dig example.com TXT
+dig sub.example.com CNAME
+dig example.com SOA
+dig example.com ANY
+dig @8.8.8.8 example.com
+dig example.com A +ttlid
+dig example.com +dnssec
+dig -t AXFR redteam.thm @10.10.73.142
+dig -t CNAME redteam.thm @10.10.73.142
+dig -t DNSSEC redteam.thm @10.10.73.142
+```
 # Brute Force Attack ✅📚
 ## Crack Type Cheat Sheet ✅
 ```bash
