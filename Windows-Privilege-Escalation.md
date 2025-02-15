@@ -20,7 +20,7 @@ whoami /groups
 net user # List of system usernames     
 net group # List of system Windows Domain Controller group
 net localgroup # List of system local system group
-net localgroup administrators  # بررسی ادمین‌های محلی
+net localgroup administrators  #  list the users that belong to the local administrators group
 Get-ADUser -Filter * # Find users in Active Directory
 Get-ADUser -Filter * -SearchBase "DC=THMREDTEAM,DC=COM" # Find all users in a particular DC (Domain Component)
 Get-ADUser -Filter * -SearchBase "CN=Users,DC=THMREDTEAM,DC=COM" # Search users in a particular CN (Common Name)
