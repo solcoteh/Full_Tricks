@@ -1,4 +1,11 @@
 # Enumeration ✅📚
+[Windows/Linux-Privilege-Escalation-Workshop](https://github.com/sagishahar/lpeworkshop)
+
+https://tryhackme.com/room/winprivesc
+https://tryhackme.com/room/windowsprivesc20
+https://tryhackme.com/room/windows10privesc
+https://tryhackme.com/room/windows10privescgn
+https://tryhackme.com/room/windowsprivescarena
 ## Basic-Enumeration ✅
 ```bash
 id
