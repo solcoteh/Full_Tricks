@@ -1,4 +1,6 @@
 # Enumeration ✅📚
+[Windows/Linux-Privilege-Escalation-Workshop](https://github.com/sagishahar/lpeworkshop)
+[Windows-Privilege-Escalation-PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md)
 ## Basic-Enumeration ✅
 ```powershell
 systeminfo        # System and Windows Information Like Hotfix(s)
