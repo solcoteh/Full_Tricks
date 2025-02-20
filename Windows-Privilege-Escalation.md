@@ -20,7 +20,7 @@ https://tryhackme.com/room/windowsprivescarena
 hostname
 systeminfo        # System and Windows Information Like Hotfix(s)
 wmic os get Caption, Version, OSArchitecture # اطلاعات سیستم و ویندوز
-
+driverquery # Check the drivers
 --------------------------------------------------------------------------
 # Sharing files and Printers Enumeration
 net share
@@ -66,6 +66,7 @@ https://github.com/PowerShellMafia/PowerSploit
 ## Host-Security-Enumeration ✅
 ```powershell
 # Antivirus
+sc query windefend
 wmic /namespace:\\root\securitycenter2 path antivirusproduct # Antivirus Identification Method
 Get-CimInstance -Namespace root/SecurityCenter2 -ClassName AntivirusProduct # Antivirus Identification Method
 Get-Service WinDefend # Check Windows Defender's status
@@ -113,12 +114,12 @@ Get-Process -Name thm-demo # Checking Process activities associated with this se
 wmic product get name,version,vendor # چک کردن لیست همه‌ی نرم‌افزارهای نصب‌شده همراه با نسخه‌شون
 wmic service get name,displayname,pathname,startmode # Unquoted Service Path
 
-
 tasklist          # لیست پردازش‌های فعال
 tasklist | findstr <PID> 
 wmic process list full  # نمایش تمام جزئیات پردازش‌ها
 Get-ChildItem -Hidden -Path C:\Users\Public\  # لیست فایل‌های مخفی
 
+sc queryex type=service # List of all running services
 sc qc apphostsvc # برسی جزئیات پیکربندی یک سرویس خاص
 Get-SmbServerConfiguration # Check the SMB version running on a Windows system (in the internal network)
 ----------------------------------------------------------------
@@ -127,7 +128,7 @@ Get-SmbServerConfiguration # Check the SMB version running on a Windows system (
 > server <IP-Dns-Server> # Set dns server
 > ls -d thmredteam.com # Check Zone Transfer (if the server is not configured correctly, the domain information can be extracted)
 ----------------------------------------------------------------
-✅ Check through the Windows Registry
+# Check through the Windows Registry
 reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services /s /f "ImagePath"
 ```
 
@@ -143,7 +144,6 @@ dir C:\Users\*\.ssh\ # Check SSH keys
 
 findstr /si password *.txt
 type C:\Users\Administrator\Desktop\passwords.txt
-
 
 Get-ChildItem -Path C:\ -Filter "sysprep.inf" -Recurse -ErrorAction SilentlyContinue
 Get-ChildItem -Path C:\ -Filter "Unattend.xml" -Recurse -ErrorAction SilentlyContinue
@@ -178,13 +178,8 @@ reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
 # Abusing Service Misconfigurations ✅
 ## Scheduled Tasks ✅
 ```cmd
+schtasks /query /fo LIST /v
 schtasks /query /tn vulntask /fo list /v  # target system
-# ⬇️⬇️⬇️⬇️⬇️⬇️
-# Folder: \
-# HostName:                             THM-PC1
-# TaskName:                             \vulntask
-# Task To Run:                          C:\tasks\schtask.bat
-# Run As User:                          taskusr1
 ------------------------------
 icacls c:\tasks\schtask.bat # check the file permissions in target system 
 ------------------------------
