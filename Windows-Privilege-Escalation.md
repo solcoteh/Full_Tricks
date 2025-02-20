@@ -184,8 +184,9 @@ reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
 # Abusing Service Misconfigurations ✅
 ## Scheduled Tasks ✅
 ```cmd
-schtasks /query /fo LIST /v
-schtasks /query /tn vulntask /fo list /v  # target system
+schtasks # List recipe all scheduled tasks
+schtasks /query /fo LIST /v # list of all the scheduled tasks in the system, along with the full details of each task
+schtasks /query /tn vulntask /fo list /v  # Receive complete information about a particular task (eg Vulntask)
 ------------------------------
 icacls c:\tasks\schtask.bat # check the file permissions in target system 
 ------------------------------
