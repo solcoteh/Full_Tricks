@@ -134,9 +134,15 @@ reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services /s /f "ImagePath"
 
 # Credentials ✅
 ## File-Unattended ✅
+```cmd
+C:\Unattend.xml
+C:\Windows\Panther\Unattend.xml
+C:\Windows\Panther\Unattend\Unattend.xml
+C:\Windows\system32\sysprep.inf
+C:\Windows\system32\sysprep\sysprep.xml
+```
 ### cmd ✡️
 ```powershell
-
 dir C:\sysprep.inf /s /p
 dir C:\sysprep.xml /s /p
 dir C:\unattend.xml /s /p
