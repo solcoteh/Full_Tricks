@@ -97,7 +97,7 @@ reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microso
 # If the hacker can access the Sysmon configuration file, he can find out what activities are being monitored and trying to erase his rejection!
 findstr /si '<ProcessCreate onmatch="exclude">' C:\tools\* 
 ----------------------------------------------------------------
-wmic qfe get Caption,Description,HotFixID,InstalledOn # Checking the system update level
+wmic qfe get Caption,Description,HotFixID,InstalledOn # Checking the system update level and Check installed security patch
 ----------------------------------------------------------------
 # Check what are security software such as antivirus, EDR, or monitoring runs on the system with External tools
 https://github.com/PwnDexter/Invoke-EDRChecker
