@@ -127,7 +127,7 @@ Get-SmbServerConfiguration # Check the SMB version running on a Windows system (
 
 
 sc queryex type=service # List of all running services
-sc qc apphostsvc # Check the configuration details of a particular service
+sc qc WindowsScheduler # Check the configuration details of a particular service
 
 ----------------------------------------------------------------
 # Check services through the Windows Registry
@@ -135,11 +135,12 @@ sc qc apphostsvc # Check the configuration details of a particular service
 reg query HKLM\SYSTEM\CurrentControlSet\Services\ # List of all running services 
 reg query HKLM\SYSTEM\CurrentControlSet\Services\ /s # List of all service and config 
 reg query HKLM\SYSTEM\CurrentControlSet\Services\ /s /f "ImagePath" # List of all service and ImagePath config 
+reg query HKLM\SYSTEM\CurrentControlSet\Services\WindowsScheduler # Check the configuration details of a particular service
 
 reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ # List of all service
-reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services /s # List of all service and config 
-reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services /s /f "ImagePath" # List of all service and ImagePath config  
-
+reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ /s # List of all service and config 
+reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ /s /f "ImagePath" # List of all service and ImagePath config  
+reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WindowsScheduler # Check the configuration details of a particular service
 ```
 
 # Credentials ✅
