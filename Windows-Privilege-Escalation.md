@@ -56,6 +56,11 @@ netstat -ano | findstr :3366  # بررسی باز بودن یا نبودن یک 
 dig -t AXFR redteam.thm @10.10.73.142
 dig -t CNAME redteam.thm @10.10.73.142
 dig -t DNSSEC redteam.thm @10.10.73.142
+
+# Check DNS service (to analyze domain name on the network) 
+> nslookup.exe # run tool
+> server <IP-Dns-Server> # Set dns server
+> ls -d thmredteam.com # Check Zone Transfer (if the server is not configured correctly, the domain information can be extracted)
 --------------------------------------------------------------------------
 # These tools are for gathering information and abusing common mistakes in Windows security configurations.
 https://github.com/GhostPack/Seatbelt
@@ -118,14 +123,12 @@ tasklist  # List of active processing
 tasklist | findstr <PID> # List of uniq active processing
 wmic process list full  # View all the details of the processing
 
-sc queryex type=service # List of all running services
-sc qc apphostsvc # برسی جزئیات پیکربندی یک سرویس خاص
 Get-SmbServerConfiguration # Check the SMB version running on a Windows system (in the internal network)
-----------------------------------------------------------------
-# Check DNS service (to analyze domain name on the network) 
-> nslookup.exe # run tool
-> server <IP-Dns-Server> # Set dns server
-> ls -d thmredteam.com # Check Zone Transfer (if the server is not configured correctly, the domain information can be extracted)
+
+
+sc queryex type=service # List of all running services
+sc qc apphostsvc # Check the configuration details of a particular service
+
 ----------------------------------------------------------------
 # Check services through the Windows Registry
 
@@ -136,8 +139,6 @@ reg query HKLM\SYSTEM\CurrentControlSet\Services\ /s /f "ImagePath" # List of al
 reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ # List of all service
 reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services /s # List of all service and config 
 reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services /s /f "ImagePath" # List of all service and ImagePath config  
-
-
 
 ```
 
