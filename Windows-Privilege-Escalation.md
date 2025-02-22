@@ -128,8 +128,10 @@ Get-SmbServerConfiguration # Check the SMB version running on a Windows system (
 > server <IP-Dns-Server> # Set dns server
 > ls -d thmredteam.com # Check Zone Transfer (if the server is not configured correctly, the domain information can be extracted)
 ----------------------------------------------------------------
-# Check through the Windows Registry
+# Check services through the Windows Registry
 reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services /s /f "ImagePath"
+reg query HKLM\SYSTEM\CurrentControlSet\Services\ # List of all running services 
+
 ```
 
 # Credentials ✅
