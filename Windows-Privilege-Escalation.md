@@ -197,6 +197,7 @@ nc -lvnp 4444 # Launch Lenner on the Hacker System
 schtasks /run /tn vulntask # run 
 ```
 ## AlwaysInstallElevated ✅
+
 ### Description ✡️
 "AlwaysInstallElevated" is a Windows Registry setting that affects the behavior of the Windows Installer service. The vulnerability arises when the "AlwaysInstallElevated" registry key is configured with a value of "1" in the Windows Registry.
 
