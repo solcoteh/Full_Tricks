@@ -114,10 +114,9 @@ Get-Process -Name thm-demo # Checking Process activities associated with this se
 wmic product get name,version,vendor # چک کردن لیست همه‌ی نرم‌افزارهای نصب‌شده همراه با نسخه‌شون
 wmic service get name,displayname,pathname,startmode # Unquoted Service Path
 
-tasklist          # لیست پردازش‌های فعال
-tasklist | findstr <PID> 
-wmic process list full  # نمایش تمام جزئیات پردازش‌ها
-Get-ChildItem -Hidden -Path C:\Users\Public\  # لیست فایل‌های مخفی
+tasklist  # List of active processing
+tasklist | findstr <PID> # List of uniq active processing
+wmic process list full  # View all the details of the processing
 
 sc queryex type=service # List of all running services
 sc qc apphostsvc # برسی جزئیات پیکربندی یک سرویس خاص
@@ -129,8 +128,16 @@ Get-SmbServerConfiguration # Check the SMB version running on a Windows system (
 > ls -d thmredteam.com # Check Zone Transfer (if the server is not configured correctly, the domain information can be extracted)
 ----------------------------------------------------------------
 # Check services through the Windows Registry
-reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services /s /f "ImagePath"
+
 reg query HKLM\SYSTEM\CurrentControlSet\Services\ # List of all running services 
+reg query HKLM\SYSTEM\CurrentControlSet\Services\ /s # List of all service and config 
+reg query HKLM\SYSTEM\CurrentControlSet\Services\ /s /f "ImagePath" # List of all service and ImagePath config 
+
+reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ # List of all service
+reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services /s # List of all service and config 
+reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services /s /f "ImagePath" # List of all service and ImagePath config  
+
+
 
 ```
 
@@ -152,14 +159,14 @@ dir C:\Users\*\.ssh\ # Check SSH keys
 
 findstr /si password *.txt
 type C:\Users\Administrator\Desktop\passwords.txt
+Get-ChildItem -Hidden -Path C:\Users\Public\  # List of hidden files
 
 Get-ChildItem -Path C:\ -Filter "sysprep.inf" -Recurse -ErrorAction SilentlyContinue
 Get-ChildItem -Path C:\ -Filter "Unattend.xml" -Recurse -ErrorAction SilentlyContinue
 Get-ChildItem -Path C:\Windows\Panther\ -Filter "*.xml" -Recurse -ErrorAction SilentlyContinue
 Get-ChildItem -Path C:\Windows\system32\sysprep\ -Filter "*.xml" -Recurse -ErrorAction SilentlyContinue
 
-Get-ChildItem -Path C:\Users -Recurse -Force | Select-String -Pattern "password|passwd|credentials|login" # Password hunting and sensitive information
-
+Get-ChildItem -Hidden -Path C:\Users -Recurse -Force | Select-String -Pattern "password|passwd|credentials|login" # Password hunting and sensitive information
 ```
 ## Powershell History ✅
 ### cmd ✡️
