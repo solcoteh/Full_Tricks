@@ -103,7 +103,7 @@ wmic qfe get Caption,Description,HotFixID,InstalledOn # Checking the system upda
 https://github.com/PwnDexter/Invoke-EDRChecker
 https://github.com/PwnDexter/SharpEDRChecker
 ```
-
+# Abusing Service Misconfigurations ✅
 ## Windows-Applications/Services-Enumeration ✅
 ```cmd
 net start # لیست کردن سرویس‌های فعال در سیستم
@@ -181,7 +181,7 @@ type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr
 ```cmd
 reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
 ```
-# Abusing Service Misconfigurations ✅
+
 ## Scheduled Tasks ✅
 ```cmd
 schtasks # List recipe all scheduled tasks
