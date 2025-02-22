@@ -42,3 +42,22 @@ icacls king.txt /deny  "NT AUTHORITY\SYSTEM":(WD)
 icacls king.txt /deny  BUILTIN\Administrators:(WD)
 icacls king.txt /deny  KingOfTheDomain\Administrator:(WD)
 ```
+
+Explanation:
+
+    PowerShell: The Get-Acl cmdlet retrieves the security descriptor of the service, and the .Access property displays the DACL.
+    CMD: The icacls command is used to display the access control list (ACL) for the service's registry key, which effectively shows the DACL.
+
+### If you want to check the DACL for the Spooler service, you would replace "YourServiceName" with "Spooler" in the scripts above.
+```powershell
+$serviceName = "Spooler"
+$service = Get-Service -Name $serviceName
+$serviceSecurity = Get-Acl -Path "HKLM:\SYSTEM\CurrentControlSet\Services\$serviceName"
+$serviceSecurity.Access
+```
+```cmd
+set serviceName=Spooler
+set regPath=HKLM\SYSTEM\CurrentControlSet\Services\%serviceName%
+icacls "%regPath%"
+```
+This will display the DACL for the specified service, showing which users or groups have what permissions.
