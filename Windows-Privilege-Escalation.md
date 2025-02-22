@@ -111,7 +111,7 @@ https://github.com/PwnDexter/SharpEDRChecker
 # Abusing Service Misconfigurations ✅
 ## Windows-Applications/Services-Enumeration ✅
 ```cmd
-net start # لیست کردن سرویس‌های فعال در سیستم
+net start # List of active services in the system
 wmic service where "name like 'THM Demo'" get Name,PathName #  Find the path of the specific service executable file
 Get-Process -Name thm-demo # Checking Process activities associated with this service
 # Note: Process ID (PID) This is useful for the next steps.
