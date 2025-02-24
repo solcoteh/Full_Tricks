@@ -147,7 +147,8 @@ reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WindowsScheduler 
 ```
 ### Privilege Escalation with Insecure Permissions on Service Executable ✅
 
-**Description:** If the executable associated with a service has weak permissions that allow an attacker to modify or replace it, the attacker can gain the privileges of the service's account trivially.
+> [!Des]
+> If the executable associated with a service has weak permissions that allow an attacker to modify or replace it, the attacker can gain the privileges of the service's account trivially.
 ```powershell
 1️⃣ # Check the configuration details of a particular service example ( BINARY_PATH_NAME and SERVICE_START_NAME and .. )
 sc qc WindowsScheduler # cmd
@@ -174,7 +175,8 @@ sc.exe start windowsscheduler # powershell
 ```
 ### Privilege Escalation with Unquoted Service Paths ✅
 
-**Description:** When a Windows service is set to use a specific executable file (") it must be inside the ("), especially if the route contains the space. If these quotes are not there, Windows When running the service, it cannot determine where the executable file is and may first look for other files that are on the way.
+> [!Des]
+> When a Windows service is set to use a specific executable file (") it must be inside the ("), especially if the route contains the space. If these quotes are not there, Windows When running the service, it cannot determine where the executable file is and may first look for other files that are on the way.
 ```powershell
 1️⃣ # Check the configuration details of a particular service example ( BINARY_PATH_NAME and SERVICE_START_NAME and .. )
 sc qc WindowsScheduler # cmd
@@ -201,10 +203,10 @@ sc.exe start "disk sorter enterprise" # powershell
 ### Privilege Escalation with Insecure Service Permissions ✅
 
 
-> [!Description]
+> [!Des]
 > Another way to upgrade access to Windows is to check the level of access to services. If DACL (Discretionary Access Control List) a service allows ordinary users to change the service configuration, this vulnerability can be used to execute the desired code with high access level.
 
-> [!Description]
+> [!Note]
 > We must first check if a particular service is allowed permission to change by normal users. To do this, we use the [Accessch](https://learn.microsoft.com/en-us/sysinternals/downloads/accesschk) tool using the Sysinternals set. ( BUILTIN\Users : SERVICE_ALL_ACCESS )
 ```powershell
 1️⃣ # Check the permission service with accesschk Tools
@@ -298,7 +300,8 @@ schtasks /run /tn vulntask
 ```
 ## AlwaysInstallElevated ✅
 
-**Description:** "AlwaysInstallElevated" is a Windows Registry setting that affects the behavior of the Windows Installer service. The vulnerability arises when the "AlwaysInstallElevated" registry key is configured with a value of "1" in the Windows Registry.
+> [!Des]
+> "AlwaysInstallElevated" is a Windows Registry setting that affects the behavior of the Windows Installer service. The vulnerability arises when the "AlwaysInstallElevated" registry key is configured with a value of "1" in the Windows Registry.
 When this registry key is enabled, it allows non-administrator users to install software packages with elevated privileges. In other words, users who shouldn't have administrative rights can exploit this vulnerability to execute arbitrary code with elevated permissions, potentially compromising the security of the system.
 ```powershell
 1️⃣ # Check the value of Alwaysinstallelelevated in Windows Registry setting if both keys is 1, the system is vulnerable.
