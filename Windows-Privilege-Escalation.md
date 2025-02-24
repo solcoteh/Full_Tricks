@@ -191,7 +191,9 @@ sc.exe start "disk sorter enterprise" # powershell
 ```
 ### Privilege Escalation with Insecure Service Permissions ✅
 
-Note : Another way to upgrade access to Windows is to check the level of access to services. If DACL (Discretionary Access Control List) a service allows ordinary users to change the service configuration, this vulnerability can be used to execute the desired code with high access level.
+**Description:** Another way to upgrade access to Windows is to check the level of access to services. If DACL (Discretionary Access Control List) a service allows ordinary users to change the service configuration, this vulnerability can be used to execute the desired code with high access level.
+
+**Note:** We must first check if a particular service is allowed to change by ordinary users. To do this, we use the Accesschk tool using the Sysinternals set.
 ```powershell
 
 
@@ -265,7 +267,7 @@ schtasks /run /tn vulntask
 ```
 ## AlwaysInstallElevated ✅
 
-****Description:**** "AlwaysInstallElevated" is a Windows Registry setting that affects the behavior of the Windows Installer service. The vulnerability arises when the "AlwaysInstallElevated" registry key is configured with a value of "1" in the Windows Registry.
+**Description:** "AlwaysInstallElevated" is a Windows Registry setting that affects the behavior of the Windows Installer service. The vulnerability arises when the "AlwaysInstallElevated" registry key is configured with a value of "1" in the Windows Registry.
 When this registry key is enabled, it allows non-administrator users to install software packages with elevated privileges. In other words, users who shouldn't have administrative rights can exploit this vulnerability to execute arbitrary code with elevated permissions, potentially compromising the security of the system.
 ```powershell
 # If the value of Alwaysinstallelelevated in both keys is 1, the system is vulnerable.
