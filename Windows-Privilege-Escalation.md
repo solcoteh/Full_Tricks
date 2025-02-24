@@ -200,7 +200,8 @@ sc.exe start "disk sorter enterprise" # powershell
 ```
 ### Privilege Escalation with Insecure Service Permissions ✅
 
-> [!Description]
+
+> [!aaa]
 > Another way to upgrade access to Windows is to check the level of access to services. If DACL (Discretionary Access Control List) a service allows ordinary users to change the service configuration, this vulnerability can be used to execute the desired code with high access level.
 
 > [!Note]
