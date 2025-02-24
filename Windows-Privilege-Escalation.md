@@ -204,7 +204,7 @@ sc.exe start "disk sorter enterprise" # powershell
 > [!Description]
 > Another way to upgrade access to Windows is to check the level of access to services. If DACL (Discretionary Access Control List) a service allows ordinary users to change the service configuration, this vulnerability can be used to execute the desired code with high access level.
 
-> [!Note]
+> [!Description]
 > We must first check if a particular service is allowed permission to change by normal users. To do this, we use the [Accessch](https://learn.microsoft.com/en-us/sysinternals/downloads/accesschk) tool using the Sysinternals set. ( BUILTIN\Users : SERVICE_ALL_ACCESS )
 ```powershell
 1️⃣ # Check the permission service with accesschk Tools
