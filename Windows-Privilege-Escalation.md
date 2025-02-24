@@ -265,7 +265,7 @@ schtasks /run /tn vulntask
 ```
 ## AlwaysInstallElevated ✅
 
-Description : "AlwaysInstallElevated" is a Windows Registry setting that affects the behavior of the Windows Installer service. The vulnerability arises when the "AlwaysInstallElevated" registry key is configured with a value of "1" in the Windows Registry.
+****Description:**** "AlwaysInstallElevated" is a Windows Registry setting that affects the behavior of the Windows Installer service. The vulnerability arises when the "AlwaysInstallElevated" registry key is configured with a value of "1" in the Windows Registry.
 When this registry key is enabled, it allows non-administrator users to install software packages with elevated privileges. In other words, users who shouldn't have administrative rights can exploit this vulnerability to execute arbitrary code with elevated permissions, potentially compromising the security of the system.
 ```powershell
 # If the value of Alwaysinstallelelevated in both keys is 1, the system is vulnerable.
