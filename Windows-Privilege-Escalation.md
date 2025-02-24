@@ -291,3 +291,15 @@ privilege::debug # this obtains debug privileges which (without going into too m
 token::elevate # simply put, this takes us from our administrative shell with high privileges into a SYSTEM level shell with maximum privileges
 lsadump::sam # list of password
 ```
+
+    !!! info
+        **نکته بسیار مهم** : نویسنده باید قوانین مربوط به **سرقت ادبی** را رعایت کند. درغیر اینصورت عواقب آن متوجه خود نویسنده خواهد بود.
+
+    !!! note "یادداشت 1"
+         می توان نام نویسنده را به عنوان یک یادداشت در انتها ذکر کرد.
+
+    !!! note ""
+        یادداشت 2
+
+    ??? success "Flag"
+        توصیه می‌شود که فلگ را داخل این نوع یادداشت گذاری قرار دهید.
