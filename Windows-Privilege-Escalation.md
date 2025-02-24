@@ -1,4 +1,4 @@
-# Enumeration ✅📚
+# Winprivesc-Tricks-Learn✅📚
 [lpeworkshop-Workshop](https://github.com/sagishahar/lpeworkshop)
 
 [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md)
@@ -15,7 +15,16 @@
 
 [windowsprivescarena](https://tryhackme.com/room/windowsprivescarena)
 
-# Tools
+# Tools 🛠
+[winPEAS](https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS)
+
+[Seatbelt](https://github.com/GhostPack/Seatbelt)
+
+[mimikatz](https://github.com/gentilkiwi/mimikatz)
+
+[nc.exe](https://github.com/int0x33/nc.exe)
+
+[PowerSploit](https://github.com/PowerShellMafia/PowerSploit)
 
 ## Basic-Enumeration ✅
 ```powershell
