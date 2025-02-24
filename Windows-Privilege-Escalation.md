@@ -108,7 +108,7 @@ wmic qfe get Caption,Description,HotFixID,InstalledOn # Checking the system upda
 https://github.com/PwnDexter/Invoke-EDRChecker
 https://github.com/PwnDexter/SharpEDRChecker
 ```
-# Abusing Service Misconfigurations ✅
+# Abusing Applications/Services Misconfigurations ✅
 ## Windows-Applications/Services-Enumeration ✅
 ```powershell
 net start # List of active services in the system
@@ -123,11 +123,25 @@ tasklist  # List of active processing
 tasklist | findstr <PID> # List of uniq active processing
 wmic process list full  # View all the details of the processing
 
-Get-SmbServerConfiguration # Check the SMB version running on a Windows system (in the internal network)
-
 sc queryex type=service # List of all running services
+sc qc <service name> # Check the configuration details
+
+Get-SmbServerConfiguration # Check the SMB version running on a Windows system (in the internal network)
 ----------------------------------------------------------------
-✅ # Privilege Escalation with Insecure Permissions on Service Executable
+# Check services through the Windows Registry
+
+reg query HKLM\SYSTEM\CurrentControlSet\Services\ # List of all running services 
+reg query HKLM\SYSTEM\CurrentControlSet\Services\ /s # List of all service and config 
+reg query HKLM\SYSTEM\CurrentControlSet\Services\ /s /f "ImagePath" # List of all service and ImagePath config 
+reg query HKLM\SYSTEM\CurrentControlSet\Services\WindowsScheduler # Check the configuration details of a particular service
+
+reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ # List of all service
+reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ /s # List of all service and config 
+reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ /s /f "ImagePath" # List of all service and ImagePath config  
+reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WindowsScheduler # Check the configuration details of a particular service
+```
+### Privilege Escalation with Insecure Permissions on Service Executable ✅
+```powershell
 1️⃣ # Check the configuration details of a particular service example ( BINARY_PATH_NAME and SERVICE_START_NAME and .. )
 sc qc WindowsScheduler # cmd
 sc.exe qc WindowsScheduler # powershell
@@ -150,8 +164,9 @@ sc stop windowsscheduler # cmd
 sc start windowsscheduler # cmd
 sc.exe stop windowsscheduler # powershell
 sc.exe start windowsscheduler # powershell
-----------------------------------------------------------------
-✅ # Privilege Escalation with Unquoted Service Paths
+```
+### Privilege Escalation with Unquoted Service Paths ✅
+```powershell
 1️⃣ # Check the configuration details of a particular service example ( BINARY_PATH_NAME and SERVICE_START_NAME and .. )
 sc qc WindowsScheduler # cmd
 sc.exe qc WindowsScheduler # powershell
@@ -173,18 +188,14 @@ sc stop "disk sorter enterprise" # cmd
 sc start "disk sorter enterprise" # cmd
 sc.exe stop "disk sorter enterprise" # powershell
 sc.exe start "disk sorter enterprise" # powershell
-----------------------------------------------------------------
-# Check services through the Windows Registry
+```
+### Privilege Escalation with Insecure Service Permissions ✅
 
-reg query HKLM\SYSTEM\CurrentControlSet\Services\ # List of all running services 
-reg query HKLM\SYSTEM\CurrentControlSet\Services\ /s # List of all service and config 
-reg query HKLM\SYSTEM\CurrentControlSet\Services\ /s /f "ImagePath" # List of all service and ImagePath config 
-reg query HKLM\SYSTEM\CurrentControlSet\Services\WindowsScheduler # Check the configuration details of a particular service
+Note : Another way to upgrade access to Windows is to check the level of access to services. If DACL (Discretionary Access Control List) a service allows ordinary users to change the service configuration, this vulnerability can be used to execute the desired code with high access level.
+```powershell
 
-reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ # List of all service
-reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ /s # List of all service and config 
-reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ /s /f "ImagePath" # List of all service and ImagePath config  
-reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WindowsScheduler # Check the configuration details of a particular service
+
+
 ```
 
 # Credentials ✅
@@ -254,11 +265,8 @@ schtasks /run /tn vulntask
 ```
 ## AlwaysInstallElevated ✅
 
-### Description ✡️
-"AlwaysInstallElevated" is a Windows Registry setting that affects the behavior of the Windows Installer service. The vulnerability arises when the "AlwaysInstallElevated" registry key is configured with a value of "1" in the Windows Registry.
-
+Description : "AlwaysInstallElevated" is a Windows Registry setting that affects the behavior of the Windows Installer service. The vulnerability arises when the "AlwaysInstallElevated" registry key is configured with a value of "1" in the Windows Registry.
 When this registry key is enabled, it allows non-administrator users to install software packages with elevated privileges. In other words, users who shouldn't have administrative rights can exploit this vulnerability to execute arbitrary code with elevated permissions, potentially compromising the security of the system.
-
 ```powershell
 # If the value of Alwaysinstallelelevated in both keys is 1, the system is vulnerable.
 reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer 
