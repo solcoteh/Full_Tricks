@@ -141,6 +141,8 @@ reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ /s /f "ImagePath
 reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WindowsScheduler # Check the configuration details of a particular service
 ```
 ### Privilege Escalation with Insecure Permissions on Service Executable ✅
+
+**Description:** If the executable associated with a service has weak permissions that allow an attacker to modify or replace it, the attacker can gain the privileges of the service's account trivially.
 ```powershell
 1️⃣ # Check the configuration details of a particular service example ( BINARY_PATH_NAME and SERVICE_START_NAME and .. )
 sc qc WindowsScheduler # cmd
@@ -166,6 +168,8 @@ sc.exe stop windowsscheduler # powershell
 sc.exe start windowsscheduler # powershell
 ```
 ### Privilege Escalation with Unquoted Service Paths ✅
+
+**Description:** When a Windows service is set to use a specific executable file (") it must be inside the ("), especially if the route contains the space. If these quotes are not there, Windows When running the service, it cannot determine where the executable file is and may first look for other files that are on the way.
 ```powershell
 1️⃣ # Check the configuration details of a particular service example ( BINARY_PATH_NAME and SERVICE_START_NAME and .. )
 sc qc WindowsScheduler # cmd
