@@ -1,19 +1,21 @@
 # Enumeration ✅📚
-[Windows/Linux-Privilege-Escalation-Workshop](https://github.com/sagishahar/lpeworkshop)
+[lpeworkshop-Workshop](https://github.com/sagishahar/lpeworkshop)
 
-[Windows-Privilege-Escalation-PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md)
+[PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md)
 
-[windows-privilege-escalation-hacktricks](https://book.hacktricks.wiki/en/windows-hardening/windows-local-privilege-escalation/index.html?highlight=Windows-Privilege#windows-local-privilege-escalation)
+[hacktricks](https://book.hacktricks.wiki/en/windows-hardening/windows-local-privilege-escalation/index.html?highlight=Windows-Privilege#windows-local-privilege-escalation)
 
-https://tryhackme.com/room/winprivesc
+[winprivesc](https://tryhackme.com/room/winprivesc)
 
-https://tryhackme.com/room/windowsprivesc20
+[windowsprivesc20](https://tryhackme.com/room/windowsprivesc20)
 
-https://tryhackme.com/room/windows10privesc
+[windows10privesc](https://tryhackme.com/room/windows10privesc)
 
-https://tryhackme.com/room/windows10privescgn
+[windows10privesc](https://tryhackme.com/room/windows10privescgn)
 
-https://tryhackme.com/room/windowsprivescarena
+[windowsprivescarena](https://tryhackme.com/room/windowsprivescarena)
+
+# Tools
 
 ## Basic-Enumeration ✅
 ```powershell
