@@ -127,8 +127,7 @@ Get-SmbServerConfiguration # Check the SMB version running on a Windows system (
 
 sc queryex type=service # List of all running services
 ----------------------------------------------------------------
-✅ # Attacking services that have Weak executive permission 
-✅ # Insecure Permissions on Service Executable
+✅ # Privilege Escalation with Insecure Permissions on Service Executable
 1️⃣ # Check the configuration details of a particular service example ( BINARY_PATH_NAME and SERVICE_START_NAME and .. )
 sc qc WindowsScheduler 
 2️⃣ # We check the executable file of this service has Weak permission or not
@@ -150,6 +149,10 @@ sc stop windowsscheduler # cmd
 sc start windowsscheduler # cmd
 sc.exe stop windowsscheduler # powershell
 sc.exe start windowsscheduler # powershell
+----------------------------------------------------------------
+✅ # Privilege Escalation with Unquoted Service Paths
+
+
 ----------------------------------------------------------------
 # Check services through the Windows Registry
 
