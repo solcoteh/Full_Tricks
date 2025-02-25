@@ -26,6 +26,8 @@
 
 [PowerSploit](https://github.com/PowerShellMafia/PowerSploit)
 
+[Priv2Admin](https://github.com/gtworek/Priv2Admin)
+
 ## Basic-Enumeration ✅
 ```powershell
 hostname
