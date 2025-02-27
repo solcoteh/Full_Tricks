@@ -286,6 +286,22 @@ copy C:\Windows\System32\cmd.exe C:\Windows\System32\Utilman.exe
 4️⃣ Now when clicking on windows Login page section "Ease of Access" button, instead of access settings, run a cmd.exe with System Access Level
 ```
 
+# Abusing vulnerable software ✅
+
+> [!Note]
+> Software installed on the target system can present various privilege escalation opportunities. As with drivers, organisations and users may not update them as often as they update the operating system.
+> Remember that the wmic product command may not return all installed programs. Depending on how some of the programs were installed, they might not get listed here. It is always worth checking desktop shortcuts, available services or generally any trace that indicates the existence of additional software that might be vulnerable.
+> like "C:\Program Files\" & "C:\Program Files (x86)\"  
+```powershell
+0️⃣ # Case Study: Druva inSync 6.6.3
+0️⃣ # Find software installed on the system
+wmic product get name,version,vendor
+1️⃣ # Cognition of vulnerability
+
+
+
+
+```
 ## Credentials ✅
 ## File-Unattended ✅
 ```powershell
