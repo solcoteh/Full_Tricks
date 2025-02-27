@@ -18,6 +18,8 @@
 # Tools 🛠
 [winPEAS](https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS)
 
+[wesng](https://github.com/bitsadmin/wesng)
+
 [Seatbelt](https://github.com/GhostPack/Seatbelt)
 
 [mimikatz](https://github.com/gentilkiwi/mimikatz)
@@ -26,9 +28,15 @@
 
 [PowerSploit](https://github.com/PowerShellMafia/PowerSploit)
 
+[PrivescCheck](https://github.com/itm4n/PrivescCheck)
+
 [Priv2Admin](https://github.com/gtworek/Priv2Admin)
 
 [impacket](https://github.com/fortra/impacket)
+
+```bash
+meterpreter > run post/multi/recon/local_exploit_suggester
+```
 
 ## Basic-Enumeration ✅
 ```powershell
