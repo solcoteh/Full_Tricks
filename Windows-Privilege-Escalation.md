@@ -289,12 +289,13 @@ copy C:\Windows\System32\cmd.exe C:\Windows\System32\Utilman.exe
 # Abusing vulnerable software ✅
 
 > [!Note]
-> Software installed on the target system can present various privilege escalation opportunities. As with drivers, organisations and users may not update them as often as they update the operating system.
-> Remember that the wmic product command may not return all installed programs. Depending on how some of the programs were installed, they might not get listed here. It is always worth checking desktop shortcuts, available services or generally any trace that indicates the existence of additional software that might be vulnerable.
-> like "C:\Program Files\" & "C:\Program Files (x86)\"  
+> 🔹 Software installed on the target system can present various privilege escalation opportunities. As with drivers, organisations and users may not update them as often as they update the operating system.
+> [!Note]
+> 🔹 Remember that the wmic product command may not return all installed programs. Depending on how some of the programs were installed, they might not get listed here. It is always worth checking desktop shortcuts, available services or generally any trace that indicates the existence of additional software that might be vulnerable.
+> [!Tip]
+> ♦️ Check out these paths "C:\Program Files\" & "C:\Program Files (x86)\"  
 
 ### Privilege Escalation with Case Study: Druva inSync 6.6.3 ✅
-
 ```powershell
 0️⃣ # Find software installed on the system
 wmic product get name,version,vendor
