@@ -44,6 +44,7 @@ hostname
 systeminfo        # System and Windows Information Like Hotfix(s)
 wmic os get Caption, Version, OSArchitecture # اطلاعات سیستم و ویندوز
 driverquery # Check the drivers
+mstsc /v:<target-ip> # Remote Desktop
 --------------------------------------------------------------------------
 # Sharing files and Printers Enumeration
 net share
