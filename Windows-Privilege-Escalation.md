@@ -139,8 +139,10 @@ wmic service where "name like 'THM Demo'" get Name,PathName #  Find the path of 
 Get-Process -Name thm-demo # Checking Process activities associated with this service
 # Note: Process ID (PID) This is useful for the next steps.
 
-wmic product
-wmic product get name,version,vendor # Checking the list of all installed software with their version
+wmic product # Checking the list of all installed software
+wmic service list brief # Check services to identify hidden software
+wmic service list brief | findstr "Running"  # Check running services to identify hidden software
+wmic product get name,version,vendor # Checking the list of all installed software with fillter 
 wmic service get name,displayname,pathname,startmode # Check (name, display name, executable file path and how to start) a list of all the services in the system 
 
 tasklist  # List of active processing
