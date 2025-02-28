@@ -61,7 +61,7 @@ query session # View users who are login at the same time
 net accounts # Check the system settings  
 net accounts /domain # Checking the system settings belongs to a domain
 --------------------------------------------------------------------------
-net user # List of system usernames
+net users # List of system usernames
 net user Administrator # Check the details of a particular user
 net group # List of system Windows Domain Controller group
 net localgroup # List of system local system group
