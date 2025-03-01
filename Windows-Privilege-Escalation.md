@@ -51,6 +51,7 @@ systeminfo        # System and Windows Information Like Hotfix(s)
 wmic os get Caption, Version, OSArchitecture # اطلاعات سیستم و ویندوز
 driverquery # Check the drivers
 mstsc /v:<target-ip> # Remote Desktop
+xfreerdp /u:user /p:password321 /cert:ignore /v:MACHINE_IP # Remote Desktop with kali
 cmd.exe /k net user jack Password11 # Change Password user 
 cmd.exe /k net localgroup administrators jack /add # Add jack to administrators group
 cmd.exe /k net user jack Password11 /add & cmd.exe /k net localgroup administrators jack /add # add user with Administrator Privilege
