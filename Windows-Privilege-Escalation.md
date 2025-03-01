@@ -51,7 +51,8 @@ systeminfo        # System and Windows Information Like Hotfix(s)
 wmic os get Caption, Version, OSArchitecture # اطلاعات سیستم و ویندوز
 driverquery # Check the drivers
 mstsc /v:<target-ip> # Remote Desktop
-cmd.exe /k net user jack Password11 # add user 
+cmd.exe /k net user jack Password11 # Change Password user 
+cmd.exe /k net localgroup administrators jack /add # Add jack to administrators group
 cmd.exe /k net user jack Password11 /add & cmd.exe /k net localgroup administrators jack /add # add user with Administrator Privilege
 --------------------------------------------------------------------------
 # Sharing files and Printers Enumeration
