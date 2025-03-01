@@ -34,6 +34,12 @@
 
 [impacket](https://github.com/fortra/impacket)
 
+[procmon](https://learn.microsoft.com/en-us/sysinternals/downloads/procmon)
+
+[systeminformer](https://systeminformer.sourceforge.io/downloads)
+
+[process-hacker](https://soft98.ir/software/821-process-hacker.html)
+
 ```bash
 meterpreter > run post/multi/recon/local_exploit_suggester
 ```
