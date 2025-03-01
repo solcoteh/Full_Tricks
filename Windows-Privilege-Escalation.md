@@ -52,7 +52,7 @@ wmic os get Caption, Version, OSArchitecture # اطلاعات سیستم و وی
 driverquery # Check the drivers
 mstsc /v:<target-ip> # Remote Desktop
 cmd.exe /k net user jack Password11 # add user 
-cmd.exe /k net user jack Password11 /add & net localgroup administrators jack /add # add user with Administrator Privilege
+cmd.exe /k net user jack Password11 /add & cmd.exe /k net localgroup administrators jack /add # add user with Administrator Privilege
 --------------------------------------------------------------------------
 # Sharing files and Printers Enumeration
 net share
