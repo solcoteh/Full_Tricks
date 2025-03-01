@@ -163,7 +163,7 @@ sc queryex type=service # List of all running services
 sc qc <service name> # Check the configuration details
 
 icacls WService.exe # Check Permission Service File exe
-accesschk64.exe -qlc thmservice # Checking the service permission to this service and permission this service to other services
+accesschk64.exe -qlc thmservice # Checking the service permission 
 
 Get-SmbServerConfiguration # Check the SMB version running on a Windows system (in the internal network)
 ----------------------------------------------------------------
