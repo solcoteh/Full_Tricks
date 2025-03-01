@@ -144,6 +144,8 @@ runas /savecred /user:<username> powershell.exe # run powershell with another us
 # Pattern "password|passwd|credentials|login"
 reg query HKLM /f password /t REG_SZ /s
 reg query HKCU /f password /t REG_SZ /s
+reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion\winlogon"
+reg query "HKLU\Software\Microsoft\Windows NT\CurrentVersion\winlogon"
 ```
 ## IIS Configuration ✅
 ```powershell
