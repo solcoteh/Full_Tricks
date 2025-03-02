@@ -43,7 +43,9 @@
 [evil-winrm](https://github.com/Hackplayers/evil-winrm)
 
 ```shell
-https://github.com/Hackplayers/evil-winrm#Remote-path-completion)
+# Warning: Remote path completions is disabled due to ruby limitation: undefined method `quoting_detection_proc' for module Reline
+sudo gem update reline
+sudo gem install reline
 ```
 
 ```bash
