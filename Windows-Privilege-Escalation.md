@@ -44,8 +44,14 @@
 
 ```shell
 # Warning: Remote path completions is disabled due to ruby limitation: undefined method `quoting_detection_proc' for module Reline
-sudo gem update reline
+
 sudo gem install reline
+sudo gem install readline
+sudo gem install readline-ext
+
+sudo gem update reline
+sudo gem update readline
+sudo gem update readline-ext
 ```
 
 ```bash
