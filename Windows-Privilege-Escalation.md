@@ -533,3 +533,12 @@ nc -lvp 4445
 ```powershell
 0️⃣ windowslocalpersistence Tryhackme = Task 3
 ```
+
+## Abusing Services ✅
+### Creating backdoor services ✅
+### Modifying existing services ✅
+
+## Abusing Scheduled Tasks ✅
+### Task Scheduler ✅
+### Making Our Task Invisible ✅
+
