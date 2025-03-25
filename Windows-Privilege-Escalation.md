@@ -508,6 +508,7 @@ Notice: the RID is stored using little-endian notation, so its bytes appear reve
 4️⃣ We will now replace those two bytes with the RID of Administrator in hex (500 = 0x01F4), switching around the bytes (F4 01)
 5️⃣ Remote Desktop to our user
 ```
+
 ## Backdooring Files ✅
 
 ### Executable Files ✅
@@ -528,5 +529,7 @@ powershell.exe -WindowStyle hidden C:\Windows\System32\backdoor.ps1
 4️⃣ start an nc listener to receive our reverse shell on our attacker's machine
 nc -lvp 4445
 ```
-
-
+### Hijacking File Associations ✅
+```powershell
+0️⃣ windowslocalpersistence Tryhackme = Task 3
+```
