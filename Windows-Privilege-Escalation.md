@@ -542,3 +542,10 @@ nc -lvp 4445
 ### Task Scheduler ✅
 ### Making Our Task Invisible ✅
 
+# Tools Runas.exe ✅
+> [!Note]
+> 🔹 Have you ever found AD credentials but nowhere to log in with them? Runas may be the answer you've been looking for! , In security assessments, you will often have network access and have just discovered AD credentials but have no means or privileges to create a new domain-joined machine. So we need the ability to use those credentials on a Windows machine we control.
+```powershell
+runas.exe /netonly /user:<domain>\<username> cmd.exe
+runas.exe /netonly /user:za.tryhackme.com\arthur.campbell powershell.exe
+```
