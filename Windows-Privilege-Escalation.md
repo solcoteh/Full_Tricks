@@ -136,7 +136,7 @@ dir C:\Users\*\.ssh\ # Check SSH keys
 findstr /si password *.txt
 type C:\Users\Administrator\Desktop\passwords.txt
 Get-ChildItem -Hidden -Path C:\Users\Public\  # List of hidden files
-
+Get-ADUser -Filter * -Properties * | select Name,SamAccountName,Description
 Get-ChildItem -Path C:\ -Filter "sysprep.inf" -Recurse -ErrorAction SilentlyContinue
 Get-ChildItem -Path C:\ -Filter "Unattend.xml" -Recurse -ErrorAction SilentlyContinue
 Get-ChildItem -Path C:\Windows\Panther\ -Filter "*.xml" -Recurse -ErrorAction SilentlyContinue
