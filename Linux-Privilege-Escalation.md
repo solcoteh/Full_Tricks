@@ -166,6 +166,9 @@ sudoedit -s '\' $(python3 -c 'print("A"*1000)') # in target system for test
 git clone https://github.com/blasty/CVE-2021-3156 # in our kali 
 # transfer CVE-2021-3156 target dir to target 
 make # in target system
+OR
+
+https://github.com/worawit/CVE-2021-3156
 ```
 #### If "(ALL, !root)" existed. 🔆
 ```bash
